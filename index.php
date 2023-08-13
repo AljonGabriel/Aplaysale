@@ -8,18 +8,10 @@
 </head>
 
 <body>
-    <form id="myForm" action="inc/formhandler.php" method="post">
-        <input type="text" id="username" name="username" placeholder="Username">
-        <input type="email" id="email" name="email" placeholder="Email">
-        <input type="password" id="pwd" name="pwd" placeholder="Password">
-        <button type="submit">Submit</button>
-        <div id="errorMessage"></div>
-
-
-    </form>
-
-
+    <nav>
+        <?php require_once 'comp/navbar.php' ?>
+    </nav>
 </body>
-<script src="js/errorHandlers.js"></script>
+
 
 </html>

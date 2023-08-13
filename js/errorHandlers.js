@@ -20,8 +20,6 @@ document.getElementById('myForm').addEventListener('submit', function (event) {
     errors.push('Password is required');
   }
 
-  console.log(errors);
-
   // Display errors or submit the form
   if (errors.length > 0) {
     // Display errors to the user (e.g., in a <div>)
