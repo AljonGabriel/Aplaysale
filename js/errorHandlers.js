@@ -2,14 +2,15 @@ document.getElementById('myForm').addEventListener('submit', function (event) {
   event.preventDefault(); // Prevent form submission
 
   // Get form values
-  var username = document.getElementById('username').value;
+  var username = document.getElementById('username');
   var email = document.getElementById('email').value;
   var password = document.getElementById('pwd').value;
 
   // Perform input validation
   var errors = [];
-  if (username === '') {
+  if (username.value === '') {
     errors.push('Username is required');
+    username.style.border = '1px solid red'; // Change the border style to indicate an error
   }
   if (email === '') {
     errors.push('Email is required');
