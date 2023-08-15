@@ -33,75 +33,80 @@ require_once "inc/config_session.inc.php";
                     </div>
 
                     <fieldset>
+                        <legend class="fieldset-legend">User Information</legend>
                         <!--Full Name input -->
                         <div class="signup-full-name-input-container">
                             <label for="fullname">Complete Name:</label>
+
                             <input class="signup-input" type="text" id="fullName" name="fullname"
                                 placeholder="Complete name">
-                            <div class="formError">
-                                <p id="fullNameError" class="error-message" style="color: red;"></p>
+                            <div class="fieldErrors">
+                                <p id="fullNameError"></p>
                             </div>
                         </div>
 
                         <!--Address input -->
                         <div class="signup-address-input-container">
                             <label for="address">Complete Address:</label>
-                            <input class="signup-input" type="text" id="fullName" name="fullname"
+                            <input class="signup-input" type="address" id="address" name="address"
                                 placeholder="Enter Address">
+                            <div class="fieldErrors">
+                                <p id="addressError"></p>
+                            </div>
                             <div>
-                                <select id="country" name="country">
+                                <select class="signup-select" id="country" name="country">
                                     <option value="" disabled selected>Select a country</option>
                                     <option value="Philippines">Philippines</option>
                                     <!-- Add more country options as needed -->
                                 </select>
                             </div>
                             <div>
-                                <select id="city" name="city">
+                                <select class="signup-select" id="city" name="city">
                                     <option value="" disabled selected>Select a city</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="signup-phone-number-input-container">
-                            <input class="signup-input" type="number" id="phoneNo" name="phoneno" placeholder="+63">
+                            <label for="contact">Phone Number:</label>
+                            <input class="signup-input" type="number" id="phoneNo" name="contact" placeholder="+63">
+                            <div class="fieldErrors">
+                                <p id="contactError"></p>
+                            </div>
                         </div>
-
-
-
-
-
 
                     </fieldset>
 
+                    <fieldset>
+                        <legend class="fieldset-legend">Login Informaiton</legend>
 
-                    <input class="signup-input" type="text" id="username" name="username" placeholder="Username">
-                    <div class="formError">
-                        <p id="usernameError" class="error-message" style="color: red;"></p>
-                    </div>
+                        <div class="signup-email-input-container">
+                            <label for="email">Email:</label>
+                            <input class="signup-input" type="email" id="email" name="email" placeholder="Email">
+                            <div class="fieldErrors">
+                                <p id="emailError"></p>
+                            </div>
+                        </div>
 
+                        <div class="signup-password-input-container">
+                            <label for="pwd">Password:</label>
+                            <input class="signup-input" type="password" id="pwd" name="pwd" placeholder="Password">
+                            <div class="fieldErrors">
+                                <p id="pwdError"></p>
+                            </div>
 
-                    <input class="signup-input" type="email" id="email" name="email" placeholder="Email">
-                    <div class="formError">
-                        <p id="emailError" class="error-message" style="color: red;"></p>
-                    </div>
+                            <label for="re-pwd">Confirm Password:</label>
+                            <input class="signup-input" type="password" id="rePwd" name="pwd"
+                                placeholder="Confirm your password">
+                            <div class="fieldErrors">
+                                <p id="rePwdError"></p>
+                            </div>
+                        </div>
 
-                    <input class="signup-input" type="password" id="pwd" name="pwd" placeholder="Password">
-                    <div class="formError">
-                        <p id="pwdError" class="error-message" style="color: red;"></p>
-                    </div>
+                        <button type="submit" class="signup-btn">Submit</button>
 
-                    <input class="signup-input" type="password" id="re-pwd" name="pwd"
-                        placeholder="Confirm your password">
-                    <div class="formError">
-                        <p id="pwdError" class="error-message" style="color: red;"></p>
-                    </div>
-
-
-                    <button type="submit" class="signup-btn">Submit</button>
-
+                    </fieldset>
                 </form>
-
-
             </div>
         </div>
     </main>

@@ -13,15 +13,6 @@ function is_input_empty(string $username, string $pwd, string $email)
     }
 }
 
-function is_username_taken(object $pdo, string $username) 
-{
-    if(get_username( $pdo,  $username)) 
-    {
-        return true;
-    } else {
-        return false;
-    }
-}
 
 function is_email_regsitered(object $pdo, string $email) 
 {
@@ -33,6 +24,6 @@ function is_email_regsitered(object $pdo, string $email)
     }
 }
 
-function create_user(object $pdo, string $username, string $email, string $pwd) {
-    set_user($pdo, $username, $email, $pwd);
+function create_user(object $pdo, string $email, string $pwd) {
+    set_user($pdo, $email, $pwd);
 }
