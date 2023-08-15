@@ -32,6 +32,12 @@ require_once "inc/config_session.inc.php";
             </div>
         </div>
 
+        <?php 
+            check_signup_errors()
+        
+        
+        ?>
+
 
     </main>
     <script src="js/errorHandlers.js"></script>

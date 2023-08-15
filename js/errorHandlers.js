@@ -1,4 +1,4 @@
-document.getElementById('myForm').addEventListener('submit', async function (event) {
+/* document.getElementById('myForm').addEventListener('submit', async function (event) {
   event.preventDefault(); // Prevent form submission
 
   // Get form values
@@ -10,62 +10,74 @@ document.getElementById('myForm').addEventListener('submit', async function (eve
   var errors = [];
   if (username.value === '') {
     errors.push('Username is required');
-    username.style.border = '1px solid red'; // Change the border style to indicate an error
+    username.style.border = '1px solid red';
   }
   if (email === '') {
     errors.push('Email is required');
   } else if (!isValidEmail(email)) {
     errors.push('Invalid email format');
-  } else {
-    // Check if email exists in the database
-    try {
-      var emailExists = await checkEmailExists(email);
-      if (emailExists) {
-        errors.push('Email is already registered');
-      }
-    } catch (error) {
-      console.error('Error checking email:', error);
-    }
-  }
+  } 
   if (password === '') {
     errors.push('Password is required');
   }
 
   // Display errors or submit the form
   if (errors.length > 0) {
-    // Display errors to the user (e.g., in a <div>)
     const errorDiv = document.getElementById('errorMessage');
-
     if (errorDiv !== null) {
       errorDiv.innerHTML = errors.join('<br>');
     }
   } else {
-    // Submit the form
     event.target.submit();
   }
 });
 
+// Rest of your code (isValidEmail function, etc.)
 // Email validation function
 function isValidEmail(email) {
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
+ */
 
-// Function to check if email exists in the database
-async function checkEmailExists(email) {
-  return new Promise(function (resolve, reject) {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          var response = JSON.parse(xhr.responseText);
-          resolve(response.exists);
-        } else {
-          reject();
-        }
-      }
-    };
-    xhr.open('GET', '../inc/signup/check-email.php?email=' + encodeURIComponent(email), true);
-    xhr.send();
-  });
+// Create a URLSearchParams object from the current URL search parameters
+
+var username = document.getElementById('username');
+var email = document.getElementById('email');
+var password = document.getElementById('pwd');
+
+var urlParams = new URLSearchParams(window.location.search);
+
+// Get the value of the 'signup' parameter
+var signupValue = urlParams.get('signup');
+
+if (signupValue === 'failed') {
+  // Get the value of the 'error_data' parameter
+  var errorData = urlParams.get('error_data');
+
+  if (errorData) {
+    // Decode the serialized error data and parse it as JSON
+    var errors = JSON.parse(decodeURIComponent(errorData));
+
+    // Check for specific error messages and highlight corresponding fields
+    if (errors.hasOwnProperty('empty_strings')) {
+      username.classList.add('failed-input');
+      email.style.border = '1px solid red';
+      password.style.border = '1px solid red';
+    } else if (!errors.hasOwnProperty('empty_strings') || username.value !== null) {
+      username.classList.add('success-input');
+
+      email.classList.add('success-input');
+
+      password.classList.add('success-input');
+    }
+    if (errors.hasOwnProperty('username_taken')) {
+      username.style.border = '1px solid red';
+    }
+    if (errors.hasOwnProperty('email_used')) {
+      email.style.border = '1px solid red';
+    }
+  }
+} else {
+  // No signup failure, reset borders to gray
 }

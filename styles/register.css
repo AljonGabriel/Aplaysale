@@ -1,0 +1,22 @@
+input {
+  width: 200px;
+  height: 50px;
+  padding-left: 20px;
+  border-radius: 15px;
+}
+
+.success-input {
+  width: 200px;
+  height: 50px;
+  padding-left: 20px;
+  border-radius: 15px;
+  border: 1px solid green;
+}
+
+.failed-input {
+  width: 200px;
+  height: 50px;
+  padding-left: 20px;
+  border-radius: 15px;
+  border: 1px solid red;
+}
