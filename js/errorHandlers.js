@@ -1,83 +1,86 @@
-/* document.getElementById('myForm').addEventListener('submit', async function (event) {
-  event.preventDefault(); // Prevent form submission
+document.getElementById('myForm').addEventListener('submit', async function (event) {
+  event.preventDefault();
 
-  // Get form values
-  var username = document.getElementById('username');
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('pwd').value;
+  const email = document.getElementById('email').value;
+  const username = document.getElementById('username').value;
 
-  // Perform input validation
-  var errors = [];
-  if (username.value === '') {
-    errors.push('Username is required');
-    username.style.border = '1px solid red';
-  }
+  // Clear previous error messages
+  clearErrors();
+
   if (email === '') {
-    errors.push('Email is required');
-  } else if (!isValidEmail(email)) {
-    errors.push('Invalid email format');
-  } 
-  if (password === '') {
-    errors.push('Password is required');
+    displayError('email', 'The email is empty');
+  } else {
+    const emailExists = await checkEmailExists(email);
+    if (emailExists) {
+      displayError('email', 'The email is already used');
+    }
   }
 
-  // Display errors or submit the form
-  if (errors.length > 0) {
-    const errorDiv = document.getElementById('errorMessage');
-    if (errorDiv !== null) {
-      errorDiv.innerHTML = errors.join('<br>');
-    }
+  if (username === '') {
+    displayError('username', 'The username is empty');
   } else {
-    event.target.submit();
+    const usernameTaken = await checkUsernameTaken(username); // Replace with your function
+    if (usernameTaken) {
+      displayError('username', 'The username is already taken');
+    }
   }
 });
 
-// Rest of your code (isValidEmail function, etc.)
-// Email validation function
-function isValidEmail(email) {
-  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
- */
+// Function to check if email exists and return a boolean value
+async function checkEmailExists(email) {
+  const response = await fetch('inc/signup/check_email.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email }),
+  });
 
-// Create a URLSearchParams object from the current URL search parameters
+  const data = await response.text();
 
-var username = document.getElementById('username');
-var email = document.getElementById('email');
-var password = document.getElementById('pwd');
-
-var urlParams = new URLSearchParams(window.location.search);
-
-// Get the value of the 'signup' parameter
-var signupValue = urlParams.get('signup');
-
-if (signupValue === 'failed') {
-  // Get the value of the 'error_data' parameter
-  var errorData = urlParams.get('error_data');
-
-  if (errorData) {
-    // Decode the serialized error data and parse it as JSON
-    var errors = JSON.parse(decodeURIComponent(errorData));
-
-    // Check for specific error messages and highlight corresponding fields
-    if (errors.hasOwnProperty('empty_strings')) {
-      username.classList.add('failed-input');
-      email.style.border = '1px solid red';
-      password.style.border = '1px solid red';
-    } else if (!errors.hasOwnProperty('empty_strings') || username.value !== null) {
-      username.classList.add('success-input');
-
-      email.classList.add('success-input');
-
-      password.classList.add('success-input');
-    }
-    if (errors.hasOwnProperty('username_taken')) {
-      username.style.border = '1px solid red';
-    }
-    if (errors.hasOwnProperty('email_used')) {
-      email.style.border = '1px solid red';
-    }
+  try {
+    const jsonData = JSON.parse(data);
+    return jsonData.message === 'Email already exists';
+  } catch (error) {
+    console.error('JSON parsing error:', error);
+    return false;
   }
-} else {
-  // No signup failure, reset borders to gray
+}
+
+// Function to check if email exists and return a boolean value
+async function checkUsernameTaken(username) {
+  const response = await fetch('inc/signup/check_username.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username }),
+  });
+
+  const data = await response.text();
+
+  try {
+    const jsonData = JSON.parse(data);
+    return jsonData.message === 'Username already exists';
+  } catch (error) {
+    console.error('JSON parsing error:', error);
+    return false;
+  }
+}
+
+// Display error messages
+function displayError(inputId, errorMessage) {
+  const errorElement = document.getElementById(inputId + 'Error');
+  if (errorElement) {
+    errorElement.textContent = errorMessage;
+    return errorElement;
+  }
+}
+
+// Clear all error messages
+function clearErrors() {
+  const errorElements = document.querySelectorAll('.error-message');
+  errorElements.forEach((errorElement) => {
+    errorElement.textContent = '';
+  });
 }

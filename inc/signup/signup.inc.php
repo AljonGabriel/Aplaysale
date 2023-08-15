@@ -3,7 +3,7 @@
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $username = $_POST["username"];
-    $email = htmlspecialchars($_POST["email"]);
+    $email = $_POST["email"];
     $pwd = $_POST["pwd"];
 
    
@@ -16,6 +16,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once "../dbh.inc.php";
         require_once "signup_model.inc.php";
         require_once "signup_contr.inc.php";
+
+        ob_clean(); // Clean output buffer
+
+        $response = array(); // Create a response array
+
+  
+
+        // Call the function to check if the email exists
+        $emailExists = get_email($pdo, $email);
+
+        // Set the response value based on email existence
+        $response['emailExists'] = $emailExists['email']; // Assuming 'email' is the key in the fetched result
+    
+
+    // Return the JSON response
+    header('Content-Type: application/json');
+    echo json_encode($response);
+
 
         //ERROR HANDLERS
 
@@ -30,13 +48,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(is_username_taken( $pdo,  $username)) 
         {
             $errors["username_taken"] = "The username was already taken";
-
-        }
-
-        if(is_email_regsitered( $pdo,  $email)) 
-        {
-            $errors["email_used"] = "Email already used";
-            
 
         }
 

@@ -9,7 +9,7 @@ function check_signup_errors() {
         echo "<br>";
 
         foreach($errors as $error) {
-            echo '<p class="form-error">'. $error .'</p>';
+            echo '<p class="signup-error-text">'. $error .'</p>';
         }
 
 

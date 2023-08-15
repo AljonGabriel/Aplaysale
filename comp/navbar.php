@@ -21,11 +21,15 @@
             <ul>
                 <li class="nav-item"><a href="index.php">Home</a></li>
                 <li class="nav-item"><a href="index.php">Products</a></li>
-
             </ul>
+
+            <div class="nav-search-container">
+                <input class="nav-search-input" type="search" placeholder="Search item ..">
+            </div>
+
             <div class="nav-login-register">
-                <li><button>Login</button></li>
-                <li><a href="signup.php">Signup</a></li>
+                <button class="nav-login-register-btn">Sign-in</button>
+                <a href="signup.php">Sign-up</a>
             </div>
         </div>
 

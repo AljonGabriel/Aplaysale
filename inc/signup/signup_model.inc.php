@@ -17,7 +17,7 @@ function get_username(object $pdo, string $username) {
 
 }
 
-function get_email(object $pdo, string $email) {
+function get_email( $pdo,  $email) {
 
     $query = "SELECT email FROM users WHERE email = :email";
     $stmt = $pdo->prepare($query);
