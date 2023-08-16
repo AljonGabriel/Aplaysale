@@ -1,23 +1,56 @@
 document.getElementById('myForm').addEventListener('submit', async function (event) {
   event.preventDefault();
 
-  const email = document.getElementById('email');
-  const completeName = document.getElementById('fullName');
-  const address = document.getElementById('address');
-  const pwd = document.getElementById('pwd');
-  const rePwd = document.getElementById('rePwd');
+  const completeNameInput = document.getElementById('fullName');
+  const addressInput = document.getElementById('address');
+  const phoneNumberInput = document.getElementById('phoneNumber');
+
+  const emailInput = document.getElementById('email');
+  const pwdInput = document.getElementById('pwd');
+  const rePwdInput = document.getElementById('rePwd');
 
   // Clear previous error messages
   clearErrors();
 
   let errors = 0;
 
-  if (email.value === '') {
-    displayError('email', 'The email is empty');
-    email.classList.add('failed-input');
+  if (phoneNumberInput.value === '') {
+    displayError('phoneNumber', 'Please choose Country for the Country code');
+    phoneNumberInput.classList.add('failed-input');
     errors++;
   } else {
-    const emailExists = await checkEmailExists(email);
+    const phoneNumberInputValue = phoneNumberInput.value;
+    const validatedPhoneNumber = validatePhoneNumber(phoneNumberInputValue);
+    if (validatedPhoneNumber) {
+      displayError('phoneNumber', 'Invalid Number');
+      phoneNumberInput.classList.add('failed-input');
+      errors++;
+    } else {
+      clearErrors(phoneNumberInput);
+      phoneNumberInput.classList.remove('failed-input');
+      phoneNumberInput.classList.add('success-input');
+    }
+  }
+
+  if (completeNameInput.value === '') {
+    displayError('fullName', 'The name field is empty');
+    completeNameInput.classList.add('failed-input');
+    errors++;
+  }
+
+  if (addressInput.value === '') {
+    displayError('address', 'The address field is empty');
+    addressInput.classList.add('failed-input');
+    errors++;
+  }
+
+  if (emailInput.value === '') {
+    displayError('email', 'The email is empty');
+    emailInput.classList.add('failed-input');
+    errors++;
+  } else {
+    const emailInputValue = emailInput.value;
+    const emailExists = await checkEmailExists(emailInputValue);
     if (emailExists) {
       displayError('email', 'The email is already used');
       email.classList.add('failed-input');
@@ -25,27 +58,15 @@ document.getElementById('myForm').addEventListener('submit', async function (eve
     }
   }
 
-  if (completeName.value === '') {
-    displayError('fullName', 'The name field is empty');
-    completeName.classList.add('failed-input');
-    errors++;
-  }
-
-  if (address.value === '') {
-    displayError('address', 'The address field is empty');
-    address.classList.add('failed-input');
-    errors++;
-  }
-
-  if (pwd.value === '') {
+  if (pwdInput.value === '') {
     displayError('pwd', 'The password field is empty');
-    pwd.classList.add('failed-input');
+    pwdInput.classList.add('failed-input');
     errors++;
   }
 
-  if (rePwd.value === '') {
+  if (rePwdInput.value === '') {
     displayError('rePwd', 'The confirm password field is empty');
-    rePwd.classList.add('failed-input');
+    rePwdInput.classList.add('failed-input');
     errors++;
   }
 
@@ -56,9 +77,26 @@ document.getElementById('myForm').addEventListener('submit', async function (eve
   }
 });
 
+// Display error messages
+function displayError(inputId, errorMessage) {
+  const errorElement = document.getElementById(inputId + 'Error');
+  if (errorElement) {
+    errorElement.textContent = errorMessage;
+    return errorElement;
+  } else {
+  }
+}
+
+// Clear all error messages
+function clearErrors() {
+  const errorElements = document.querySelectorAll('.error-message');
+  errorElements.forEach((errorElement) => {
+    errorElement.textContent = '';
+  });
+}
+
 // Function to check if email exists and return a boolean value
-async function checkEmailExists() {
-  const email = document.getElementById('email').value;
+async function checkEmailExists(email) {
   const response = await fetch('inc/signup/check_email.php', {
     method: 'POST',
     headers: {
@@ -78,19 +116,15 @@ async function checkEmailExists() {
   }
 }
 
-// Display error messages
-function displayError(inputId, errorMessage) {
-  const errorElement = document.getElementById(inputId + 'Error');
-  if (errorElement) {
-    errorElement.textContent = errorMessage;
-    return errorElement;
-  }
-}
+function validatePhoneNumber(number) {
+  const phoneNumber = number.substring(4); // Remove country code
+  const phoneNumberRegex = /^\d{7,}$/; // Minimum 7 digits after country code
 
-// Clear all error messages
-function clearErrors() {
-  const errorElements = document.querySelectorAll('.error-message');
-  errorElements.forEach((errorElement) => {
-    errorElement.textContent = '';
-  });
+  const result = !phoneNumberRegex.test(phoneNumber);
+
+  if (result) {
+    return true;
+  } else {
+    return false;
+  }
 }

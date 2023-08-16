@@ -10,6 +10,7 @@ require_once "inc/config_session.inc.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
         integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -41,7 +42,7 @@ require_once "inc/config_session.inc.php";
                             <input class="signup-input" type="text" id="fullName" name="fullname"
                                 placeholder="Complete name">
                             <div class="fieldErrors">
-                                <p id="fullNameError"></p>
+                                <p class="error-message" id="fullNameError"></p>
                             </div>
                         </div>
 
@@ -51,7 +52,7 @@ require_once "inc/config_session.inc.php";
                             <input class="signup-input" type="address" id="address" name="address"
                                 placeholder="Enter Address">
                             <div class="fieldErrors">
-                                <p id="addressError"></p>
+                                <p class="error-message" id="addressError"></p>
                             </div>
                             <div>
                                 <select class="signup-select" id="country" name="country">
@@ -68,10 +69,13 @@ require_once "inc/config_session.inc.php";
                         </div>
 
                         <div class="signup-phone-number-input-container">
-                            <label for="contact">Phone Number:</label>
-                            <input class="signup-input" type="number" id="phoneNo" name="contact" placeholder="+63">
+                            <label for="contact">Phone Number: </label>
+                            <small class="signup-small">Valid format: +63 9123456XXX</small>
+
+                            <input class="signup-input" type="tel" id="phoneNumber" name="contact"
+                                placeholder="Valid Number">
                             <div class="fieldErrors">
-                                <p id="contactError"></p>
+                                <p class="error-message" id="phoneNumberError" class="error-message"></p>
                             </div>
                         </div>
 
@@ -84,7 +88,7 @@ require_once "inc/config_session.inc.php";
                             <label for="email">Email:</label>
                             <input class="signup-input" type="email" id="email" name="email" placeholder="Email">
                             <div class="fieldErrors">
-                                <p id="emailError"></p>
+                                <p class="error-message" id="emailError"></p>
                             </div>
                         </div>
 
@@ -92,14 +96,14 @@ require_once "inc/config_session.inc.php";
                             <label for="pwd">Password:</label>
                             <input class="signup-input" type="password" id="pwd" name="pwd" placeholder="Password">
                             <div class="fieldErrors">
-                                <p id="pwdError"></p>
+                                <p class="error-message" id="pwdError"></p>
                             </div>
 
                             <label for="re-pwd">Confirm Password:</label>
                             <input class="signup-input" type="password" id="rePwd" name="pwd"
                                 placeholder="Confirm your password">
                             <div class="fieldErrors">
-                                <p id="rePwdError"></p>
+                                <p class="error-message" id="rePwdError"></p>
                             </div>
                         </div>
 

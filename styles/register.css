@@ -29,12 +29,19 @@ fieldset {
   margin-bottom: 20px;
 }
 
+.signup-small {
+  font-family: var(--primary-font);
+  display: block;
+  margin: 5px 0;
+  color: var(--ghost-button-border);
+}
+
 label {
   font-family: var(--primary-font);
   font-size: 1em;
   font-weight: bold;
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .fieldset-legend {
@@ -48,7 +55,6 @@ label {
   border-radius: 5px;
   font-family: var(--secondary-font);
   color: var(--accent);
-  font-style: italic;
 }
 
 .signup-header {
@@ -70,17 +76,17 @@ label {
   border: 1px #cccccc solid;
   display: block;
   margin-bottom: 10px;
+  transition: 0.2s ease-in-out;
 }
 
 .success-input {
-  margin: 0 auto;
-  width: 400px;
+  width: 100%;
   height: 50px;
   padding-left: 20px;
   border-radius: 10px;
   border: 1px var(--success-button) solid;
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .failed-input {
@@ -113,11 +119,15 @@ label {
 
 .fieldErrors {
   width: 100%;
-  height: 25px;
+  height: 30px;
+  margin: 5px 0;
+  transition: 0.2s ease-in-out;
 }
 
 .fieldErrors p {
   font-family: var(--secondary-font);
   color: var(--error-button);
   font-weight: bold;
+  font-size: 0.95em;
+  animation: headShake 1.5s linear infinite;
 }

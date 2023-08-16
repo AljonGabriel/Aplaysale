@@ -1,5 +1,6 @@
 const countryDropdown = document.getElementById('country');
 const cityDropdown = document.getElementById('city');
+const phoneNumberInput = document.getElementById('phoneNumber');
 
 const citiesByCountry = {
   Philippines: ['Manila', 'Quezon City', 'Cebu City', 'Davao City'],
@@ -9,6 +10,7 @@ const citiesByCountry = {
 countryDropdown.addEventListener('change', function () {
   const selectedCountry = countryDropdown.value;
   populateCityDropdown(selectedCountry);
+  updatePhoneNumberCountryCode(selectedCountry);
 });
 
 function populateCityDropdown(country) {
@@ -21,4 +23,15 @@ function populateCityDropdown(country) {
     option.text = city;
     cityDropdown.appendChild(option);
   });
+}
+
+function updatePhoneNumberCountryCode(country) {
+  phoneNumberInput.innerHTML = '';
+
+  const countryCodes = {
+    Philippines: '+63',
+  };
+
+  const countryCode = countryCodes[country] || '';
+  phoneNumberInput.value = countryCode + ' ';
 }
