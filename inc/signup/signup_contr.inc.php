@@ -24,6 +24,6 @@ function is_email_regsitered(object $pdo, string $email)
     }
 }
 
-function create_user(object $pdo, string $email, string $pwd) {
-    set_user($pdo, $email, $pwd);
+function create_user(object $pdo, string $fullname,  string $completeaddress, string $city, string $country, string $phonenumber, string $email, string $pwd) {
+    set_user($pdo, $fullname, $completeaddress, $city, $country, $phonenumber, $email, $pwd);
 }

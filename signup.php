@@ -22,15 +22,10 @@ require_once "inc/config_session.inc.php";
     <nav>
         <?php require_once 'comp/navbar.php' ?>
     </nav>
-
     <main>
-
         <div class="signup">
             <div class="signup-container">
-
                 <form id="myForm" action="inc/signup/signup.inc.php" method="POST">
-
-
                     <fieldset>
                         <legend class="fieldset-legend">User Information</legend>
                         <!--Full Name input -->
