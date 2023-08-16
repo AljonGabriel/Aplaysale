@@ -1,6 +1,12 @@
 <?php 
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $fullname = $_POST["fullname"];
+    $completeaddress = $_POST["completeaddress"];
+    $city = $_POST["city"];
+    $country = $_POST["country"];
+    $phonenumber = $_POST["phonenumber"];
     
     $email = $_POST["email"];
     $pwd = $_POST["pwd"];
@@ -12,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once "signup_contr.inc.php";
 
       
-        set_user( $pdo, $email,  $pwd);
+        set_user($pdo, $fullname, $completeaddress, $city, $country, $phonenumber, $email, $pwd);
 
         $pdo = null;
         $stmt = null;

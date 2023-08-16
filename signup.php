@@ -29,18 +29,15 @@ require_once "inc/config_session.inc.php";
             <div class="signup-container">
 
                 <form id="myForm" action="inc/signup/signup.inc.php" method="POST">
-                    <div class="signup-header">
-                        <h2>Sign-up</h2>
-                    </div>
+
 
                     <fieldset>
                         <legend class="fieldset-legend">User Information</legend>
                         <!--Full Name input -->
                         <div class="signup-full-name-input-container">
                             <label for="fullname">Complete Name:</label>
-
                             <input class="signup-input" type="text" id="fullName" name="fullname"
-                                placeholder="Complete name">
+                                placeholder="John Doe">
                             <div class="fieldErrors">
                                 <p class="error-message" id="fullNameError"></p>
                             </div>
@@ -49,8 +46,8 @@ require_once "inc/config_session.inc.php";
                         <!--Address input -->
                         <div class="signup-address-input-container">
                             <label for="address">Complete Address:</label>
-                            <input class="signup-input" type="address" id="address" name="address"
-                                placeholder="Enter Address">
+                            <input class="signup-input" type="address" id="address" name="completeaddress"
+                                placeholder="123 Main Street, City, Country">
                             <div class="fieldErrors">
                                 <p class="error-message" id="addressError"></p>
                             </div>
@@ -70,10 +67,10 @@ require_once "inc/config_session.inc.php";
 
                         <div class="signup-phone-number-input-container">
                             <label for="contact">Phone Number: </label>
-                            <small class="signup-small">Valid format: +63 9123456XXX</small>
+                            <small class="signup-small">Valid format: +63 9123456XXX or 09xx xxx xxxx</small>
 
-                            <input class="signup-input" type="tel" id="phoneNumber" name="contact"
-                                placeholder="Valid Number">
+                            <input class="signup-input" type="tel" id="phoneNumber" name="phonenumber"
+                                placeholder="+63 9123456XXX">
                             <div class="fieldErrors">
                                 <p class="error-message" id="phoneNumberError" class="error-message"></p>
                             </div>
@@ -86,7 +83,8 @@ require_once "inc/config_session.inc.php";
 
                         <div class="signup-email-input-container">
                             <label for="email">Email:</label>
-                            <input class="signup-input" type="email" id="email" name="email" placeholder="Email">
+                            <input class="signup-input" type="email" id="email" name="email"
+                                placeholder="johndoe@example.com">
                             <div class="fieldErrors">
                                 <p class="error-message" id="emailError"></p>
                             </div>
@@ -94,7 +92,11 @@ require_once "inc/config_session.inc.php";
 
                         <div class="signup-password-input-container">
                             <label for="pwd">Password:</label>
-                            <input class="signup-input" type="password" id="pwd" name="pwd" placeholder="Password">
+                            <small class="signup-small">"Your password should be at least 8 characters long and include
+                                a mix of uppercase
+                                and lowercase letters, numbers, and special characters (e.g., !, @, #, $). This will
+                                help ensure the security of your account."</small>
+                            <input class="signup-input" type="password" id="pwd" name="pwd" placeholder="Your Password">
                             <div class="fieldErrors">
                                 <p class="error-message" id="pwdError"></p>
                             </div>
@@ -103,7 +105,7 @@ require_once "inc/config_session.inc.php";
                             <input class="signup-input" type="password" id="rePwd" name="pwd"
                                 placeholder="Confirm your password">
                             <div class="fieldErrors">
-                                <p class="error-message" id="rePwdError"></p>
+                                <p class="error-message" id="rePwdError" class="error-message"></p>
                             </div>
                         </div>
 
@@ -111,6 +113,7 @@ require_once "inc/config_session.inc.php";
 
                     </fieldset>
                 </form>
+
             </div>
         </div>
     </main>
@@ -118,7 +121,6 @@ require_once "inc/config_session.inc.php";
     <script src="js/modal.js"></script>
     <script src="js/errorHandlers.js"></script>
     <script src="js/dropdownAddressHandler.js"></script>
-
 
 </body>
 
