@@ -3,6 +3,8 @@ document.getElementById('myForm').addEventListener('submit', async function (eve
 
   const completeNameInput = document.getElementById('fullName');
   const addressInput = document.getElementById('address');
+  const citySelect = document.getElementById('citySelect');
+  const countrySelect = document.getElementById('countrySelect');
   const phoneNumberInput = document.getElementById('phoneNumber');
 
   const emailInput = document.getElementById('email');
@@ -24,12 +26,30 @@ document.getElementById('myForm').addEventListener('submit', async function (eve
     displayError('fullName', 'Please provide your complete name');
     completeNameInput.classList.add('failed-input');
     errors++;
+  } else {
+    completeNameInput.classList.remove('failed-input');
+    completeNameInput.classList.add('success-input');
   }
 
   if (sanitizedAddress === '') {
     displayError('address', 'Please enter your complete address');
     addressInput.classList.add('failed-input');
     errors++;
+  } else {
+    addressInput.classList.remove('failed-input');
+    addressInput.classList.add('success-input');
+  }
+
+  if (countrySelect.value === '') {
+    countrySelect.classList.add('failed-input');
+    citySelect.classList.add('failed-input');
+    errors++;
+  } else {
+    countrySelect.classList.remove('failed-input');
+    citySelect.classList.remove('failed-input');
+
+    countrySelect.classList.add('success-input');
+    citySelect.classList.add('success-input');
   }
 
   if (sanitizedPhoneNumber === '') {
@@ -98,13 +118,14 @@ document.getElementById('myForm').addEventListener('submit', async function (eve
     if (!checkedPwdMatch) {
       displayError('rePwd', "Password didn't match");
       rePwdInput.classList.add('failed-input');
-      pwdInput.classList.add('failed-input');
       errors++;
     } else {
       rePwdInput.classList.remove('failed-input');
       rePwdInput.classList.add('success-input');
     }
   }
+
+  console.log(errors);
 
   if (errors <= 0) {
     this.submit();

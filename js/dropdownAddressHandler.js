@@ -1,5 +1,5 @@
-const countryDropdown = document.getElementById('country');
-const cityDropdown = document.getElementById('city');
+const countryDropdown = document.getElementById('countrySelect');
+const cityDropdown = document.getElementById('citySelect');
 const phoneNumberInput = document.getElementById('phoneNumber');
 
 const citiesByCountry = {
