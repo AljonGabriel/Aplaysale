@@ -1,15 +1,15 @@
 <?php 
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $fullname = $_POST["fullname"];
-    $completeaddress = $_POST["completeaddress"];
-    $city = $_POST["city"];
-    $country = $_POST["country"];
-    $phonenumber = $_POST["phonenumber"];
+    $fullname = $_POST["sgnNamInp"];
+    $completeaddress = $_POST["sgnAddInp"];
+    $city = $_POST["sgnCitSel"];
+    $country = $_POST["sgnCouSel"];
+    $phonenumber = $_POST["sgnPhoInp"];
     
-    $email = $_POST["email"];
-    $pwd = $_POST["pwd"];
+    $email = $_POST["sgnEmaInp"];
+    $pwd = $_POST["sgnPwdInp"];
 
     try {
 

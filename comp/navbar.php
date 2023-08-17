@@ -41,42 +41,39 @@
 
                         <div class="modal-nav-login">
                             <span class="close">&times;</span>
+                            <div class="fieldErrors">
+                                <p style="text-align: center" class="error-message" id="headError"></p>
+                            </div>
 
-                            <form action="inc/login/login.inc.php" class="login-form" id="loginForm">
+
+                            <form action="inc/login/login.inc.php" class="login-form" id="loginForm" method="POST">
+
                                 <fieldset class="login-fieldset">
                                     <div class="nav-login-email-input-container">
                                         <label for="email">Email:</label>
-                                        <input type="text" class="nav-login-input" id="emailInput"
-                                            placeholder="Please enter credential">
+                                        <input type="text" class="nav-login-input" id="lgnEmaInp" name="lgnEmaInp"
+                                            type="email" placeholder="Please enter credential">
                                         <div class="fieldErrors">
-                                            <p class="error-message" id="emailError"></p>
+                                            <p class="error-message" id="lgnEmaInpError"></p>
                                         </div>
                                     </div>
 
                                     <div class="nav-login-password-input-container">
                                         <label for="email">Password:</label>
-                                        <input type="text" class="nav-login-input" id="pwdInput"
-                                            placeholder="Please enter credential">
+                                        <input type="password" class="nav-login-input" id="lgnPwdInp"
+                                            placeholder="Please enter credential" name="lgnPwdInp">
                                         <div class="fieldErrors">
-                                            <p class="error-message" id="pwdError"></p>
+                                            <p class="error-message" id="lgnPwdInpError"></p>
                                         </div>
                                     </div>
 
                                     <div class="login-btn-container">
                                         <button class="nav-login-btn">Submit</button>
-                                        <a href="signup.php" class="dhay">don't have account yet ?</a>
                                     </div>
 
                                 </fieldset>
                             </form>
-
-
-
-
-
-
-
-
+                            <a href="signup.php" class="dhay">don't have account yet ?</a>
 
                         </div>
                     </div>
