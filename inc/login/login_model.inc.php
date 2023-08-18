@@ -3,7 +3,7 @@
 declare(strict_types = 1);
 
 
-function check_email_password_match(object|bool $pdo, string $emailInput, string $pwdInput)
+/* function check_email_password_match(object|bool $pdo, string $emailInput, string $pwdInput)
 {
     // Define the SQL query to retrieve the hashed password for the provided email
     $query = "SELECT pwd FROM users WHERE email = :email";
@@ -26,4 +26,24 @@ function check_email_password_match(object|bool $pdo, string $emailInput, string
     }
 
     return false; // Email or password is incorrect
+} */
+
+
+function get_user_row(object $pdo, string $emailInput) {
+    $query = "SELECT * FROM users WHERE email = :email";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":email", $emailInput);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+ 
+
+    if ($result) {
+        // User exists, return the user data
+
+        return array('exists' => true, 'user' => $result);
+        
+    } else {
+        // User does not exist
+        return array('exists' => false);
+    }
 }

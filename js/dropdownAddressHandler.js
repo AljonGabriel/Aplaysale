@@ -1,7 +1,7 @@
 const countryDropdown = document.getElementById("sgnCouSel");
 const cityDropdown = document.getElementById("sgnCitSel");
 const phoneNumberInput = document.getElementById("sgnPhoInp");
-
+cityDropdown.disabled = true;
 const citiesByCountry = {
   Philippines: ["Manila", "Quezon City", "Cebu City", "Davao City"],
   // Add more countries and cities as needed
@@ -9,6 +9,9 @@ const citiesByCountry = {
 
 countryDropdown.addEventListener("change", function () {
   const selectedCountry = countryDropdown.value;
+  if (selectedCountry !== null) {
+    cityDropdown.disabled = false;
+  }
   populateCityDropdown(selectedCountry);
   updatePhoneNumberCountryCode(selectedCountry);
 });
