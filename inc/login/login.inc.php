@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             
 
 
-            header('Location: ../../admin/index.php?admin-succcess');
+            header('Location: ../../admin/index.php?Login=adminSuccess');
         
 
             $stmt = null;
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             
 
 
-            header('Location: ../../index.php?succcess');
+            header('Location: ../../index.php?Login=userSuccess');
         
 
             $stmt = null;

@@ -258,3 +258,8 @@ nav {
 .logout {
   background-color: var(--error-button);
 }
+
+.active {
+  color: var(--primary) !important;
+  font-weight: bold;
+}

@@ -19,9 +19,11 @@
                 </li>
             </div>
             <ul>
-                <li class="nav-item"><a href="../index.php">Home</a></li>
+                <li class="nav-item <?php echo ($page === 'home') ? 'active' : ''; ?>">
+                    <a href="../index.php">Home</a>
+                </li>
                 <li class="nav-item"><a href="../index.php">Products</a></li>
-                <li class="nav-item"><a href="admin/index.php">Admin</a></li>
+                <li class="nav-item"><a href="index.php">Admin</a></li>
             </ul>
 
             <div class="nav-search-container">
@@ -94,7 +96,7 @@
 
 
 
-            <form action="inc/login/logout.inc.php" method="post">
+            <form action="../inc/login/logout.inc.php" method="post">
                 <button style="" class="nav-login-register-btn logout">Logout</button>
             </form>
 

@@ -1,3 +1,7 @@
+<?php 
+$page = 'admin';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

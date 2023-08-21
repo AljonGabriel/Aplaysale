@@ -1,4 +1,4 @@
-<?php require_once 'inc/config_session.inc.php'; ?>
+<?php require_once 'inc/config_session.inc.php';?>
 
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,9 @@
                 </li>
             </div>
             <ul>
-                <li class="nav-item"><a href="index.php">Home</a></li>
+                <li class="nav-item">
+                    <a class="<?php echo ($page === 'index') ? 'active' : ''; ?>" href="index.php">Home</a>
+                </li>
                 <li class="nav-item"><a href="index.php">Products</a></li>
                 <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') { ?>
                 <li class="nav-item"><a href="admin/index.php">Admin</a></li>
