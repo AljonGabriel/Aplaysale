@@ -1,9 +1,9 @@
-<?php require_once 'inc/config_session.inc.php'; ?>
+<?php require_once '../inc/config_session.inc.php'; ?>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
@@ -19,12 +19,9 @@
                 </li>
             </div>
             <ul>
-                <li class="nav-item"><a href="index.php">Home</a></li>
-                <li class="nav-item"><a href="index.php">Products</a></li>
-                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') { ?>
+                <li class="nav-item"><a href="../index.php">Home</a></li>
+                <li class="nav-item"><a href="../index.php">Products</a></li>
                 <li class="nav-item"><a href="admin/index.php">Admin</a></li>
-                <?php } ?>
-
             </ul>
 
             <div class="nav-search-container">
