@@ -1,3 +1,4 @@
+<?php require 'inc/config_session.inc.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
 
 <body>
     <nav>
-        <?php require_once 'comp/navbar.php' ?>
+        <?php require_once 'comp/navbar.php'; ?>
     </nav>
 </body>
 

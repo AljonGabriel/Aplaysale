@@ -7,11 +7,6 @@ function is_email_not_exist(bool $result) {
 }
 
 
-function is_password_wrong(string $pwd, string $hashedPwd) {
-    
-    if(!password_verify($pwd, $hashedPwd)) {
-        return true;
-    }else {
-        return false;
-    }
+function is_password_mismatch(string $pwd, string $hashedPassword) {
+    return !password_verify($pwd, $hashedPassword);
 }

@@ -254,3 +254,7 @@ nav {
   margin-bottom: 10px;
   animation: headShake 0.5s linear;
 }
+
+.logout {
+  background-color: var(--error-button);
+}

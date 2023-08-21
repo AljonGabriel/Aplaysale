@@ -12,13 +12,28 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         $result = get_user_row( $pdo, $emailInput);
 
+        require_once "../config_session.inc.php";
+        
+        $newSessionId = session_create_id();
+        $sessionId = $newSessionId . "_" . $result['user']['id'];
+        session_id($sessionId);
+
+       
+        $_SESSION['user_id'] =  $result['user']['id'];
+        $_SESSION['user_name'] = htmlspecialchars($result['user']['fullname']);
+
+        $_SESSION["last_regeneration"] = time();
+
+        
+
+
+        header('Location: ../../index.php?succcess');
+    
 
         $stmt = null;
         $pdo = null;
 
-        header('Location: ../../index.php?succcess');
         die();
-
         
      } catch (PDOException $e) {
          echo 'Error' + $e;

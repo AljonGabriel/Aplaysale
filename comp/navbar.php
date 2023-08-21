@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once 'inc/config_session.inc.php'; ?>
 
 <head>
     <meta charset="UTF-8">
@@ -27,6 +26,11 @@
             <div class="nav-search-container">
                 <input class="nav-search-input" type="search" placeholder="Search item ..">
             </div>
+
+
+            <?php  if(!isset($_SESSION['user_id'])) { ?>
+
+
 
             <div class="nav-login-register">
                 <button class="nav-login-register-btn" id="modalBtn">Sign-in</button>
@@ -68,7 +72,7 @@
                                     </div>
 
                                     <div class="login-btn-container">
-                                        <button class="nav-login-btn">Submit</button>
+                                        <button class="nav-login-register-btn">Submit</button>
                                     </div>
 
                                 </fieldset>
@@ -79,6 +83,24 @@
                     </div>
                 </div>
             </div>
+
+
+            <?php } else if(isset($_SESSION['user_id'])) {?>
+
+            <p>Hi,
+                <?php echo isset($_SESSION['user_name']) ? explode(' ', htmlspecialchars($_SESSION['user_name']))[0] : ''; ?>
+            </p>
+
+
+
+            <form action="inc/login/logout.inc.php" method="post">
+                <button style="" class="nav-login-register-btn logout">Logout</button>
+            </form>
+
+
+
+            <?php } ?>
+
         </div>
 
     </div>
