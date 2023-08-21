@@ -46,7 +46,7 @@
                             </div>
 
 
-                            <form action="inc/login/login.inc.php" class="login-form" id="loginForm" method="POST">
+                            <form action="inc/login/login.inc.php" class="login-form" id="loginForm" method="post">
 
                                 <fieldset class="login-fieldset">
                                     <div class="nav-login-email-input-container">

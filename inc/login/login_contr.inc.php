@@ -2,12 +2,8 @@
 
 declare(strict_types = 1);
 
-function is_user_wrong(array|bool $result) {
-    if(!$result) {
-        return true;
-    }else {
-        return false;
-    }
+function is_email_not_exist(bool $result) {
+    return !$result;
 }
 
 

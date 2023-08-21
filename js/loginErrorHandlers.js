@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
           emalInput.classList.add("failed-input");
           errors++;
         } else {
-          const isEmailExist = await isEmailWrong(sanEmailInpVal);
-          console.log(isEmailExist);
-          if (isEmailExist) {
+          const isEmailNotFound = await isEmailNotExist(sanEmailInpVal);
+          console.log(isEmailNotFound);
+          if (isEmailNotFound) {
             displayError(emalInput.id, "Email is not registered");
             emalInput.classList.add("failed-input");
             errors++;
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Function to check if user credentials match
-    async function isEmailWrong(email) {
+    async function isEmailNotExist(email) {
       const response = await fetch("inc/login/is_email_wrong.inc.php", {
         method: "POST",
         headers: {

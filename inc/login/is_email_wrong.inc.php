@@ -8,7 +8,7 @@ require_once 'login_contr.inc.php';
 
 $userinfo = get_user_row($pdo, $email);
 
-if (is_user_wrong($userinfo['exists'])) {
+if (is_email_not_exist($userinfo['exists'])) {
     $response = ['message' => "E-mail can't be found"];
 } else {
     $response = ['message' => 'Email found'];
