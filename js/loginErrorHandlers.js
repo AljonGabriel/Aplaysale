@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
           emalInput.classList.add("failed-input");
           errors++;
         } else if (isEmailAndPwdValid.message === "E-mail can't be found") {
-          displayError(emalInput.id, "Email is not registered");
+          displayError(emalInput.id, "The e-mail dont match our records");
           emalInput.classList.add("failed-input");
           errors++;
         } else {
@@ -50,8 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
           pwdInput.classList.add("failed-input");
           errors++;
         } else {
-          displayError(pwdInput.id, "Invalid credentials");
-          pwdInput.classList.add("failed-input");
+          pwdInput.classList.remove("failed-input");
+          pwdInput.classList.add("success-input");
         }
 
         errors > 0

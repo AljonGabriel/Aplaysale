@@ -19,11 +19,12 @@
                 </li>
             </div>
             <ul>
-                <li class="nav-item <?php echo ($page === 'home') ? 'active' : ''; ?>">
+                <li class="nav-item">
                     <a href="../index.php">Home</a>
                 </li>
                 <li class="nav-item"><a href="../index.php">Products</a></li>
-                <li class="nav-item"><a href="index.php">Admin</a></li>
+                <li class="nav-item"><a class="<?php echo ($page === 'admin') ? 'active' : ''; ?>"
+                        href="index.php">Admin</a></li>
             </ul>
 
             <div class="nav-search-container">

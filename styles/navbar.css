@@ -43,6 +43,7 @@
   font-family: var(--secondary-font);
   margin: 10px 10px;
   display: block;
+  font-size: 1em;
 }
 
 small {

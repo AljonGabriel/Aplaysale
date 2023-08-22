@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.admin {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background);
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.admin-container {
+  margin: 0 auto;
+  background-color: var(--background);
+  width: 55%;
+  height: 100%;
+}
+
+.admin-grids-container {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  height: 200px;
+  padding: 15px;
+}
+
+.admin-grid-item {
+  display: inline;
+  width: 500px;
+  height: 150px;
+  border-radius: 15px;
+}
+
+.users {
+  background-color: Tomato;
+}
+.products {
+  background-color: Orange;
+}
+.orders {
+  background-color: DodgerBlue;
+}
+.sales {
+  background-color: MediumSeaGreen;
+}
