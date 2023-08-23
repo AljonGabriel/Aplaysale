@@ -153,8 +153,8 @@ nav {
 
 .modal-header {
   margin: 0 auto;
-  width: 500px;
-  padding: 10px 0;
+  width: 100%;
+  padding: 16px 0;
   text-align: center;
   font-family: var(--primary-font);
   font-size: 2em;
@@ -168,7 +168,7 @@ nav {
   padding: 20px;
   border: 1px solid #888;
   width: 600px; /* Could be more or less, depending on screen size */
-  height: 570px;
+  height: auto;
   border-radius: 15px;
   -webkit-animation-name: jackInTheBox; /* Fade in the background */
   -webkit-animation-duration: 0.4s;

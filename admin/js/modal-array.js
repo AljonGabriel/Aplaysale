@@ -1,6 +1,7 @@
 const modals = document.querySelectorAll(".modal");
 const modalButtons = document.getElementsByClassName("modal-btn");
 const closeModalButtons = document.getElementsByClassName("close");
+const adminInputs = document.querySelectorAll(".admin-updateuser-input");
 
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
@@ -14,9 +15,24 @@ function closeModal(modalId) {
 
 // Attach click event listeners to open modals
 for (let i = 0; i < modalButtons.length; i++) {
-  modalButtons[i].addEventListener("click", function () {
+  modalButtons[i].addEventListener("click", async function () {
     const modalId = this.getAttribute("data-modal-id");
+    const userId = this.getAttribute("data-user-id");
+
+    //get user information in the server
+    const response = await fetch(`inc/get_user.inc.php?user_id=${userId}`);
+    const data = await response.json();
+
+    const ModalNameInput = document.querySelector("#admModUpdNamInp");
+    const ModalAddressInput = document.querySelector("#admModUpdAddInp");
+
+    ModalNameInput.placeholder = data.fullname;
+    ModalAddressInput.placeholder = data.completeaddress;
+
     openModal(modalId);
+
+    const url = `index.php?id=${userId}`;
+    history.pushState({}, "", url);
   });
 }
 
@@ -24,6 +40,7 @@ for (let i = 0; i < modalButtons.length; i++) {
 for (let i = 0; i < closeModalButtons.length; i++) {
   closeModalButtons[i].addEventListener("click", function () {
     const modalId = this.getAttribute("data-modal-id");
+
     closeModal(modalId);
   });
 }

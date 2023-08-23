@@ -39,7 +39,7 @@ require_once 'inc/admin.view.inc.php';
                             <h2>Products</h2>
                         </div>
                         <div class="admin-grid-count">
-                            <p>0</p>
+                            <p>675</p>
                         </div>
                     </div>
                     <div class="admin-grid-item orders">
@@ -47,7 +47,7 @@ require_once 'inc/admin.view.inc.php';
                             <h2>Orders</h2>
                         </div>
                         <div class="admin-grid-count">
-                            <p>0</p>
+                            <p>78</p>
                         </div>
                     </div>
                     <div class="admin-grid-item sales">
@@ -55,30 +55,23 @@ require_once 'inc/admin.view.inc.php';
                             <h2>Sales</h2>
                         </div>
                         <div class="admin-grid-count">
-                            <p>0</p>
+                            <p>$100000</p>
                         </div>
                     </div>
                 </div>
-                <div class="admin-users-table">
+                <div class="admin-tables">
                     <div class="admin-table-header">
 
                         <h2>Users</h2>
-                        <button class="admin-add-user-btn modal-btn" data-modal-id="addUser">Add user</button>
-                        <div class="modal" id="addUser">
-                            <div class="modal-content">
-                                <span class="close" data-modal-id="addUser">&times;</span>
-                                <div class="modeal-header">
-                                    <h2>Add users</h2>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Body</p>
-                                </div>
-                            </div>
-                        </div>
-
+                        <input type="text" class="admin-table-search" placeholder="Search user" id="searchInput">
+                        <select id="roleFilter">
+                            <option value="">All</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                        </select>
 
                     </div>
-                    <table>
+                    <table id="dataTable">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -103,18 +96,63 @@ require_once 'inc/admin.view.inc.php';
                                 <td><?php echo htmlspecialchars($userData['country']); ?></td>
                                 <td><?php echo htmlspecialchars($userData['phonenumber']); ?></td>
                                 <td><?php echo htmlspecialchars($userData['email']); ?></td>
-                                <td><?php echo htmlspecialchars($userData['role']); ?></td>
+                                <td data-role="<?php echo htmlspecialchars($userData['role']); ?>">
+                                    <?php echo htmlspecialchars($userData['role']); ?></td>
                                 <td><?php echo htmlspecialchars($userData['created_at']); ?></td>
-                                <td> <button class="admin-add-user-btn modal-btn modal-btn"
+                                <td> <button data-user-id="<?php echo $userData['id']; ?>"
+                                        class="admin-update-user-btn modal-btn"
                                         data-modal-id="updateUser">Update</button>
                                     <div class="modal" id="updateUser">
                                         <div class="modal-content">
                                             <span class="close" data-modal-id="updateUser">&times;</span>
-                                            <div class="modeal-header">
+                                            <div class="modal-header">
                                                 <h2>Update this user</h2>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Body</p>
+
+                                                <fieldset class="admin-fieldset">
+                                                    <div class=".admin-modal-update-user-input-container">
+                                                        <label for="admModUpdNamInp">Name:</label>
+                                                        <input id="admModUpdNamInp" type="text" name="admModUpdNamInp"
+                                                            class="admin-modal-update-user-input" placeholder=""
+                                                            value="">
+
+                                                    </div>
+                                                    <div class="admin-modal-update-user-input-container">
+                                                        <label for="admModUpdAddInp">Address:</label>
+                                                        <input id="admModUpdAddInp" type="text" name="admModUpdAddInp"
+                                                            class="admin-modal-update-user-input">
+
+                                                    </div>
+                                                    <div class="admin-modal-update-user-input-container">
+                                                        <label for="admModCitSel">City:</label>
+                                                        <select class="admin-modal-update-user-city-select"
+                                                            id="admModCitSel" name="admModCitSel">
+                                                            <option value="" disabled selected>Select a city</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="admin-modal-update-user-input-container">
+                                                        <label for="admModUpdRolSel">Role:</label>
+                                                        <select class="admin-modal-update-user-city-select"
+                                                            id="admModUpdRolSel" name="admModUpdRolSel">
+                                                            <option value="" disabled selected>Select a role</option>
+                                                            <option value="admin">Admin</option>
+                                                            <option value="user">User</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="admin-modal-update-user-input-container">
+                                                        <label for="admModUpdPasInp">Password:</label>
+                                                        <input id="admModUpdPasInp" type="password"
+                                                            name="admModUpdPasInp" class="admin-modal-update-user-input"
+                                                            placeholder="Hashed">
+                                                    </div>
+
+                                                    <div class="admin-updateuser-btn-container">
+                                                        <button class="admin-modal-update-user-btn">Update</button>
+                                                    </div>
+
+                                                </fieldset>
+
                                             </div>
                                         </div>
                                     </div>
@@ -129,11 +167,14 @@ require_once 'inc/admin.view.inc.php';
 
 
 
+
+
             </div>
         </div>
-
     </main>
+    <script src=" js/searchHandler.js"></script>
     <script src="js/modal-array.js"></script>
+
 </body>
 
 </html>
