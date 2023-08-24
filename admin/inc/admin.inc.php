@@ -6,7 +6,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         require_once '../../inc/dbh.inc.php';
         require_once 'admin.model.inc.php';
-        require_once 'admin.view.inc.php';
         require_once 'admin.contr.inc.php';
 
 
