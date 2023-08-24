@@ -28,6 +28,7 @@ searchInput.addEventListener("input", function () {
     }
   }
 });
+
 const roleFilter = document.getElementById("roleFilter");
 const tableRows = document.querySelectorAll("#dataTable tbody tr");
 

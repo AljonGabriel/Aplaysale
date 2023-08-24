@@ -22,3 +22,4 @@ function get_all_users(object $pdo) {
 
     return [];
 }
+
