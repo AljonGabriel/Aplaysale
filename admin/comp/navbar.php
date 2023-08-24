@@ -87,6 +87,7 @@
                     </div>
                 </div>
             </div>
+            <script src="js/loginErrorHandlers.js"></script>
 
 
             <?php } else if(isset($_SESSION['user_id'])) {?>
@@ -109,10 +110,10 @@
 
     </div>
 
-    <script src="js/modal.js"></script>
-    <script src="js/loginErrorHandlers.js"></script>
+
 
 
 </body>
+
 
 </html>

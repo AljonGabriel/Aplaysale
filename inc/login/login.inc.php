@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         
             $_SESSION['user_id'] =  $result['user']['id'];
+            var_dump($_SESSION['user_id']);
             $_SESSION['user_role'] = $result['user']['role'];
             $_SESSION['user_name'] = htmlspecialchars($result['user']['fullname']);
 

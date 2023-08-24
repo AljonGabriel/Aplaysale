@@ -9,6 +9,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once 'admin.view.inc.php';
         require_once 'admin.contr.inc.php';
 
+
+        echo "Tarups";
+
+        header("Location: ../index.php");
+        die();
+
        
         
     } catch (PDOException $e) {

@@ -78,7 +78,7 @@
                                     </div>
 
                                     <div class="login-btn-container">
-                                        <button class="nav-login-register-btn">Submit</button>
+                                        <button type="submit" class="nav-login-register-btn">Submit</button>
                                     </div>
 
                                 </fieldset>
@@ -89,6 +89,8 @@
                     </div>
                 </div>
             </div>
+            <script src="js/modal.js"></script>
+            <script src="js/loginErrorHandlers.js"></script>
 
 
             <?php } else if(isset($_SESSION['user_id'])) {?>
@@ -111,8 +113,7 @@
 
     </div>
 
-    <script src="js/modal.js"></script>
-    <script src="js/loginErrorHandlers.js"></script>
+
 
 
 </body>

@@ -41,9 +41,10 @@ if (isset($_SESSION["user_id"])) {
 
 function regenerate_session_id_loggedin() {
 
-    $userId = $_SESSION["user_id"];
+    session_regenerate_id(true);
 
-    $newSessionId = session_create_id();
+    $userId = $_SESSION["user_id"];
+    $newSessionId = session_create_id(true);
     $sessionId = $newSessionId . "_" . $userId;
     session_id($sessionId);
     

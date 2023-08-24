@@ -18,14 +18,17 @@ for (let i = 0; i < modalButtons.length; i++) {
   modalButtons[i].addEventListener("click", async function () {
     const modalId = this.getAttribute("data-modal-id");
     const userId = this.getAttribute("data-user-id");
+    console.log(userId);
 
     //get user information in the server
     const response = await fetch(`inc/get_user.inc.php?user_id=${userId}`);
     const data = await response.json();
 
-    const ModalNameInput = document.querySelector("#admModUpdNamInp");
-    const ModalAddressInput = document.querySelector("#admModUpdAddInp");
-
+    const ModalNameInput = document.querySelector(`#admModUpdNamInp_${userId}`);
+    const ModalAddressInput = document.querySelector(
+      `#admModUpdAddInp_${userId}`,
+    );
+    console.log(ModalNameInput);
     ModalNameInput.placeholder = data.fullname;
     ModalAddressInput.placeholder = data.completeaddress;
 
