@@ -23,3 +23,16 @@ function get_all_users(object $pdo) {
     return [];
 }
 
+/* function update_user(object $pdo, string $userId, string $name, string $address, string $city, string $role, string $pwd) {
+
+    $query = "UPDATE users SET fullname = :name, completeaddress = :address, city = :city, role = :role, pwd = :pwd WHERE id = :userId";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(":name", $name);
+    $stmt->bindValue(":address", $address);
+    $stmt->bindValue(":city", $city);
+    $stmt->bindValue(":role", $role);
+    $stmt->bindValue(":pwd", $pwd);
+    $stmt->execute();
+
+    
+} */

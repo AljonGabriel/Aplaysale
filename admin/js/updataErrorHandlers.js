@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   for (let i = 0; i < modalButtons.length; i++) {
     const userId = modalButtons[i].getAttribute("data-user-id");
-    console.log(userId);
 
     const form = document.getElementById(`admModUpdForm_${userId}`);
 
@@ -13,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const nameInput = document.querySelector(`#admModUpdNamInp_${userId}`),
         addressInp = document.querySelector(`#admModUpdAddInp_${userId}`),
         citySel = document.querySelector(`#admModCitSel_${userId}`),
-        roleSel = document.querySelector(`#admModUpdRolSel_${userId}`),
-        pwdInp = document.querySelector(`#admModUpdPasInp_${userId}`);
+        roleSel = document.querySelector(`#admModUpdRolSel_${userId}`);
+      pwdInp = document.querySelector(`#admModUpdPasInp_${userId}`);
 
       const sanNameInp = sanitizeInput(nameInput.value),
         sanAddressInp = sanitizeInput(addressInp.value),

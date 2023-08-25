@@ -3,7 +3,13 @@ const modalButtons = document.getElementsByClassName("modal-btn");
 const closeModalButtons = document.getElementsByClassName("close");
 const adminInputs = document.querySelectorAll(".admin-updateuser-input");
 
-function openModal(modalId) {
+function openModal(modalId, data, userId) {
+  const modalNameInput = document.querySelector(`#admModUpdNamInp_${userId}`),
+    modalAddInput = document.querySelector(`#admModUpdAddInp_${userId}`);
+
+  modalNameInput.placeholder = data.fullname;
+  modalAddInput.placeholder = data.completeaddress;
+
   const modal = document.getElementById(modalId);
   modal.style.display = "block";
 }
@@ -11,28 +17,20 @@ function openModal(modalId) {
 function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   modal.style.display = "none";
+  modalButtons.placeholder = "";
 }
 
 // Attach click event listeners to open modals
 for (let i = 0; i < modalButtons.length; i++) {
   modalButtons[i].addEventListener("click", async function () {
-    const modalId = this.getAttribute("data-modal-id");
-    const userId = this.getAttribute("data-user-id");
-    console.log(userId);
+    const modalId = this.getAttribute("data-modal-id"),
+      userId = this.getAttribute("data-user-id");
 
     //get user information in the server
-    const response = await fetch(`inc/get_user.inc.php?user_id=${userId}`);
-    const data = await response.json();
+    const response = await fetch(`inc/get_user.inc.php?user_id=${userId}`),
+      data = await response.json();
 
-    const ModalNameInput = document.querySelector(`#admModUpdNamInp_${userId}`);
-    const ModalAddressInput = document.querySelector(
-      `#admModUpdAddInp_${userId}`,
-    );
-    console.log(ModalNameInput);
-    ModalNameInput.placeholder = data.fullname;
-    ModalAddressInput.placeholder = data.completeaddress;
-
-    openModal(modalId);
+    openModal(modalId, data, userId);
 
     const url = `index.php?id=${userId}`;
     history.pushState({}, "", url);

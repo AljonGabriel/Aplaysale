@@ -1,6 +1,6 @@
 <?php 
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
+if(/* isset($_SERVER['REQUEST_METHOD']) &&  */$_SERVER['REQUEST_METHOD'] === "POST") {
 
     try {
 
@@ -8,13 +8,18 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         require_once 'admin.model.inc.php';
         require_once 'admin.contr.inc.php';
 
+   /*      $name = $_POST['admModUpdNamInp'];
+        $address = $_POST['admModUpdAddInp'];
+        $city = $_POST['admModCitSel'];
+        $role = $_POST['admModUpdRolSel'];
+        $pwd = $_POST['admModUpdPasInp']; 
 
-        echo "Tarups";
 
-        header("Location: ../index.php");
+        update_user($pdo, $userId, $name, $address, $city, $role, $pwd); */
+
+        header("Location: ../index.php?admin=updateSuccess");
         die();
-
-       
+         
         
     } catch (PDOException $e) {
        echo 'Error' . $e;

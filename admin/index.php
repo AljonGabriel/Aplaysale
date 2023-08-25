@@ -113,13 +113,13 @@ require_once 'inc/admin.view.inc.php';
                                                 <fieldset class="admin-fieldset">
                                                     <form action="inc/admin.inc.php" method="post"
                                                         id="admModUpdForm_<?php echo $userData['id']; ?>">
-                                                        <div class=".admin-modal-update-user-input-container">
+
+
+                                                        <div class="admin-modal-update-user-input-container">
                                                             <label for="admModUpdNamInp">Name:</label>
                                                             <input id="admModUpdNamInp_<?php echo $userData['id'] ?>"
                                                                 type="text" name="admModUpdNamInp"
-                                                                class="admin-modal-update-user-input" placeholder=""
-                                                                value="">
-
+                                                                class="admin-modal-update-user-input">
                                                         </div>
                                                         <div class="admin-modal-update-user-input-container">
                                                             <label for="admModUpdAddInp">Address:</label>
