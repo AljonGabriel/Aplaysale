@@ -101,8 +101,8 @@ require_once 'inc/admin.view.inc.php';
                                 <td><?php echo htmlspecialchars($userData['created_at']); ?></td>
                                 <td> <button data-user-id="<?php echo $userData['id']; ?>"
                                         class="admin-update-user-btn modal-btn"
-                                        data-modal-id="updateUser">Update</button>
-                                    <div class="modal" id="updateUser">
+                                        data-modal-id="updateUser_<?php echo $userData['id']; ?>">Update</button>
+                                    <div class="modal" id="updateUser_<?php echo $userData['id']; ?>">
                                         <div class="modal-content">
                                             <span class="close" data-modal-id="updateUser">&times;</span>
                                             <div class="modal-header">
@@ -114,6 +114,20 @@ require_once 'inc/admin.view.inc.php';
                                                     <form action="inc/admin.inc.php" method="post"
                                                         id="admModUpdForm_<?php echo $userData['id']; ?>">
 
+                                                        <div class="admin-modal-update-user-input-container">
+                                                            <label for="admModUpdUIDInp">Id:</label>
+                                                            <input id="admModUpdUIDInp_<?php echo $userData['id'] ?>"
+                                                                type="text" name="admModUpdUIDInp"
+                                                                class="admin-modal-update-user-input" disabled>
+
+                                                        </div>
+
+                                                        <div class="admin-modal-update-user-input-container">
+                                                            <input
+                                                                id="admModUpdUIDInpHidden_<?php echo $userData['id'] ?>"
+                                                                type="text" name="admModUpdUIDInp"
+                                                                class="admin-modal-update-user-input" hidden>
+                                                        </div>
 
                                                         <div class="admin-modal-update-user-input-container">
                                                             <label for="admModUpdNamInp">Name:</label>
@@ -134,6 +148,8 @@ require_once 'inc/admin.view.inc.php';
                                                                 id="admModCitSel_<?php echo $userData['id'] ?>"
                                                                 name="admModCitSel">
                                                                 <option value="" disabled selected>Select a city
+                                                                </option>
+                                                                <option value="Philippines">Philiipines
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -176,13 +192,47 @@ require_once 'inc/admin.view.inc.php';
                     </table>
 
                 </div>
+                <div class="admin-tables">
+                    <div class="admin-table-header">
+                        <h2>Products</h2>
+                        <input type="text" class="admin-table-search" placeholder="Search products" id="admSeaPrd">
+                        <select id="prdCatSel">
+                            <option value="" selected disabled>Category</option>
+                            <option value="">All</option>
+                        </select>
+                        <button class="admin-btn">Add product</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product Image</th>
+                                <th>Product Name</th>
+                                <th>Product Description</th>
+                                <th>Price</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>?</td>
+                                <td>?</td>
+                                <td>?</td>
+                                <td>?</td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
             </div>
         </div>
     </main>
-    <script src=" js/searchHandler.js"></script>
-    <script src="js/modal-array.js"></script>
-    <script src="js/updataErrorHandlers.js"></script>
+
 
 </body>
+<script src="js/searchHandler.js"></script>
+<script src="js/modal-array.js"></script>
+<script src="js/updataErrorHandlers.js"></script>
 
 </html>

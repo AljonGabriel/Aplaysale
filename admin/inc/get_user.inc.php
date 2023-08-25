@@ -19,6 +19,9 @@ if (isset($_GET['user_id'])) {
         }
     }
 
+    $pdo = null;
+    $stmt = null;
+
 
 
     if ($foundUser) {

@@ -1,14 +1,25 @@
 const modals = document.querySelectorAll(".modal");
 const modalButtons = document.getElementsByClassName("modal-btn");
 const closeModalButtons = document.getElementsByClassName("close");
-const adminInputs = document.querySelectorAll(".admin-updateuser-input");
+const modalInputs = document.getElementsByClassName(
+  "admin-modal-update-user-input",
+);
+
+console.log(modalInputs);
 
 function openModal(modalId, data, userId) {
   const modalNameInput = document.querySelector(`#admModUpdNamInp_${userId}`),
-    modalAddInput = document.querySelector(`#admModUpdAddInp_${userId}`);
+    modalAddInput = document.querySelector(`#admModUpdAddInp_${userId}`),
+    modalUIDInp = document.querySelector(`#admModUpdUIDInp_${userId}`),
+    modalUIDInpHidden = document.querySelector(
+      `#admModUpdUIDInpHidden_${userId}`,
+    );
 
   modalNameInput.placeholder = data.fullname;
   modalAddInput.placeholder = data.completeaddress;
+  modalUIDInp.value = data.id;
+  modalUIDInpHidden.value = data.id;
+  modalUIDInpHidden.style.display = "none";
 
   const modal = document.getElementById(modalId);
   modal.style.display = "block";
@@ -17,7 +28,6 @@ function openModal(modalId, data, userId) {
 function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   modal.style.display = "none";
-  modalButtons.placeholder = "";
 }
 
 // Attach click event listeners to open modals
@@ -26,14 +36,16 @@ for (let i = 0; i < modalButtons.length; i++) {
     const modalId = this.getAttribute("data-modal-id"),
       userId = this.getAttribute("data-user-id");
 
+    console.log(modalId);
+
     //get user information in the server
     const response = await fetch(`inc/get_user.inc.php?user_id=${userId}`),
       data = await response.json();
 
-    openModal(modalId, data, userId);
-
     const url = `index.php?id=${userId}`;
     history.pushState({}, "", url);
+
+    openModal(modalId, data, userId);
   });
 }
 
