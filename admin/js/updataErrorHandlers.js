@@ -15,21 +15,50 @@ document.addEventListener("DOMContentLoaded", function () {
         addressInp = document.querySelector(`#admModUpdAddInp_${userId}`),
         citySel = document.querySelector(`#admModCitSel_${userId}`),
         roleSel = document.querySelector(`#admModUpdRolSel_${userId}`);
-      pwdInp = document.querySelector(`#admModUpdPasInp_${userId}`);
 
       const sanNameInp = sanitizeInput(nameInput.value),
         sanAddressInp = sanitizeInput(addressInp.value),
         sanCitySel = sanitizeInput(citySel.value),
-        sanRoleSel = sanitizeInput(roleSel.value),
-        sanPwdInp = sanitizeInput(pwdInp.value);
+        sanRoleSel = sanitizeInput(roleSel.value);
+
+      clearErrors();
 
       let errors = 0;
 
       if (sanNameInp === "") {
-        console.log("Empty");
+        displayErrors(nameInput.id, "Please provide the updated name");
+        nameInput.classList.add("failed-input");
         errors++;
       } else {
-        console.log("Nempty");
+        nameInput.classList.remove("failed-input");
+        nameInput.classList.add("success-input");
+      }
+
+      if (sanAddressInp === "") {
+        displayErrors(addressInp.id, "Please provide the updated address");
+        addressInp.classList.add("failed-input");
+        errors++;
+      } else {
+        addressInp.classList.remove("failed-input");
+        addressInp.classList.add("success-input");
+      }
+
+      if (sanCitySel === "") {
+        displayErrors(citySel.id, "Please provide the updated city");
+        citySel.classList.add("failed-input");
+        errors++;
+      } else {
+        citySel.classList.remove("failed-input");
+        citySel.classList.add("success-input");
+      }
+
+      if (sanRoleSel === "") {
+        displayErrors(roleSel.id, "Please provide the updated role");
+        roleSel.classList.add("failed-input");
+        errors++;
+      } else {
+        roleSel.classList.remove("failed-input");
+        roleSel.classList.add("success-input");
       }
 
       errors > 0 ? console.log("there was an error") : this.submit();
@@ -43,5 +72,20 @@ document.addEventListener("DOMContentLoaded", function () {
     tempElem.textContent = sanitizedInput;
 
     return tempElem.textContent;
+  }
+
+  function displayErrors(inputId, message) {
+    const errorElement = document.getElementById(inputId + "Error");
+
+    errorElement
+      ? (errorElement.textContent = message)
+      : (errorElement.textContent = "");
+  }
+
+  function clearErrors() {
+    const errorElements = document.querySelectorAll(".error-message");
+    errorElements.forEach((errorElement) => {
+      errorElement.textContent = "";
+    });
   }
 });

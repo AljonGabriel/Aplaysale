@@ -111,7 +111,7 @@ require_once 'inc/admin.view.inc.php';
                                             <div class="modal-body">
 
                                                 <fieldset class="admin-fieldset">
-                                                    <form action="inc/admin.inc.php" method="post"
+                                                    <form action="inc/admin_update_user.inc.php" method="post"
                                                         id="admModUpdForm_<?php echo $userData['id']; ?>">
 
                                                         <div class="admin-modal-update-user-input-container">
@@ -119,7 +119,6 @@ require_once 'inc/admin.view.inc.php';
                                                             <input id="admModUpdUIDInp_<?php echo $userData['id'] ?>"
                                                                 type="text" name="admModUpdUIDInp"
                                                                 class="admin-modal-update-user-input" disabled>
-
                                                         </div>
 
                                                         <div class="admin-modal-update-user-input-container">
@@ -134,12 +133,22 @@ require_once 'inc/admin.view.inc.php';
                                                             <input id="admModUpdNamInp_<?php echo $userData['id'] ?>"
                                                                 type="text" name="admModUpdNamInp"
                                                                 class="admin-modal-update-user-input">
+                                                            <div class="fieldErrors">
+                                                                <p class="error-message"
+                                                                    id="admModUpdNamInp_<?php echo $userData['id'] ?>Error"
+                                                                    class="error-message"></p>
+                                                            </div>
                                                         </div>
                                                         <div class="admin-modal-update-user-input-container">
                                                             <label for="admModUpdAddInp">Address:</label>
                                                             <input id="admModUpdAddInp_<?php echo $userData['id'] ?>"
                                                                 type="text" name="admModUpdAddInp"
                                                                 class="admin-modal-update-user-input">
+                                                            <div class="fieldErrors">
+                                                                <p class="error-message"
+                                                                    id="admModUpdAddInp_<?php echo $userData['id'] ?>Error"
+                                                                    class="error-message"></p>
+                                                            </div>
 
                                                         </div>
                                                         <div class="admin-modal-update-user-input-container">
@@ -152,6 +161,11 @@ require_once 'inc/admin.view.inc.php';
                                                                 <option value="Philippines">Philiipines
                                                                 </option>
                                                             </select>
+                                                            <div class="fieldErrors">
+                                                                <p class="error-message"
+                                                                    id="admModCitSel_<?php echo $userData['id'] ?>Error"
+                                                                    class="error-message"></p>
+                                                            </div>
                                                         </div>
                                                         <div class="admin-modal-update-user-input-container">
                                                             <label for="admModUpdRolSel">Role:</label>
@@ -163,13 +177,11 @@ require_once 'inc/admin.view.inc.php';
                                                                 <option value="admin">Admin</option>
                                                                 <option value="user">User</option>
                                                             </select>
-                                                        </div>
-                                                        <div class="admin-modal-update-user-input-container">
-                                                            <label for="admModUpdPasInp">Password:</label>
-                                                            <input id="admModUpdPasInp_<?php echo $userData['id'] ?>"
-                                                                type="password" name="admModUpdPasInp"
-                                                                class="admin-modal-update-user-input"
-                                                                placeholder="Hashed">
+                                                            <div class="fieldErrors">
+                                                                <p class="error-message"
+                                                                    id="admModUpdRolSel_<?php echo $userData['id'] ?>Error"
+                                                                    class="error-message"></p>
+                                                            </div>
                                                         </div>
 
                                                         <div class="admin-updateuser-btn-container">
@@ -200,9 +212,8 @@ require_once 'inc/admin.view.inc.php';
                             <option value="" selected disabled>Category</option>
                             <option value="">All</option>
                         </select>
-                        <button class="admin-update-user-btn modal-btn"
-                            data-modal-id="addProduct_<?php echo $userData['id']; ?>">Add
-                            product</button>
+                        <a href="add_product.php" class="admin-add-product-link">Add
+                            product</a>
                         <div class="modal" id="addProduct_<?php echo $userData['id']; ?>">
                             <div class="modal-content">
                                 <span class="close" data-modal-id="updateUser">&times;</span>
