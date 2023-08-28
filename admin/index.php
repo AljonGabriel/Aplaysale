@@ -100,7 +100,7 @@ require_once 'inc/admin.view.inc.php';
                                     <?php echo htmlspecialchars($userData['role']); ?></td>
                                 <td><?php echo htmlspecialchars($userData['created_at']); ?></td>
                                 <td> <button data-user-id="<?php echo $userData['id']; ?>"
-                                        class="admin-update-user-btn modal-btn"
+                                        class="admin-modal-update-user-btn-trg"
                                         data-modal-id="updateUser_<?php echo $userData['id']; ?>">Update</button>
                                     <div class="modal" id="updateUser_<?php echo $userData['id']; ?>">
                                         <div class="modal-content">
@@ -174,7 +174,7 @@ require_once 'inc/admin.view.inc.php';
 
                                                         <div class="admin-updateuser-btn-container">
                                                             <button type="submit"
-                                                                class="admin-modal-update-user-btn">Update</button>
+                                                                class="admin-modal-update-user-submit">Update</button>
                                                         </div>
                                                     </form>
 
@@ -200,7 +200,19 @@ require_once 'inc/admin.view.inc.php';
                             <option value="" selected disabled>Category</option>
                             <option value="">All</option>
                         </select>
-                        <button class="admin-btn">Add product</button>
+                        <button class="admin-update-user-btn modal-btn"
+                            data-modal-id="addProduct_<?php echo $userData['id']; ?>">Add
+                            product</button>
+                        <div class="modal" id="addProduct_<?php echo $userData['id']; ?>">
+                            <div class="modal-content">
+                                <span class="close" data-modal-id="updateUser">&times;</span>
+                                <div class="modal-header">
+                                    <h2>Add product</h2>
+                                </div>
+                                <div class="modal-body">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <table>
                         <thead>

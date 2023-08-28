@@ -1,5 +1,7 @@
 const modals = document.querySelectorAll(".modal");
-const modalButtons = document.getElementsByClassName("modal-btn");
+const modalButtons = document.getElementsByClassName(
+  "admin-modal-update-user-btn-trg",
+);
 const closeModalButtons = document.getElementsByClassName("close");
 const modalInputs = document.getElementsByClassName(
   "admin-modal-update-user-input",
