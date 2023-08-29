@@ -47,53 +47,91 @@ function update_user(object $pdo, string $userId, string $name, string $address,
     
 }
 
-function add_product(object $pdo, string $uploaded_file_tmp, string $product_name, string $product_price, string $product_description, string $product_category) {
+function add_product(object $pdo, array|bool $uploaded_files, string $product_name, string $product_price, string $product_description, string $product_category) {
     try {
-        // Determine the subfolder name (e.g., using the category name or category ID)
-        $category_subfolder = $product_category; // Use category name or category ID
-        
-        // Define the upload directory and subfolder
-        $uploadDirectory = "../../assets/product_images";
-        $subfolderDirectory = $uploadDirectory . $category_subfolder . "/";
+        highlight_string("<?php " . var_export ($uploaded_files, true) . ";?>");
+// Determine the subfolder name (e.g., using the category name or category ID)
+$category_subfolder_name = $product_category; // Use category name or category ID
 
-        // Create the subfolder if it doesn't exist
-        if (!is_dir($subfolderDirectory)) {
-            mkdir($subfolderDirectory, 0777, true);  // Use appropriate permissions
-        }
+// Define the upload directory and subfolder
+$uploadDirectory = "D:/xampp/htdocs/Aplaysale/assets/product_images/";
+$subfolderDirectory = $uploadDirectory . $category_subfolder_name . "/"; // ../../assets/product_images/category name"
 
-        // Generate a unique filename based on product name, category, and timestamp
-        $timestamp = time();
-        $uniqueFilename = $product_name . "_" . $category_subfolder . "_" . $timestamp . "_" . basename($uploaded_file_tmp);
+// Create the subfolder if it doesn't exist
+if (!is_dir($subfolderDirectory)) {
+mkdir($subfolderDirectory, 0777, true); // Use appropriate permissions
+}
 
-        $targetFile = $subfolderDirectory . $uniqueFilename;
+// Generate a unique filename based on product name, category, and timestamp
+$timestamp = time();
+$uniqueFilename = $product_name . "_" . $category_subfolder_name . "_" . $timestamp;
 
-        var_dump($targetFile);
+$targetFile = $subfolderDirectory . $uniqueFilename;
 
-        if (move_uploaded_file($uploaded_file_tmp, $targetFile)) {
-           // Insert product information into the products table
-           $productQuery = "INSERT INTO products (product_name, product_price, product_description, category_id) VALUES (:nam, :price, :desc, :cat);";
-           $productStmt = $pdo->prepare($productQuery);
-           $productStmt->bindValue(":nam", $product_name);
-           $productStmt->bindValue(":price", $product_price);
-           $productStmt->bindValue(":desc", $product_description);
-           $productStmt->bindValue(":cat", $product_category);
-           $productStmt->execute();
+$fileNames = $uploaded_files['name'];
+$tmp_file_names = $uploaded_files['tmp_name'];
 
-            // Get the ID of the last inserted product
-            $lastProductId = $pdo->lastInsertId();
-       
-            // Insert image URL and product_id into product_images table
-            $imageQuery = "INSERT INTO product_images (product_id, image_url) VALUES (:product_id, :image_url);";
-            $imageStmt = $pdo->prepare($imageQuery);
-            $imageStmt->bindValue(":product_id", $lastProductId);
-            $imageStmt->bindValue(":image_url", $targetFile);
-            $imageStmt->execute();
+$files_array = array_combine( $tmp_file_names, $fileNames);
 
-            echo "Product and image added successfully.";
-        } else {
-            echo "Failed to move the uploaded image.";
-        }
-    } catch (PDOException $e) {
-        echo "Error Inserting Product: " . $e->getMessage();
-    }
+foreach($files_array as $tmp_folder => $image_name) {
+$moveFiles = move_uploaded_file($tmp_folder, $targetFile.$image_name);
+
+}
+
+if($moveFiles) {
+// Insert product information into the products table
+$productQuery = "INSERT INTO products (product_name, product_price, product_description, category_id) VALUES (:nam,
+:price, :desc, :cat);";
+$productStmt = $pdo->prepare($productQuery);
+$productStmt->bindValue(":nam", $product_name);
+$productStmt->bindValue(":price", $product_price);
+$productStmt->bindValue(":desc", $product_description);
+$productStmt->bindValue(":cat", $product_category);
+$productStmt->execute();
+
+// Get the ID of the last inserted product
+$lastProductId = $pdo->lastInsertId();
+
+// Insert image URL and product_id into product_images table
+$imageQuery = "INSERT INTO product_images (product_id, image_url) VALUES (:product_id, :image_url);";
+$imageStmt = $pdo->prepare($imageQuery);
+$imageStmt->bindValue(":product_id", $lastProductId);
+$imageStmt->bindValue(":image_url", $targetFile);
+$imageStmt->execute();
+
+echo "Product and image added successfully.";
+
+}
+
+
+} catch (PDOException $e) {
+echo "Error Inserting Product: " . $e->getMessage();
+}
+}
+
+function get_all_product_data(object $pdo) {
+// Execute the SQL query
+$query = "SELECT p.product_name, p.product_description, p.product_price, c.name AS category_name, pi.image_url
+FROM products p
+JOIN product_images pi ON p.id = pi.product_id
+JOIN categories c ON p.category_id = c.id";
+
+
+$stmt = $pdo->query($query);
+
+/* highlight_string("<?php " . var_export ($stmt, true) . ";?>"); */
+
+var_dump($stmt);
+
+
+if($stmt) {
+echo " user data found";
+return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+} else {
+echo "No user data found";
+
+return [];
+}
+
 }

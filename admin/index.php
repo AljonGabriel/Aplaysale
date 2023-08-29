@@ -228,6 +228,7 @@ require_once 'inc/admin.view.inc.php';
                     <table>
                         <thead>
                             <tr>
+
                                 <th>Product Image</th>
                                 <th>Product Name</th>
                                 <th>Product Description</th>
@@ -236,14 +237,21 @@ require_once 'inc/admin.view.inc.php';
 
                         </thead>
                         <tbody>
+                            <?php foreach($productData as $product) {?>
                             <tr>
-                                <td>?</td>
-                                <td>?</td>
-                                <td>?</td>
-                                <td>?</td>
+
+                                <td><img src="<?php echo htmlspecialchars($product['image_url']); ?>"
+                                        alt="Product Image"></td>
+
+                                <td><?php echo htmlspecialchars($product['product_name']); ?></td>
+                                <td><?php echo htmlspecialchars($product['product_description']); ?></td>
+                                <td><?php echo htmlspecialchars($product['product_price']); ?></td>
+
 
                             </tr>
+                            <?php } ?>
                         </tbody>
+
 
                     </table>
 
