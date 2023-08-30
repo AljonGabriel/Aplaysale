@@ -241,7 +241,8 @@ require_once 'inc/admin.view.inc.php';
                             <tr>
 
                                 <td><img src="<?php echo htmlspecialchars($product['image_url']); ?>"
-                                        alt="Product Image"></td>
+                                        alt="Product Image" width="300"></td>
+                                </td>
 
                                 <td><?php echo htmlspecialchars($product['product_name']); ?></td>
                                 <td><?php echo htmlspecialchars($product['product_description']); ?></td>

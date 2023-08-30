@@ -54,7 +54,7 @@ function add_product(object $pdo, array|bool $uploaded_files, string $product_na
 $category_subfolder_name = $product_category; // Use category name or category ID
 
 // Define the upload directory and subfolder
-$uploadDirectory = "D:/xampp/htdocs/Aplaysale/assets/product_images/";
+$uploadDirectory = "../../assets/product_images/";
 $subfolderDirectory = $uploadDirectory . $category_subfolder_name . "/"; // ../../assets/product_images/category name"
 
 // Create the subfolder if it doesn't exist
@@ -63,18 +63,23 @@ mkdir($subfolderDirectory, 0777, true); // Use appropriate permissions
 }
 
 // Generate a unique filename based on product name, category, and timestamp
-$timestamp = time();
-$uniqueFilename = $product_name . "_" . $category_subfolder_name . "_" . $timestamp;
+/* $timestamp = time(); */
+
+$imageExtension = pathinfo($uploaded_files['name'][0], PATHINFO_EXTENSION); // Assuming the uploaded_files array
+/* contains the uploaded file information */
+$uniqueFilename = "{$product_name}_{$category_subfolder_name}.{$imageExtension}";
 
 $targetFile = $subfolderDirectory . $uniqueFilename;
 
 $fileNames = $uploaded_files['name'];
 $tmp_file_names = $uploaded_files['tmp_name'];
 
-$files_array = array_combine( $tmp_file_names, $fileNames);
+$files_array = array_combine($tmp_file_names, $fileNames);
 
 foreach($files_array as $tmp_folder => $image_name) {
-$moveFiles = move_uploaded_file($tmp_folder, $targetFile.$image_name);
+$moveFiles = move_uploaded_file($tmp_folder, $targetFile);
+
+
 
 }
 
@@ -92,11 +97,16 @@ $productStmt->execute();
 // Get the ID of the last inserted product
 $lastProductId = $pdo->lastInsertId();
 
+$baseUrl = "http://localhost/";
+
+$url = $baseUrl . "Aplaysale/assets/product_images/" . $category_subfolder_name . "/" . $uniqueFilename;
+
+
 // Insert image URL and product_id into product_images table
 $imageQuery = "INSERT INTO product_images (product_id, image_url) VALUES (:product_id, :image_url);";
 $imageStmt = $pdo->prepare($imageQuery);
 $imageStmt->bindValue(":product_id", $lastProductId);
-$imageStmt->bindValue(":image_url", $targetFile);
+$imageStmt->bindValue(":image_url", $url);
 $imageStmt->execute();
 
 echo "Product and image added successfully.";
