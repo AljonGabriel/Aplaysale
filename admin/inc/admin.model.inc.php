@@ -121,27 +121,16 @@ echo "Error Inserting Product: " . $e->getMessage();
 
 function get_all_product_data(object $pdo) {
 // Execute the SQL query
-$query = "SELECT p.product_name, p.product_description, p.product_price, c.name AS category_name, pi.image_url
+$query = "SELECT p.id, p.product_name, p.product_description, p.product_price, c.name AS category_name, pi.image_url
 FROM products p
 JOIN product_images pi ON p.id = pi.product_id
 JOIN categories c ON p.category_id = c.id";
 
-
 $stmt = $pdo->query($query);
 
-/* highlight_string("<?php " . var_export ($stmt, true) . ";?>"); */
-
-var_dump($stmt);
-
-
-if($stmt) {
-echo " user data found";
+if ($stmt) {
 return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 } else {
-echo "No user data found";
-
 return [];
 }
-
 }
