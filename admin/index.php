@@ -239,9 +239,14 @@ require_once 'inc/admin.view.inc.php';
                         <tbody>
                             <?php foreach($productData as $product) {?>
                             <tr>
+                                <?php
+                                
+                                // Explode the concatenated image URLs into an array
+                                $imageUrls = explode(',', $product['image_urls']);
+                                ?>
 
-                                <td><img src="<?php echo htmlspecialchars($product['image_url']); ?>"
-                                        alt="Product Image" width="300"></td>
+                                <td><img src="<?php echo htmlspecialchars($imageUrls[0]); ?>" alt="Product Image"
+                                        width="100"></td>
                                 </td>
 
                                 <td><?php echo htmlspecialchars($product['product_name']); ?></td>
