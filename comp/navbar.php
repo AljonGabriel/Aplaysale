@@ -95,7 +95,7 @@
 
             <?php } else if(isset($_SESSION['user_id'])) {?>
 
-            <p>Hi,
+            <p class="user-name-greeting">Hi,
                 <?php echo isset($_SESSION['user_name']) ? explode(' ', htmlspecialchars($_SESSION['user_name']))[0] : ''; ?>
             </p>
 
