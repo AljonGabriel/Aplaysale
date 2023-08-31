@@ -56,6 +56,10 @@ foreach ($productData as $product) {
                 </div>
             </div>
 
+            <?php } else { ?>
+            <p>Product not found.</p>
+            <?php } ?>
+
             <div class="product-details-middle">
                 <div class="product-details-description">
                     <h2>Product Description</h2>
@@ -77,12 +81,34 @@ foreach ($productData as $product) {
                             <span class="star">&#9733;</span>
                         </div>
                     </div>
+                    <hr>
+                    <div class="product-details-user-rating">
+                        <h3>Example-User</h3>
+                        <p>Example Ratings Description</p>
+                        <div class="rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="product-details-user-rating">
+                        <h3>Example-User</h3>
+                        <p>Example Ratings Description</p>
+                        <div class="rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                        </div>
+                    </div>
                 </div>
             </div>
     </div>
-    <?php } else { ?>
-    <p>Product not found.</p>
-    <?php } ?>
+
     </main>
 </body>
 
