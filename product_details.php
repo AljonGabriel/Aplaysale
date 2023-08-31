@@ -17,6 +17,7 @@ foreach ($productData as $product) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/product-details.css">
     <title>Product Details</title>
 </head>
 
@@ -28,19 +29,37 @@ foreach ($productData as $product) {
 
     <?php if ($selectedProduct) { ?>
     <?php                
-        // Explode the concatenated image URLs into an array
-        $imageUrls = explode(',', $selectedProduct['image_urls']);
-        $mainImage = $imageUrls[0]; // First image as the main display
-        $otherImages = array_slice($imageUrls, 1); // Other images for slideshow
+    // Explode the concatenated image URLs into an array
+    $imageUrls = explode(',', $selectedProduct['image_urls']);
+    $images = $imageUrls; // All images, including the first one
     ?>
     <div class="product-details">
-        <div class="product-image">
-            <img src="<?php echo htmlspecialchars($mainImage); ?>" alt="Product Image">
+        <div class="slideshow-container">
+            <?php
+            $slideNumber = 1;
+            foreach ($images as $image) {
+            ?>
+            <div class="mySlides fade">
+                <div class="numbertext"><?php echo $slideNumber++; ?> / <?php echo count($images); ?></div>
+                <img src="<?php echo htmlspecialchars($image) ?>" style="width:100%">
+            </div>
+            <?php
+            }
+            ?>
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
         </div>
-        <div class="product-slideshow">
-            <?php foreach ($otherImages as $image) { ?>
-            <img src="<?php echo htmlspecialchars($image); ?>" alt="Product Image" class="slideshow-image">
-            <?php } ?>
+        <br>
+
+        <div style="text-align:center">
+            <?php
+            $dotNumber = 1;
+            foreach ($images as $image) {
+            ?>
+            <span class="dot" onclick="currentSlide(<?php echo $dotNumber++; ?>)"></span>
+            <?php
+            }
+            ?>
         </div>
         <div class="product-info">
             <p>Name: <?php echo htmlspecialchars($selectedProduct['product_name']); ?></p>
@@ -51,25 +70,36 @@ foreach ($productData as $product) {
         </div>
     </div>
     <script>
-    // JavaScript code for slideshow
-    const slideshowImages = document.querySelectorAll('.slideshow-image');
-    let currentSlide = 0;
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-    function showSlide(index) {
-        slideshowImages.forEach(image => image.classList.remove('active'));
-        slideshowImages[index].classList.add('active');
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
     }
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slideshowImages.length;
-        showSlide(currentSlide);
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
     }
 
-    // Initial display
-    showSlide(currentSlide);
-
-    // Start slideshow interval
-    setInterval(nextSlide, 3000); // Change slide every 3 seconds
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
     </script>
     <?php } else { ?>
     <p>Product not found.</p>
