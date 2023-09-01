@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/admin/add-product.css">
     <title>Add Product</title>
 </head>
 
@@ -15,7 +16,10 @@
         <div class="admin-add-product">
             <div class="admin-add-product-container">
                 <form action="inc/admin_add_product_handler.inc.php" method="POST" enctype="multipart/form-data">
-                    <fieldset>
+                    <fieldset class="admin-field-set">
+                        <div class="admin-add-product-header-container">
+                            <h2>Add Product</h2>
+                        </div>
                         <div class="admin-add-product-input-container">
                             <label for="admAddProImgInp">Product image :</label>
                             <input id="admAddProImgInp" type="file" class="admin-add-prod-input" accept="image/*"
@@ -43,7 +47,7 @@
                         </div>
                         <div class="admin-add-product-input-container">
                             <label for="admAddProCatSel">Product category :</label>
-                            <select name="admAddProCatSel" id="admAddProCatSel">
+                            <select name="admAddProCatSel" id="admAddProCatSel" class="admin-add-prod-select">
                                 <option value="" selected disabled>Select Category</option>
                                 <option value="1">Electronics</option>
                                 <option value="2">Clothing & Fashion</option>
@@ -60,7 +64,8 @@
                         </div>
                         <div class="admin-add-product-input-container">
                             <label for="admAddProDesTex">Product description :</label>
-                            <textarea id="admAddProDesTex" name="admAddProDesTex" rows="5" cols="40"></textarea>
+                            <textarea id="admAddProDesTex" name="admAddProDesTex" rows="5" cols="40"
+                                class="admin-add-prod-text-area"></textarea>
                             <div class="fieldErrors">
                                 <p class="error-message" id="admAddProDesTexError" class="error-message"></p>
                             </div>

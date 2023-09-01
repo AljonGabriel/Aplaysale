@@ -35,6 +35,19 @@ th {
   font-family: var(--primary-font);
 }
 
+td pre {
+  overflow-x: scroll;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  width: 700px;
+  height: 200px;
+  padding: 10px;
+  font-size: 1.5em;
+}
+
 tr:nth-child(even) {
   background-color: #dddddd;
 }

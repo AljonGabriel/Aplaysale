@@ -1,15 +1,13 @@
 .product-details {
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: var(--secondary-background);
-  display: inline-block;
 }
 .product-details-top-container {
   display: flex;
   gap: 15px;
   background-color: var(--white);
   padding: 15px;
-  margin-top: 30px;
 }
 .product-details-img-slide-container {
   display: none;
@@ -33,8 +31,6 @@
   width: 450px;
   height: 450px;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 /* Next & previous buttons */
@@ -149,7 +145,7 @@
 }
 
 .product-details-description {
-  margin-top: 10px;
+  margin: 10px 0;
   width: 70%;
   height: 100%;
   padding: 15px;
@@ -169,8 +165,8 @@
 
 .product-details-ratings-container {
   width: 100%;
-  height: 300px;
-  margin-top: 10px;
+  height: auto;
+  margin: 10px 0;
   background-color: var(--white);
   padding: 15px;
 }
@@ -180,17 +176,50 @@
   margin-bottom: 10px;
 }
 
-.rating {
-  font-size: 24px;
+.product-details-provide-rating-star {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  padding: 15px;
 }
 
 .star {
-  color: gold; /* Filled star color */
+  font-size: 30px;
   cursor: pointer;
+  color: #ccc;
+  transition: color 0.25s;
 }
 
-/* Style for empty stars */
-.star::before {
-  content: "\2606"; /* Empty star Unicode character */
-  color: lightgray;
+.star:hover,
+.star.active-rating {
+  color: #f2b600; /* Change this color to represent the active/filled-in star color */
+}
+
+.product-details-provide-rating-input-container {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+}
+
+.product-details-provide-rating-header {
+  width: 100%;
+  height: 50px;
+}
+
+.product-details-provide-rating-header h3 {
+  font-family: var(--primary-font);
+  font-size: 2em;
+  color: var(--accent);
+}
+
+.product-details-provide-rating-input {
+  width: 100%;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  margin: 20px 0;
+  height: 60px;
 }

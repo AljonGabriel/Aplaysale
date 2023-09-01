@@ -21,8 +21,9 @@ $page = 'index';
     <div class="home">
         <main>
             <div class="home-products-header">
-                <h2>Check our new products </h2>
+                <h2>New Items</h2>
             </div>
+
 
 
 
@@ -57,10 +58,7 @@ $page = 'index';
             </div>
 
         </main>
-
-
     </div>
-
 </body>
 
 

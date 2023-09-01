@@ -246,7 +246,9 @@ require_once 'inc/admin.view.inc.php';
                                     width="100"></td>
                             </td>
                             <td><?php echo htmlspecialchars($product['product_name']); ?></td>
-                            <td><?php echo htmlspecialchars($product['product_description']); ?></td>
+                            <td>
+                                <pre><?php echo htmlspecialchars($product['product_description']); ?></pre>
+                            </td>
                             <td><?php echo htmlspecialchars($product['product_price']); ?></td>
                         </tr>
                         <?php } ?>

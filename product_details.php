@@ -69,43 +69,75 @@ foreach ($productData as $product) {
 
             <div class="product-details-bottom">
                 <div class="product-details-ratings-container">
-                    <h2>User ratings</h2>
-                    <div class="product-details-user-rating">
-                        <h3>Example-User</h3>
-                        <p>Example Ratings Description</p>
-                        <div class="rating">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                        </div>
+
+                    <div class="product-details-provide-rating-container">
+                        <form action="" method="">
+                            <div class="product-details-provide-rating-input-container">
+                                <div class="product-details-provide-rating-header">
+                                    <h3>Hows the product</h3>
+                                </div>
+
+                                <div class="product-details-provide-rating-star">
+                                    <span class="star" data-rating="1">&#9733;</span>
+                                    <span class="star" data-rating="2">&#9733;</span>
+                                    <span class="star" data-rating="3">&#9733;</span>
+                                    <span class="star" data-rating="4">&#9733;</span>
+                                    <span class="star" data-rating="5">&#9733;</span>
+                                    <input id="proDetPrvRatStrHdnInp" type="text"
+                                        class="product-details-provide-rating-input" hidden>
+                                </div>
+
+                                <input name="proDetPrvRatStrInp" type="text"
+                                    class="product-details-provide-rating-input"
+                                    placeholder="Tell us about the product..">
+                                <div class="product-details-provide-rating-submit">
+                                    <button type="submit">Submit feedback</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <hr>
+                    <h2>Product Ratings</h2>
                     <div class="product-details-user-rating">
                         <h3>Example-User</h3>
                         <p>Example Ratings Description</p>
-                        <div class="rating">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="product-details-user-rating">
-                        <h3>Example-User</h3>
-                        <p>Example Ratings Description</p>
-                        <div class="rating">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                        </div>
                     </div>
                 </div>
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const stars = document.querySelectorAll('.star');
+
+                    stars.forEach(function(star) {
+                        star.addEventListener('click', function() {
+                            const rating = this.getAttribute('data-rating');
+                            alert(
+                                `You rated this ${rating} star(s)!`
+                            ); // You can replace this with your own logic, like sending the rating to the server.
+                            setActiveStars(rating);
+                        });
+
+                        star.addEventListener('mouseenter', function() {
+                            const rating = this.getAttribute('data-rating');
+                            const ratingHiddenInp = document.getElementById(
+                                "proDetPrvRatStrHdnInp")
+                            ratingHiddenInp.innerHTML = rating
+                            console.log(ratingHiddenInp);
+                            setActiveStars(rating);
+                        });
+                    });
+
+                    function setActiveStars(rating) {
+                        stars.forEach(function(star) {
+                            if (star.getAttribute('data-rating') <= rating) {
+                                star.classList.add('active-rating');
+                            } else {
+                                star.classList.remove('active-rating');
+                            }
+                        });
+                    }
+
+
+                });
+                </script>
             </div>
     </div>
 
