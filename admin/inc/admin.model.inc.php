@@ -48,8 +48,8 @@ function update_user(object $pdo, string $userId, string $name, string $address,
 }
 
 function add_product(object $pdo, array|bool $uploaded_files, string $product_name, string $product_price, string $product_description, string $product_category) {
-    try {
-        highlight_string("<?php " . var_export ($uploaded_files, true) . ";?>");
+            try {
+                highlight_string("<?php " . var_export ($uploaded_files, true) . ";?>");
 // Insert product information into the products table
 $productQuery = "INSERT INTO products (product_name, product_price, product_description, category_id) VALUES (:nam,
 :price, :desc, :cat);";

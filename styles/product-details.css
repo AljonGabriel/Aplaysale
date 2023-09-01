@@ -196,6 +196,12 @@
   color: #f2b600; /* Change this color to represent the active/filled-in star color */
 }
 
+.starred {
+  font-size: 30px;
+  cursor: pointer;
+  color: #f2b600;
+  transition: color 0.25s;
+}
 .product-details-provide-rating-input-container {
   width: 100%;
   height: auto;

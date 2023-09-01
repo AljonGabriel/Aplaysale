@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/admin/inc/admin.view.inc.php";
-$productId = $_GET['product_id']; // Retrieve product_id from the URL
+require_once "inc/ratings/rating_view.inc.php";
+
 
 // Find the product in $productData with the matching product_id
 $selectedProduct = null;
@@ -71,7 +72,23 @@ foreach ($productData as $product) {
                 <div class="product-details-ratings-container">
 
                     <div class="product-details-provide-rating-container">
-                        <form action="" method="">
+                        <?php
+                               $alreadyRated = false;
+                               foreach ($ratings as $user) {
+                                   if ($_SESSION['user_id'] === $user['user_id'] && intval($_GET['product_id']) === $user['product_id']) {
+                                       $alreadyRated = true;
+                                       break; // Exit the loop once a matching rating is found
+                                   }
+                               }
+
+                               if($alreadyRated) {
+                        ?>
+                        <p>Thank you for the feedback</p>
+
+
+                        <?php } else {?>
+                        <form action="inc/ratings/ratings_handler.inc.php?product_id=<?php echo $productId; ?>"
+                            method="POST">
                             <div class="product-details-provide-rating-input-container">
                                 <div class="product-details-provide-rating-header">
                                     <h3>Hows the product</h3>
@@ -83,7 +100,7 @@ foreach ($productData as $product) {
                                     <span class="star" data-rating="3">&#9733;</span>
                                     <span class="star" data-rating="4">&#9733;</span>
                                     <span class="star" data-rating="5">&#9733;</span>
-                                    <input id="proDetPrvRatStrHdnInp" type="text"
+                                    <input name="proDetPrvRatStrHdnInp" id="proDetPrvRatStrHdnInp" type="text"
                                         class="product-details-provide-rating-input" hidden>
                                 </div>
 
@@ -95,16 +112,25 @@ foreach ($productData as $product) {
                                 </div>
                             </div>
                         </form>
+                        <?php }?>
                     </div>
                     <h2>Product Ratings</h2>
+                    <?php foreach($ratings as $rating) { ?>
                     <div class="product-details-user-rating">
-                        <h3>Example-User</h3>
-                        <p>Example Ratings Description</p>
+                        <h3><?php echo $rating['fullname'] ?></h3>
+                        <p><?php echo generateStarRating($rating['rating']); ?></p>
+                        <p><?php echo $rating['review'] ?></p>
                     </div>
+                    <?php } ?>
                 </div>
+
+
+
                 <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     const stars = document.querySelectorAll('.star');
+                    const ratingHiddenInp = document.getElementById(
+                        "proDetPrvRatStrHdnInp"); // Select the input field
 
                     stars.forEach(function(star) {
                         star.addEventListener('click', function() {
@@ -113,15 +139,15 @@ foreach ($productData as $product) {
                                 `You rated this ${rating} star(s)!`
                             ); // You can replace this with your own logic, like sending the rating to the server.
                             setActiveStars(rating);
+                            // Set the value of the hidden input field
+                            ratingHiddenInp.value = rating;
                         });
 
                         star.addEventListener('mouseenter', function() {
                             const rating = this.getAttribute('data-rating');
-                            const ratingHiddenInp = document.getElementById(
-                                "proDetPrvRatStrHdnInp")
-                            ratingHiddenInp.innerHTML = rating
-                            console.log(ratingHiddenInp);
                             setActiveStars(rating);
+                            // Set the value of the hidden input field
+                            ratingHiddenInp.value = rating;
                         });
                     });
 
@@ -134,8 +160,6 @@ foreach ($productData as $product) {
                             }
                         });
                     }
-
-
                 });
                 </script>
             </div>
