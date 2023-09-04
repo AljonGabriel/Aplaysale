@@ -121,9 +121,6 @@ echo "Error Inserting Product: " . $e->getMessage();
 }
 }
 
-
-
-
 // Retrieve product data with concatenated image URLs
 function get_all_product_data(object $pdo) {
 $query = "
@@ -148,3 +145,4 @@ return $stmt->fetchAll(PDO::FETCH_ASSOC);
 return [];
 }
 }
+

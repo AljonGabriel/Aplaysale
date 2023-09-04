@@ -11,7 +11,7 @@ require_once 'inc/admin.view.inc.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/admin/index.css">
+    <link rel="stylesheet" href="styles/admin-index.css">
     <title>Admin Page</title>
 </head>
 

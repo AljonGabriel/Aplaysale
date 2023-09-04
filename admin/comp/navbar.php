@@ -3,115 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="styles/admin-navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 </style>
 
 <body>
-    <div class="nav-container">
-
-        <div class="nav-li-container">
-            <div class="nav-logo">
-                <li>
-                    <h2>Aplaysale</h2>
-                </li>
+    <nav>
+        <div class="admin-nav">
+            <div id="admNavSidBar" class="admin-nav-side-bar">
+                <a href="javascript:void(0)" id="admNavSidBarX" class="closebtn">×</a>
+                <a href="#">Dashboard</a>
+                <a href="#">Users</a>
+                <a href="#">Products</a>
+                <a href="#">Orders</a>
             </div>
-            <ul>
-                <li class="nav-item">
-                    <a href="../index.php">Home</a>
-                </li>
-                <li class="nav-item"><a href="../index.php">Products</a></li>
-                <li class="nav-item"><a class="<?php echo ($page === 'admin') ? 'active' : ''; ?>"
-                        href="index.php">Admin</a></li>
-            </ul>
-
-            <div class="nav-search-container">
-                <input class="nav-search-input" type="search" placeholder="Search item ..">
-            </div>
-
-
-            <?php  if(!isset($_SESSION['user_id'])) { ?>
-
-
-
-            <div class="nav-login-register">
-                <button class="nav-login-register-btn" id="modalBtn">Sign-in</button>
-
-                <div class="modal" id="modal">
-                    <div class="modal-content" id="modalContent">
-
-                        <div class="modal-header">
-                            <h2>Log-in</h2>
-                        </div>
-
-
-                        <div class="modal-nav-login">
-                            <span class="close">&times;</span>
-                            <div class="fieldErrors">
-                                <p style="text-align: center" class="error-message" id="headError"></p>
-                            </div>
-
-
-                            <form action="inc/login/login.inc.php" class="login-form" id="loginForm" method="post">
-
-                                <fieldset class="login-fieldset">
-                                    <div class="nav-login-email-input-container">
-                                        <label for="email">Email:</label>
-                                        <input type="text" class="nav-login-input" id="lgnEmaInp" name="lgnEmaInp"
-                                            type="email" placeholder="Please enter credential">
-                                        <div class="fieldErrors">
-                                            <p class="error-message" id="lgnEmaInpError"></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="nav-login-password-input-container">
-                                        <label for="email">Password:</label>
-                                        <input type="password" class="nav-login-input" id="lgnPwdInp"
-                                            placeholder="Please enter credential" name="lgnPwdInp">
-                                        <div class="fieldErrors">
-                                            <p class="error-message" id="lgnPwdInpError"></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="login-btn-container">
-                                        <button class="nav-login-register-btn">Submit</button>
-                                    </div>
-
-                                </fieldset>
-                            </form>
-                            <a href="signup.php" class="dhay">don't have account yet ?</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <script src="js/loginErrorHandlers.js"></script>
-
-
-            <?php } else if(isset($_SESSION['user_id'])) {?>
-
-            <p class="user-name-greeting">Hi,
-                <?php echo isset($_SESSION['user_name']) ? explode(' ', htmlspecialchars($_SESSION['user_name']))[0] : ''; ?>
-            </p>
-
-
-
+            <button id="admNavSidBarBtn" class="openbtn">☰</button>
             <form action="../inc/login/logout.inc.php" method="post">
                 <button style="" class="nav-login-register-btn logout">Logout</button>
             </form>
-
-
-
-            <?php } ?>
-
         </div>
+    </nav>
+    <script>
+    const sidebarBtn = document.querySelector("#admNavSidBarBtn")
+    const sidebarX = document.querySelector("#admNavSidBarX")
 
-    </div>
+    sidebarBtn.addEventListener("click", () => {
+        document.getElementById("admNavSidBar").style.width = "250px";
+        document.querySelector("main").style.marginLeft = "250px";
+        document.querySelector("main").style.width = "auto";
 
+    });
 
+    sidebarX.addEventListener("click", () => {
+        document.getElementById("admNavSidBar").style.width = "0";
+        document.querySelector("main").style.marginLeft = "0";
+        document.querySelector("main").style.width = "auto";
 
+    })
+    </script>
 
 </body>
 

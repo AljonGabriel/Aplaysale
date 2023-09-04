@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;600&family=Montserrat:wght@100;400;600&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --success-button: #28a745;
+  --error-button: #dc3545;
+  --warning-button: #ffc107;
+  --info-button: #17a2b8;
+  --disabled-button: #ced4da;
+  --outline-button-border: #007bff;
+  --ghost-button-border: #6c757d;
+
+  --text: #031c12;
+  --background: #f6fefb;
+  --secondary-background: #fbfafb;
+
+  --primary: #6be2ef;
+  --accent: #1764d9;
+
+  --white: #ffffff;
+  --black: #000000;
+
+  --secondary-font: "Hind", sans-serif;
+  --primary-font: "Montserrat", sans-serif;
+}
+
+body,
+html {
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  padding: 24px;
+  transition: margin-left 0.5s;
+  background-color: var(--secondary-background);
+  z-index: 1;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  margin: 0 auto;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  transition: 0.2s ease-in;
+}
+
+.modal-header {
+  margin: 0 auto;
+  width: 100%;
+  padding: 16px 0;
+  text-align: center;
+  font-family: var(--primary-font);
+  font-size: 2em;
+  color: var(--text-color);
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 600px; /* Could be more or less, depending on screen size */
+  height: auto;
+  border-radius: 15px;
+  -webkit-animation-name: jackInTheBox; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: jackInTheBox;
+  animation-duration: 0.4s;
+}
+
+/* The Close Button */
+.close {
+  color: var(--accent);
+  font-family: var(--primary-font);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.fieldErrors {
+  width: 100%;
+  height: 30px;
+  margin: 5px 0;
+  transition: 0.2s ease-in-out;
+}
+
+.fieldErrors p {
+  font-family: var(--secondary-font);
+  color: var(--error-button);
+  font-weight: bold;
+  font-size: 0.95em;
+  animation: headShake 1.5s 2s linear infinite;
+}
+.success-input {
+  width: 100%;
+  height: 50px;
+  padding-left: 35px;
+  border-radius: 10px;
+  border: 1px var(--success-button) solid;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.failed-input {
+  width: 100%;
+  height: 50px;
+  padding-left: 20px;
+  border-radius: 10px;
+  border: 1px var(--error-button) solid;
+  display: block;
+  margin-bottom: 10px;
+  animation: headShake 0.5s linear;
+}
+
+.logout {
+  background-color: var(--error-button);
+}
+
+.active {
+  color: var(--primary) !important;
+  font-weight: bold;
+}
+
+/*Navbar with Sidebar */
+
+nav {
+  width: 100%;
+  height: 50px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  z-index: 3;
+  background-color: var(--white);
+  position: relative;
+}
+
+.admin-nav-side-bar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: var(--white);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 0px 6.8px 10px rgba(0, 0, 0, 0.095),
+    0px 54px 52px rgba(0, 0, 0, 0.19);
+}
+
+.admin-nav-side-bar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  font-family: var(--primary-font);
+}
+
+.admin-nav-side-bar a:hover {
+  color: #f1f1f1;
+}
+
+.admin-nav-side-bar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: var(--white);
+  color: var(--ghost-button-border);
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  color: var(--accent);
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .admin-nav-side-bar {
+    padding-top: 15px;
+  }
+  .admin-nav-side-bar a {
+    font-size: 18px;
+  }
+}

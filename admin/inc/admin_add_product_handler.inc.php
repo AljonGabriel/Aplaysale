@@ -18,12 +18,17 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER["REQUEST_METHOD"] === "POST") 
         // Call the add_product function with the uploaded file details
         add_product($pdo, $uploaded_files , $prod_name, $prod_price, $prod_des, $prod_cat);
 
+        $pdo = null;
+        $stmt = null;
+
+        header("Location: ../../index.php");
+
     }
    
 
            
 } else {
-    header("Location: ../../../index.php");
+    header("Location: ../../index.php");
 }
         
 
