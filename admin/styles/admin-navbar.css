@@ -156,6 +156,12 @@ nav {
   position: relative;
 }
 
+.admin-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .admin-nav-side-bar {
   height: 100%;
   width: 0;
