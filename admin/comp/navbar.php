@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/admin-navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link>
 </head>
 
 </style>
@@ -14,8 +16,8 @@
         <div class="admin-nav">
             <div id="admNavSidBar" class="admin-nav-side-bar">
                 <a href="javascript:void(0)" id="admNavSidBarX" class="closebtn">×</a>
-                <a href="#">Dashboard</a>
-                <a href="#">Users</a>
+                <a href="index.php">Dashboard</a>
+                <a href="admin-users.php">Users</a>
                 <a href="#">Products</a>
                 <a href="#">Orders</a>
             </div>
@@ -25,6 +27,7 @@
             </form>
         </div>
     </nav>
+
     <script>
     const sidebarBtn = document.querySelector("#admNavSidBarBtn")
     const sidebarX = document.querySelector("#admNavSidBarX")
