@@ -146,3 +146,12 @@ return [];
 }
 }
 
+function get_products_count(object $pdo) {
+
+$query = "SELECT COUNT(*) as user_count FROM products";
+$stmt = $pdo->query($query);
+
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+return $result['user_count'];
+
+}

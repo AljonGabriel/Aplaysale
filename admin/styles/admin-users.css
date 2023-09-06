@@ -4,6 +4,14 @@
   background-color: var(--secondary-background);
 }
 
+.admin-fieldset {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
 .admin-users-table {
   width: 100%;
   height: auto;
@@ -77,7 +85,7 @@ tr:nth-child(even) {
 .admin-update-user-btn,
 .admin-delete-user-btn {
   color: var(--ghost-button-border);
-  font-size: 1.9em;
+  font-size: 1.5em;
   border: none;
   cursor: pointer;
 }

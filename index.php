@@ -24,9 +24,6 @@ $page = 'index';
                 <h2>New Items</h2>
             </div>
 
-
-
-
             <div class="home-new-items-container">
                 <?php foreach ($productData as $product) { ?>
                 <div class="home-product-container">

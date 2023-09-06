@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const modalButtons = document.getElementsByClassName(
-    "admin-modal-update-user-btn-trg",
-  );
+  const modalButtons = document.getElementsByClassName("admin-update-user-btn");
 
   for (let i = 0; i < modalButtons.length; i++) {
     const userId = modalButtons[i].getAttribute("data-user-id");

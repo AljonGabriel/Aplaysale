@@ -18,7 +18,7 @@
                 <a href="javascript:void(0)" id="admNavSidBarX" class="closebtn">×</a>
                 <a href="index.php">Dashboard</a>
                 <a href="admin-users.php">Users</a>
-                <a href="#">Products</a>
+                <a href="add_product.php">Products</a>
                 <a href="#">Orders</a>
             </div>
             <button id="admNavSidBarBtn" class="openbtn">☰</button>

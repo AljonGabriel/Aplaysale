@@ -6,7 +6,7 @@
 
 .admin {
   width: 100%;
-  height: auto;
+  height: 100%;
   background-color: var(--white);
 }
 
@@ -17,41 +17,6 @@
   padding: 15px;
   margin-bottom: 20px;
 }
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 10px;
-  width: auto;
-  font-size: 0.8em;
-  font-family: var(--primary-font);
-}
-
-td pre {
-  overflow-x: scroll;
-  white-space: pre-wrap;
-  white-space: -moz-pre-wrap;
-  white-space: -pre-wrap;
-  white-space: -o-pre-wrap;
-  word-wrap: break-word;
-  width: 700px;
-  height: 200px;
-  padding: 10px;
-  font-size: 1.5em;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-
 .admin-container {
   margin: 0 auto;
   background-color: var(--background);
@@ -106,102 +71,99 @@ tr:nth-child(even) {
   font-size: 2em;
 }
 
-.admin-tables {
+.admin-index-tables-container {
   width: 100%;
-  margin: 10px 0;
+  height: auto;
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.admin-index-users-table-container,
+.admin-index-products-table-container {
+  width: 100%;
+  height: 430px;
+  overflow: scroll;
+  padding: 15px;
   background-color: var(--white);
-  padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 
-.admin-table-header {
-  width: 100%;
-  height: 50px;
-  padding: 1%;
+.admin-index-products-table-header,
+.admin-index-users-table-header {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin: 10px 0;
 }
 
-.admin-table-header h2 {
+.admin-index-products-table-header input,
+.admin-index-users-table-header input {
+  border-radius: 3px;
+  border: 1px solid var(--black);
+  width: 200px;
+  padding: 5px;
+}
+
+.admin-index-products-table-header h3,
+.admin-index-users-table-header h3 {
+  font-family: var(--primary-font);
+}
+
+.admin-index-products-table-container table,
+.admin-index-users-table-container table {
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;
+  background-color: var(--white);
+  border: 1px solid #dddddd;
+}
+
+/* .admin-index-products-table-container table tbody td pre,
+.admin-index-users-table-container table tbody td pre {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  font-family: var(--primary-font);
+  font-size: 1em;
+  width: auto;
+  height: 100%;
+  overflow: hidden;
+  overflow: scroll;
+} */
+
+.admin-index-products-table-container table tbody td img,
+.admin-index-users-table-container table tbody td img {
+  width: 100%;
+  height: 90px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.admin-index-products-table-container table tbody td,
+.admin-index-users-table-container table tbody td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 10px;
+  width: auto;
+  font-size: 1em;
+  font-family: var(--secondary-font);
+}
+
+.admin-index-products-table-container table thead th,
+.admin-index-users-table-container table thead th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 10px;
+  width: auto;
+  font-size: 1.1em;
   font-family: var(--primary-font);
   font-weight: 600;
 }
 
-.admin-users-table {
-  width: 100%;
-  height: auto;
-  overflow: scroll;
-}
-
-.admin-table-search {
-  width: 300px;
-  height: 30px;
-  border: 1px #cccccc solid;
-  border-radius: 5px;
-  padding: 16px;
-}
-
-.admin-update-user-btn {
-  width: 80px;
-  height: 25px;
-  padding: 2px;
-  border: none;
-  background-color: var(--default-primary-button);
-  color: var(--white);
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-.admin-delete-user-btn {
-  width: 100%;
-  height: 35px;
-  padding: 2px;
-  border: none;
-  background-color: var(--error-button);
-  color: var(--white);
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.admin-modal-update-user-btn-trg,
-.admin-modal-update-user-submit {
-  width: 100%;
-  height: 30px;
-  padding: 2px;
-  border: none;
-  color: var(--white);
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 5px;
-  background-color: var(--accent);
-}
-
-.admin-add-product-link {
-  width: 100px;
-  text-align: center;
-  height: 30px;
-  padding: 5px;
-  border: none;
-  color: var(--white);
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 5px;
-  background-color: var(--accent);
-  font-family: var(--primary-font);
-  font-size: 0.9em;
-}
-
-.admin-modal-update-user-input,
-.admin-modal-update-user-city-select {
-  width: 100%;
-  height: 50px;
-  padding-left: 30px;
-  border-radius: 10px;
-  border: 1px #cccccc solid;
-  display: block;
-  margin-bottom: 10px;
-  transition: 0.2s ease-in-out;
+.admin-index-products-table-container table thead tr:nth-child(even),
+.admin-index-products-table-container table tbody tr:nth-child(even),
+.admin-index-users-table-container table thead tr:nth-child(even),
+.admin-index-users-table-container table thead tr:nth-child(even) {
+  background-color: var(--secondary-background);
 }
