@@ -26,7 +26,7 @@ require_once 'inc/admin.view.inc.php';
                         <h3>Users</h3>
                     </div>
                     <div class="admin-grid-count">
-                        <i class="fa-solid fa-users"></i>
+                        <i class="fa-solid fa-users" href="admin-user.php"></i>
                         <p><?php echo ($usersCount !== false) ? htmlspecialchars($usersCount) : "Error getting user count."; ?>
                         </p>
                     </div>
@@ -124,6 +124,42 @@ require_once 'inc/admin.view.inc.php';
                             </tr>
                             <?php } ?>
                         </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="admin-index-tables-container">
+                <div class="admin-index-products-table-container">
+                    <div class="admin-index-products-table-header">
+                        <h3>User Feedback</h3>
+                        <input type="text" placeholder="Search..">
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Buyer ID</th>
+                                <th>Buyer Name</th>
+                                <th>Ratings</th>
+                                <th>Reviews</th>
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($userFeedback as $feedback) { ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($feedback['user_id']) ?></td>
+                                <td><?php echo htmlspecialchars($feedback['fullname']) ?></td>
+                                <td><?php echo htmlspecialchars($feedback['rating']) ?></td>
+                                <td><?php echo htmlspecialchars($feedback['review']) ?></td>
+                                <td><?php echo htmlspecialchars($feedback['product_id']) ?></td>
+                                <td><?php echo htmlspecialchars($feedback['product_name']) ?></td>
+
+                            </tr>
+                            <?php } ?>
+                        </tbody>
 
                     </table>
                 </div>
@@ -131,6 +167,8 @@ require_once 'inc/admin.view.inc.php';
 
         </main>
     </div>
+
+
 
 
 

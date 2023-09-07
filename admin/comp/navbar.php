@@ -15,16 +15,25 @@
     <nav>
         <div class="admin-nav">
             <div id="admNavSidBar" class="admin-nav-side-bar">
+                <div class="admin-nav-side-bar-header">
+                    <h3>Aplaysale</h3>
+                </div>
                 <a href="javascript:void(0)" id="admNavSidBarX" class="closebtn">×</a>
-                <a href="index.php">Dashboard</a>
-                <a href="admin-users.php">Users</a>
-                <a href="add_product.php">Products</a>
-                <a href="#">Orders</a>
+                <ul>
+                    <li><i class="fa-solid fa-folder-tree"></i><a href="index.php">Dashboard</a></li>
+                    <li><i class="fa-solid fa-user-plus"></i><a href="admin-users.php">Users</a></li>
+                    <li><i class="fa-solid fa-cookie-bite"></i><a href="admin-products.php">Products</a></li>
+                    <li><i class="fa-solid fa-border-all"></i><a href="#">Orders</a></li>
+                    <li><i class="fa-solid fa-right-from-bracket"></i>
+                        <form action="../inc/login/logout.inc.php" method="post">
+                            <button style="" class="admin-index-nav-logout">Logout</button>
+                        </form>
+                    </li>
+                </ul>
             </div>
             <button id="admNavSidBarBtn" class="openbtn">☰</button>
-            <form action="../inc/login/logout.inc.php" method="post">
-                <button style="" class="nav-login-register-btn logout">Logout</button>
-            </form>
+            <a href="../index.php">Go back to store</a>
+
         </div>
     </nav>
 

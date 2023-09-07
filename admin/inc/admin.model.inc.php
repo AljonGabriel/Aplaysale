@@ -155,3 +155,17 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 return $result['user_count'];
 
 }
+
+function get_user_feedback(object $pdo) {
+$query = "SELECT r.id, r.user_id, r.product_id, r.rating, r.review, u.fullname, p.product_name
+FROM ratings r
+INNER JOIN users u ON r.user_id = u.id
+INNEr JOIN products p ON r.product_id = p.id";
+
+$stmt = $pdo->query($query);
+if ($stmt) {
+return $stmt->fetchAll(PDO::FETCH_ASSOC);
+} else {
+return [];
+}
+}
