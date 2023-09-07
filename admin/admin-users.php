@@ -1,7 +1,5 @@
-<?php 
-$page = 'admin';
-require_once '../inc/config_session.inc.php';
-require_once 'inc/admin.view.inc.php';
+<?php require_once '../inc/config_session.inc.php'; require_once 'inc/admin.view.inc.php'; $page = 'admin-users';
+
 ?>
 
 <!DOCTYPE html>

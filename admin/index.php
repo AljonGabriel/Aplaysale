@@ -1,7 +1,8 @@
 <?php 
-$page = 'admin';
 require_once '../inc/config_session.inc.php';
 require_once 'inc/admin.view.inc.php';
+$page = 'admin-index';
+
 ?>
 
 <!DOCTYPE html>
@@ -66,6 +67,7 @@ require_once 'inc/admin.view.inc.php';
                     <div class="admin-index-products-table-header">
                         <h3>Products</h3>
                         <input type="text" placeholder="Search..">
+                        <p>Edit Products</p>
                     </div>
                     <table>
                         <thead>
@@ -100,6 +102,7 @@ require_once 'inc/admin.view.inc.php';
                     <div class="admin-index-users-table-header">
                         <h3>Users</h3>
                         <input type="text" placeholder="Search..">
+                        <p>Edit Users</p>
                     </div>
                     <table>
                         <thead>
@@ -134,6 +137,7 @@ require_once 'inc/admin.view.inc.php';
                     <div class="admin-index-products-table-header">
                         <h3>User Feedback</h3>
                         <input type="text" placeholder="Search..">
+                        <p>Edit Ratings</p>
                     </div>
                     <table>
                         <thead>

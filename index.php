@@ -1,4 +1,5 @@
 <?php 
+
 require 'inc/config_session.inc.php';
 require_once __DIR__ . "/admin/inc/admin.view.inc.php";
 $page = 'index';

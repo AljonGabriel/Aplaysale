@@ -1,6 +1,12 @@
 <?php
+require 'inc/config_session.inc.php';
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+ }
+ 
 require_once __DIR__ . "/admin/inc/admin.view.inc.php";
 require_once "inc/ratings/rating_view.inc.php";
+
 
 
 // Find the product in $productData with the matching product_id

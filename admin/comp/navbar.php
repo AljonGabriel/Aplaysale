@@ -1,4 +1,5 @@
-<?php require_once '../inc/config_session.inc.php'; ?>
+<?php 
+require_once '../inc/config_session.inc.php'; ?>
 
 <head>
     <meta charset="UTF-8">
@@ -20,9 +21,16 @@
                 </div>
                 <a href="javascript:void(0)" id="admNavSidBarX" class="closebtn">×</a>
                 <ul>
-                    <li><i class="fa-solid fa-folder-tree"></i><a href="index.php">Dashboard</a></li>
-                    <li><i class="fa-solid fa-user-plus"></i><a href="admin-users.php">Users</a></li>
-                    <li><i class="fa-solid fa-cookie-bite"></i><a href="admin-products.php">Products</a></li>
+                    <li class="<?php echo ($page === 'admin-index') ? 'active' : ''; ?>"><i
+                            class="fa-solid fa-folder-tree"></i><a
+                            class="<?php echo ($page === 'admin-index') ? 'active' : ''; ?>"
+                            href="index.php">Dashboard</a></li>
+                    <li class="<?php echo ($page === 'admin-users') ? 'active' : ''; ?>"><i
+                            class="fa-solid fa-user-plus"></i><a href="admin-users.php"
+                            class="<?php echo ($page === 'admin-users') ? 'active' : ''; ?>">Users</a></li>
+                    <li class="<?php echo ($page === 'admin-products') ? 'active' : ''; ?>"><i
+                            class="fa-solid fa-cookie-bite"></i><a href="admin-products.php"
+                            class="<?php echo ($page === 'admin-products') ? 'active' : ''; ?>">Products</a></li>
                     <li><i class="fa-solid fa-border-all"></i><a href="#">Orders</a></li>
                     <li><i class="fa-solid fa-right-from-bracket"></i>
                         <form action="../inc/login/logout.inc.php" method="post">

@@ -194,6 +194,14 @@ nav {
   background-color: var(--secondary-background);
 }
 
+.active,
+.admin-nav-side-bar a .active {
+  padding: 5px 10px;
+  background-color: var(--secondary-background);
+  color: var(--accent) !important;
+  pointer-events: none;
+}
+
 .admin-nav-side-bar a {
   text-decoration: none;
   font-size: 1.3em;
