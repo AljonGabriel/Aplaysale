@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 :root {
   --success-button: #28a745;
@@ -277,4 +278,9 @@ nav {
 
 .admin-index-nav-logout:hover {
   color: var(--error-button);
+}
+
+.admin-nav-go-back-store {
+  font-family: var(--primary-font);
+  color: #000000;
 }

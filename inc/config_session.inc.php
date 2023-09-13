@@ -16,27 +16,27 @@ session_start();
 if (isset($_SESSION["user_id"])) {
     if (!isset($_SESSION["last_regeneration"])) {
         $_SESSION["last_regeneration"] = time();
-        echo "Session started or last regeneration not set. Current time: " . date('Y-m-d H:i:s', time()) . "<br>";
+      
     } else {
         $interval = 10;
 
         if (time() - $_SESSION["last_regeneration"] >= $interval) {
             session_regenerate_id(true);
             $_SESSION["last_regeneration"] = time();
-            echo "Session ID regenerated. Current time: " . date('Y-m-d H:i:s', time()) . "<br>";
+            
         }
     }
 } else {
     if (!isset($_SESSION["last_regeneration"])) {
         $_SESSION["last_regeneration"] = time();
-        echo "Session started or last regeneration not set. Current time: " . date('Y-m-d H:i:s', time()) . "<br>";
+        
     } else {
         $interval = 10;
 
         if (time() - $_SESSION["last_regeneration"] >= $interval) {
             session_regenerate_id(true);
             $_SESSION["last_regeneration"] = time();
-            echo "Session ID regenerated. Current time: " . date('Y-m-d H:i:s', time()) . "<br>";
+            
         }
     }
 }

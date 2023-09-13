@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return data;
       } catch (error) {
         console.error("Fetch error", error);
-        return {message: "An error occured"};
+        return {message: "An error occured" + error};
       }
     }
   }

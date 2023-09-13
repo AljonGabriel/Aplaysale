@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   //add event listener to signup form to prevent the submit default behaviour (Reload the page)
   document
-    .getElementById("sgnForm")
+    .getElementById("signupForm")
     .addEventListener("submit", async function (event) {
       event.preventDefault();
 

@@ -40,7 +40,7 @@ require_once '../inc/config_session.inc.php'; ?>
                 </ul>
             </div>
             <button id="admNavSidBarBtn" class="openbtn">☰</button>
-            <a href="../index.php">Go back to store</a>
+            <a class="admin-nav-go-back-store" href="../index.php">Go back to store</a>
 
         </div>
     </nav>
