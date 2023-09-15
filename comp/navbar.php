@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/navbar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 
 </style>
@@ -12,34 +13,37 @@
 <body>
     <div class="nav-container">
 
-        <div class="nav-li-container">
-            <div class="nav-logo">
-                <li>
-                    <h2>Aplaysale</h2>
-                </li>
+        <div class="nav-top-container">
+            <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') { ?>
+            <li class="nav-item"><a href="admin/index.php">Admin</a></li>
+            <?php } ?>
+        </div>
+
+        <div class="nav-middle-container">
+            <div class="nav-middle-logo-container">
+                <h2>Aplaysale</h2>
             </div>
-            <ul>
-                <li class="nav-item">
-                    <a class="<?php echo ($page === 'index') ? 'active' : ''; ?>" href="index.php">Home</a>
-                </li>
-                <li class="nav-item"><a href="index.php">Products</a></li>
-                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') { ?>
-                <li class="nav-item"><a href="admin/index.php">Admin</a></li>
-                <?php } ?>
+            <div class="nav-middle-li-container">
+                <ul>
+                    <li class="nav-item">
+                        <a class="<?php echo ($page === 'index') ? 'active' : ''; ?>" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="<?php echo ($page === 'product') ? 'active' : ''; ?>" href="index.php">Products</a>
+                    </li>
 
-            </ul>
+                </ul>
 
-            <div class="nav-search-container">
-                <input class="nav-search-input" type="search" placeholder="Search item ..">
             </div>
+            <div class="nav-middle-search-container">
+                <input type="search" placeholder="Search Product">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
 
+            </div>
 
             <?php  if(!isset($_SESSION['user_id'])) { ?>
-
-
-
-            <div class="nav-login-register">
-                <button class="nav-login-register-btn" id="modalBtn">Sign-in</button>
+            <div class="nav-middle-modal-login">
+                <button class="nav-login-register-btn" id="modalBtn">Log-in</button>
 
                 <div class="modal" id="modal">
                     <div class="modal-content" id="modalContent">
@@ -84,38 +88,79 @@
                                 </fieldset>
                             </form>
                             <a href="signup.php" class="dhay">don't have account yet ?</a>
-
                         </div>
                     </div>
                 </div>
             </div>
-            <script src="js/modal.js"></script>
-            <script src="js/loginErrorHandlers.js"></script>
 
+            <?php } else {?>
+            <div class="nav-middle-user-icon-cart-container">
+                <div class="nav-middle-dropdown-settings-container" data-dropdown>
+                    <i class="fa-solid fa-user nav-middle-dropdown-menu-item" data-dropdown-button></i>
+                    <div class="nav-middle-dropdown-menu-container">
+                        <ul>
+                            <li><a class="nav-middle-dropdown-menu-item" href="">Settings</a></li>
+                            <li><a class="nav-middle-dropdown-menu-item" href="">Orders</a></li>
+                            <div class="nav-middle-logout-container">
+                                <form action="inc/login/logout.inc.php" method="post">
+                                    <li><button class="nav-middle-dropdown-menu-item">Logout</button></li>
+                                </form>
+                            </div>
+                        </ul>
 
-            <?php } else if(isset($_SESSION['user_id'])) {?>
+                    </div>
 
-            <p class="user-name-greeting">Hi,
-                <?php echo isset($_SESSION['user_name']) ? explode(' ', htmlspecialchars($_SESSION['user_name']))[0] : ''; ?>
-            </p>
-
-
-
-            <form action="inc/login/logout.inc.php" method="post">
-                <button style="" class="nav-login-register-btn logout">Logout</button>
-            </form>
-
-
-
+                </div>
+                <div class="nav-middle-cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+            </div>
             <?php } ?>
-
+        </div>
+        <!-- NAV BOTTOM -->
+        <div class="nav-bottom-container">
+            <div class="nav-bottom-li-container">
+                <ul>
+                    <li class="nav-item"><a href="index.php">Electronics</a></li>
+                    <li class="nav-item"><a href="index.php">Clothing & Fashion</a></li>
+                    <li class="nav-item"><a href="index.php">Books & Stationery</a></li>
+                    <li class="nav-item"><a href="index.php">Beauty & Personal Care
+                        </a></li>
+                    <li class="nav-item"><a href="index.php">Food & Groceries</a></li>
+                    <li class="nav-item"><a href="index.php">Health & Wellness</a></li>
+                    <li class="nav-item"><a href="index.php">Toys & Games</a></li>
+                    <li class="nav-item"><a href="index.php">Jewelry & Watches</a></li>
+                </ul>
+            </div>
         </div>
 
     </div>
-
-
-
-
 </body>
+<script src="js/modal.js"></script>
+<script src="js/loginErrorHandlers.js"></script>
+<script>
+// Listen for clicks anywhere on the page
+document.addEventListener('mouseover', (e) => {
+    // Check if the clicked element is a dropdown button
+    const isDropdownButton = e.target.matches('[data-dropdown-button]');
+
+    // If the clicked element is inside a dropdown, do nothing
+    if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
+
+    let currentDropdown;
+
+    // If the clicked element is a dropdown button, toggle the dropdown's active state
+    if (isDropdownButton) {
+        currentDropdown = e.target.closest('[data-dropdown]');
+        currentDropdown.classList.toggle('active');
+    }
+
+    // Loop through all active dropdowns and close them, except for the current one
+    document.querySelectorAll('[data-dropdown].active').forEach((dropdown) => {
+        if (dropdown === currentDropdown) return;
+        dropdown.classList.remove('active');
+    });
+});
+</script>
 
 </html>
