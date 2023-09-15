@@ -404,6 +404,7 @@ nav {
   -webkit-animation-duration: 0.4s;
   animation-name: jackInTheBox;
   animation-duration: 0.4s;
+  z-index: 2;
 }
 
 .modal-nav-login {

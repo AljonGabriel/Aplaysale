@@ -39,6 +39,88 @@
                     </select>
                     <button>Add Categories</button>
                     <button>Add Product</button>
+                    <div class="admin-products-add-item-modal">
+                        <div class="admin-products-modal-content">
+
+                            <form action="inc/admin_add_product_handler.inc.php" method="POST">
+
+                                <fieldset class="admin-products-fieldset">
+                                    <div class="admin-products-input-container">
+                                        <label for="admPrdImg"><small style="color: red">*</small>Product
+                                            image :
+                                        </label>
+                                        <input id="admPrdImg" type="file" accept="image/*" name="admPrdImg[]" multiple
+                                            enctype="multipart/form-data">
+                                        <div class="fieldErrors">
+                                            <p class="error-message" id="admPrdImgError" class="error-message">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="admin-products-input-container">
+                                        <label for="admPrdNam"><small style="color: red">*</small>Product name
+                                            :
+                                        </label>
+                                        <input id="admPrdNam" type="text" placeholder="Nike Shoes">
+                                        <div class="fieldErrors">
+                                            <p class="error-message" id="admPrdNamError" class="error-message">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="admin-products-input-container">
+                                        <label for="admPrdPrc"><small style="color: red">*</small>Product
+                                            price :
+                                        </label>
+                                        <input id="admPrdPrc" type="text" placeholder="599">
+                                        <div class="fieldErrors">
+                                            <p class="error-message" id="admPrdPrcError" class="error-message">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="admin-products-input-container">
+                                        <label for="admPrdStk"><small style="color: red">*</small>Stock :
+                                        </label>
+                                        <select name="admPrdStk" id="">
+                                            <option value="">Single Item Stock</option>
+                                            <option value="">Multiple Item Stock</option>
+                                        </select>
+                                        <div class="fieldErrors">
+                                            <p class="error-message" id="admPrdStkError" class="error-message">
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-products-input-container">
+                                        <label for="admPrdMItm"><small style="color: red">*</small>Quantity :
+                                        </label>
+                                        <input type="text" name="admPrdMItm">
+                                        <div class="fieldErrors">
+                                            <p class="error-message" id="admPrdMItmError" class="error-message">
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-products-input-container">
+                                        <label for="admPrdDesc"><small style="color: red">*</small>Product
+                                            description :
+                                        </label>
+                                        <textarea id="admPrdDesc" type="text" placeholder="599"></textarea>
+                                        <div class="fieldErrors">
+                                            <p class="error-message" id="admPrdDescError" class="error-message">
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-products-submit-container">
+                                        <button type="submit">Add</button>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <button>Add Product</button>
                 </div>
                 <table>
                     <thead>

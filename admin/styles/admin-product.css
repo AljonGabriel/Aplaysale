@@ -77,3 +77,87 @@
 .admin-products-table-container table thead tr:nth-child(even) {
   background-color: var(--secondary-background);
 }
+
+.admin-products-add-item-modal {
+  /*   display: none; */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  margin: 0 auto;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  transition: 0.2s ease-in;
+  box-sizing: border-box;
+}
+
+.admin-products-modal-content {
+  position: relative;
+  width: 500px;
+  height: auto;
+  background-color: var(--secondary-background);
+  margin: auto auto;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.admin-products-input-container label {
+  font-family: var(--primary-font);
+  color: var(--text-color);
+  font-size: 0.8em;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.admin-products-legend {
+  font-family: var(--primary-font);
+  font-style: italic;
+  background-color: var(--white);
+  padding: 5px;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+}
+
+.admin-products-input-container input {
+  border: 1px solid var(--secondary-background);
+  padding: 15px;
+  width: 100%;
+}
+
+.admin-products-input-container textarea {
+  border: 1px solid var(--secondary-background);
+  padding: 15px;
+
+  height: 100px;
+  resize: none;
+  width: 100%;
+}
+
+.admin-products-input-container select {
+  border: 1px solid var(--secondary-background);
+  padding: 15px;
+  width: 100%;
+}
+
+.admin-products-fieldset {
+  padding: 10px;
+  width: auto;
+  gap: 15px;
+  background-color: var(--white);
+  border: 1px solid var(--secondary-background);
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.admin-products-submit-container button {
+  width: 100%;
+  border: none;
+  background-color: var(--accent);
+  color: var(--white);
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+}
