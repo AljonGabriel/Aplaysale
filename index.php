@@ -21,13 +21,30 @@ $page = 'index';
 
     <div class="home">
         <main>
+            <div class="home-slideshow-container">
+                <div class="home-slideshow-img-container slide-fade">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="">
+                    <div class="slideshow-text">
+                        <h2>Your Text Goes Here</h2>
+                        <p>Additional description or content</p>
+                    </div>
+                </div>
+                <div class="home-slideshow-img-container">
+                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                        alt="">
+                    <div class="slideshow-text">
+                        <h2>Your Text Goes Here</h2>
+                        <p>Additional description or content</p>
+                    </div>
+                </div>
+            </div>
             <!--New product container-->
             <div class="home-new-items-container">
                 <div class="home-products-header">
                     <h2>New Arrivals</h2>
-
                 </div>
-                <hr class="home-hr"><br>
+                <br>
                 <div class="home-new-item-list-container">
                     <?php foreach ($productData as $product) { ?>
                     <div class="home-product-container">
@@ -69,6 +86,27 @@ $page = 'index';
         </main>
     </div>
 </body>
+<script>
+// JavaScript to handle the automatic slideshow
+let slideIndex = 0;
+const slides = document.querySelectorAll(".home-slideshow-img-container");
 
+function showSlides() {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 5000); // Change image every 5 seconds (adjust as needed)
+}
+
+showSlides(); // Start the slideshow
+</script>
 
 </html>

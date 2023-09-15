@@ -12,7 +12,6 @@
 }
 
 .home-new-items-container {
-  background-color: var(--white);
   border: 1px solid var(--secondary-background);
   border-radius: 5px;
   padding: 15px;
@@ -88,4 +87,85 @@
   color: var(--white);
   text-align: center;
   padding: 3%;
+}
+
+/* Slideshow */
+
+.home-slideshow-container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.home-slideshow-img-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.home-slideshow-img-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure images maintain aspect ratio */
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Create a black transparent overlay */
+.home-slideshow-img-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the last value (0.5) for transparency */
+  z-index: 1; /* Ensure the overlay is behind the text or other content */
+}
+
+/* Style for the text */
+.slideshow-text {
+  display: grid;
+  place-content: cen;
+  position: absolute;
+  top: 0; /* Adjust the top position as needed */
+  left: 0; /* Adjust the left position as needed */
+  width: 100%;
+  height: 100%;
+  color: white; /* Text color */
+  z-index: 2; /* Ensure the text is on top of the overlay */
+  font-family: var(--primary-font);
+}
+
+.slideshow-text h2 {
+  font-size: 24px; /* Adjust font size as needed */
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow-text p {
+  font-size: 16px; /* Adjust font size as needed */
+  margin: 0;
+  padding: 0;
+}
+.slide-fade {
+  animation: fade 5s infinite;
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
 }
