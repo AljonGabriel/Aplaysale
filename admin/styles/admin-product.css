@@ -79,7 +79,7 @@
 }
 
 .admin-products-add-item-modal {
-  /*   display: none; */
+  display: none;
   position: fixed; /* Stay in place */
   z-index: 2; /* Sit on top */
   margin: 0 auto;
@@ -99,7 +99,7 @@
   width: 500px;
   height: auto;
   background-color: var(--secondary-background);
-  margin: auto auto;
+  margin: 20px auto;
   padding: 15px;
   border-radius: 5px;
 }
