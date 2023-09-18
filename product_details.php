@@ -129,9 +129,6 @@ foreach ($productData as $product) {
                     </div>
                     <?php } ?>
                 </div>
-
-
-
                 <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     const stars = document.querySelectorAll('.star');

@@ -79,9 +79,9 @@
                                     <div class="admin-products-input-container">
                                         <label for="admPrdStk"><small style="color: red">*</small>Stock :
                                         </label>
-                                        <select name="admPrdStk" id="">
-                                            <option value="">Single Item Stock</option>
-                                            <option value="">Multiple Item Stock</option>
+                                        <select name="admPrdStk" id="admPrdStk">
+                                            <option value="singleItem">Single Item Stock</option>
+                                            <option value="multipleItem">Multiple Item Stock</option>
                                         </select>
                                         <div class="fieldErrors">
                                             <p class="error-message" id="admPrdStkError" class="error-message">
@@ -89,12 +89,13 @@
                                         </div>
                                     </div>
 
+                                    <div class="admin-products-input-container" id="admPrdMItmContainer"></div>
+
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdMItm"><small style="color: red">*</small>Quantity :
-                                        </label>
-                                        <input type="text" name="admPrdMItm">
+                                        <label for="admPrdVar">Variant :</label>
+
                                         <div class="fieldErrors">
-                                            <p class="error-message" id="admPrdMItmError" class="error-message">
+                                            <p class="error-message" id="admPrdStkError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
@@ -161,5 +162,6 @@
         </main>
     </div>
 </body>
+<script src="js/adminProductInputStock.js"></script>
 
 </html>
