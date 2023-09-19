@@ -27,6 +27,9 @@ main {
   --black: #000000;
   --secondary-background: #f8f8f8;
 
+  --input-border: #e5e5e5;
+  --input-border-hover: #b7b7b7;
+
   --primary-font: "Open Sans", sans-serif;
 }
 
@@ -43,6 +46,10 @@ html {
   background-size: contain;
   width: 100%;
   height: 100%;
+}
+
+.asterisk {
+  color: var(--error-button);
 }
 
 .user-name-greeting {

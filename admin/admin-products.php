@@ -41,50 +41,52 @@
                     <button>Add Product</button>
                     <div class="admin-products-add-item-modal">
                         <div class="admin-products-modal-content">
+                            <form class="admin-products-modal-content-form"
+                                action="inc/admin_add_product_handler.inc.php" method="POST">
 
-                            <form action="inc/admin_add_product_handler.inc.php" method="POST">
+                                <!--Fieldset Basic Information-->
 
                                 <fieldset class="admin-products-fieldset">
+                                    <div class="admin-products-modal-content-form-header">
+                                        <h3>Basic Information</h3>
+                                    </div>
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdImg"><small style="color: red">*</small>Product
-                                            image :
+                                        <label for="admPrdImg"><small class="asterisk">*</small>Product Image
                                         </label>
                                         <input id="admPrdImg" type="file" accept="image/*" name="admPrdImg[]" multiple
                                             enctype="multipart/form-data">
                                         <div class="fieldErrors">
-                                            <p class="error-message" id="admPrdImgError" class="error-message">
+                                            <p id="admPrdImgError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdNam"><small style="color: red">*</small>Product name
-                                            :
+                                        <label for="admPrdNam"><small class="asterisk">*</small>Product Name
                                         </label>
                                         <input id="admPrdNam" type="text" placeholder="Nike Shoes">
                                         <div class="fieldErrors">
-                                            <p class="error-message" id="admPrdNamError" class="error-message">
+                                            <p id="admPrdNamError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdPrc"><small style="color: red">*</small>Product
-                                            price :
+                                        <label for="admPrdPrc"><small class="asterisk">*</small>Product Price
                                         </label>
-                                        <input id="admPrdPrc" type="text" placeholder="599">
+                                        <input id="admPrdPrc" type="number" placeholder="599">
                                         <div class="fieldErrors">
-                                            <p class="error-message" id="admPrdPrcError" class="error-message">
+                                            <p id="admPrdPrcError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdStk"><small style="color: red">*</small>Stock :
+                                        <label for="admPrdStk"><small class="asterisk">*</small>Stock
                                         </label>
                                         <select name="admPrdStk" id="admPrdStk">
                                             <option value="singleItem">Single Item Stock</option>
                                             <option value="multipleItem">Multiple Item Stock</option>
                                         </select>
                                         <div class="fieldErrors">
-                                            <p class="error-message" id="admPrdStkError" class="error-message">
+                                            <p id="admPrdStkError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
@@ -92,30 +94,39 @@
                                     <div class="admin-products-input-container" id="admPrdMItmContainer"></div>
 
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdVar">Variant :</label>
+                                        <label for="admPrdCat"><small class="asterisk">*</small>Product Category</label>
+                                        <select name="admPrdCat" id="admPrdCat">
+                                            <option value="" disabled selected>Select an Option</option>
+                                            <option value="1">Video Games</option>
+                                            <option value="2">Laptops & Computers</option>
+                                            <option value="3">Consoles & Handheld Devices</option>
+                                            <option value="4">Computer Components</option>
+                                            <option value="5">Apparel & Clothing</option>
+                                            <option value="6">Footwear & Shoes</option>
+                                        </select>
 
                                         <div class="fieldErrors">
-                                            <p class="error-message" id="admPrdStkError" class="error-message">
+                                            <p id="admPrdCatError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
 
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdDesc"><small style="color: red">*</small>Product
-                                            description :
+                                        <label for="admPrdDesc"><small class="asterisk">*</small>Product Description :
                                         </label>
-                                        <textarea id="admPrdDesc" type="text" placeholder="599"></textarea>
+                                        <textarea id="admPrdDesc" type="text"
+                                            placeholder="Detailed item information"></textarea>
                                         <div class="fieldErrors">
-                                            <p class="error-message" id="admPrdDescError" class="error-message">
+                                            <p id="admPrdDescError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
-
-                                    <div class="admin-products-submit-container">
-                                        <button type="submit">Add</button>
-                                    </div>
-
                                 </fieldset>
+                                <div class="admin-products-submit-container">
+                                    <button class="admin-products-submit-container-submit" type="submit">Add</button>
+                                    <button class="admin-products-submit-container-cancel">Cancel</button>
+                                </div>
+
                             </form>
                         </div>
 

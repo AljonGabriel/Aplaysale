@@ -95,13 +95,16 @@
 }
 
 .admin-products-modal-content {
-  position: relative;
-  width: 500px;
-  height: auto;
+  width: 1000px;
+  height: 16000;
   background-color: var(--secondary-background);
   margin: 20px auto;
   padding: 15px;
   border-radius: 5px;
+}
+
+.admin-products-modal-content-form {
+  display: block;
 }
 
 .admin-products-input-container label {
@@ -121,30 +124,43 @@
   border-radius: 5px;
 }
 
+.admin-products-input-container select,
 .admin-products-input-container input {
-  border: 1px solid var(--secondary-background);
+  border: 1px solid var(--input-border);
   padding: 15px;
+  height: 50px;
+  resize: none;
   width: 100%;
+  border-radius: 4px;
+  transition: 0.1s ease-in-out;
 }
 
 .admin-products-input-container textarea {
-  border: 1px solid var(--secondary-background);
+  border: 1px solid var(--input-border);
   padding: 15px;
-
-  height: 100px;
+  height: 50px;
   resize: none;
   width: 100%;
+  border-radius: 4px;
+  transition: 0.1s ease-in-out;
 }
 
-.admin-products-input-container select {
-  border: 1px solid var(--secondary-background);
-  padding: 15px;
-  width: 100%;
+.admin-products-input-container select option {
+  font-size: 1em; /* You can change the font size */
+  background-color: var(--white); /* Set a background color */
+  color: var(--text-color); /* Set the text color */
+  border-radius: 0; /* Remove border-radius */
+}
+
+.admin-products-input-container select:hover,
+.admin-products-input-container textarea:hover,
+.admin-products-input-container input:hover {
+  border: 1px solid var(--input-border-hover);
 }
 
 .admin-products-fieldset {
   padding: 10px;
-  width: auto;
+  width: 100%;
   gap: 15px;
   background-color: var(--white);
   border: 1px solid var(--secondary-background);
@@ -152,12 +168,30 @@
   border-radius: 5px;
 }
 
-.admin-products-submit-container button {
-  width: 100%;
+.admin-products-submit-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-products-submit-container .admin-products-submit-container-submit {
+  width: 100px;
+  height: 30px;
   border: none;
   background-color: var(--accent);
   color: var(--white);
-  height: 50px;
   border-radius: 5px;
   cursor: pointer;
+  border: 1px solid var(--input-border);
+}
+
+.admin-products-submit-container .admin-products-submit-container-cancel {
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: var(--white);
+  color: var(--text-color);
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid var(--input-border);
 }

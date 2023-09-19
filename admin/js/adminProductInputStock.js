@@ -27,9 +27,18 @@ stockSel.addEventListener("change", function () {
     input.setAttribute("name", "itemName");
     input.setAttribute("id", "admPrdMItm"); // Set the input's id to match the label's "for" attribute
 
+    const divErrorCon = document.createElement("div");
+    divErrorCon.setAttribute("class", "fieldErrors");
+
+    const elementError = document.createElement("p");
+    elementError.setAttribute("id", "admPrdMItmError");
+    elementError.setAttribute("class", "error-message");
+
+    divErrorCon.appendChild(elementError);
     // Append the label and input elements to the stockContainer
     stockContainer.appendChild(label);
     stockContainer.appendChild(input);
+    stockContainer.appendChild(divErrorCon);
   } else {
     // If the selected value is not "multipleItem", remove any existing input elements
     stockContainer.innerHTML = "";

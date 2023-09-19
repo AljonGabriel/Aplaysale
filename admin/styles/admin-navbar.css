@@ -6,6 +6,8 @@
   text-decoration: none;
 }
 :root {
+  --default-primary-button: #007bff;
+  --default-secondary-button: #9c9c9c;
   --success-button: #28a745;
   --error-button: #dc3545;
   --warning-button: #ffc107;
@@ -16,16 +18,19 @@
 
   --text: #031c12;
   --background: #f6fefb;
-  --secondary-background: #fbfafb;
-
+  --secondary-background: #f8f8f8;
   --primary: #6be2ef;
+  --secondary: #c3d8f9;
   --accent: #1764d9;
 
   --white: #ffffff;
   --black: #000000;
 
+  --input-border: #e5e5e5;
+  --input-border-hover: #b7b7b7;
+
+  --primary-font: "Open Sans", sans-serif;
   --secondary-font: "Hind", sans-serif;
-  --primary-font: "Montserrat", sans-serif;
 }
 
 body,
@@ -33,6 +38,11 @@ html {
   background-size: contain;
   width: 100%;
   height: 100%;
+}
+
+.asterisk {
+  color: var(--error-button);
+  margin-right: 5px;
 }
 
 main {

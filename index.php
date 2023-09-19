@@ -101,6 +101,5 @@ function showSlides() {
 showSlides(); // Start the slideshow
 </script>
 
-<script src="js/adminProductInputStock.js"></script>
 
 </html>
