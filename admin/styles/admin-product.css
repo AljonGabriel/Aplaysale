@@ -79,7 +79,7 @@
 }
 
 .admin-products-add-item-modal {
-  /*  display: none; */
+  display: none;
   position: fixed; /* Stay in place */
   z-index: 2; /* Sit on top */
   margin: 0 auto;
@@ -94,15 +94,57 @@
   box-sizing: border-box;
 }
 
+.modal-close {
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: #fff;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  text-align: center; /* Center the text horizontally */
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 30px; /* Vertically center the text (assuming 30px height) */
+}
+
 .admin-products-modal-content {
+  position: relative;
   width: 1000px;
-  height: 16000;
+  height: auto;
   background-color: var(--secondary-background);
   margin: 20px auto;
   padding: 15px;
   border-radius: 5px;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
 }
 
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
 .admin-products-modal-content-form {
   display: block;
 }
@@ -180,17 +222,6 @@
   border: none;
   background-color: var(--accent);
   color: var(--white);
-  border-radius: 5px;
-  cursor: pointer;
-  border: 1px solid var(--input-border);
-}
-
-.admin-products-submit-container .admin-products-submit-container-cancel {
-  width: 100px;
-  height: 30px;
-  border: none;
-  background-color: var(--white);
-  color: var(--text-color);
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid var(--input-border);

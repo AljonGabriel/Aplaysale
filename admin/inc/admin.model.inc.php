@@ -2,6 +2,9 @@
 
 declare(strict_types = 1);
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 function get_users_count(object $pdo) {
 
     $query = "SELECT COUNT(*) as user_count FROM users";
@@ -47,17 +50,22 @@ function update_user(object $pdo, string $userId, string $name, string $address,
     
 }
 
-function add_product(object $pdo, array|bool $uploaded_files, string $product_name, string $product_price, string $product_description, string $product_category) {
+function add_product(object $pdo, array|bool $uploaded_files, string $product_name, string $product_price, string $single_product_stock, string $multiple_product_stock, string $product_brand, string $product_category, string $product_description) {
             try {
-                /* highlight_string("<?php " . var_export ($uploaded_files, true) . ";?>"); */
+               /*  highlight_string("<?php " . var_export ($multiple_product_stock, true) . ";?>"); */
+
+                $stockValue = isset($multiple_product_stock) ? $multiple_product_stock : $single_product_stock;
+
+
                 // Insert product information into the products table
-                $productQuery = "INSERT INTO products (product_name, product_price, product_description, category_id) VALUES (:nam,
-                :price, :desc, :cat);";
+                $productQuery = "INSERT INTO products (product_name, product_price, product_stocks, product_brand, category_id, product_description) VALUES (:product_name, :product_price, :product_stocks, :product_brand, :product_category, :product_description);";
                 $productStmt = $pdo->prepare($productQuery);
-                $productStmt->bindValue(":nam", $product_name);
-                $productStmt->bindValue(":price", $product_price);
-                $productStmt->bindValue(":desc", $product_description);
-                $productStmt->bindValue(":cat", $product_category);
+                $productStmt->bindValue(":product_name", $product_name);
+                $productStmt->bindValue(":product_price", $product_price);
+                $productStmt->bindValue(":product_stocks", $stockValue);
+                $productStmt->bindValue(":product_brand", $product_brand);
+                $productStmt->bindValue(":product_category", $product_category);
+                $productStmt->bindValue(":product_description", $product_description);
                 $productStmt->execute();
 
                 // Get the ID of the last inserted product

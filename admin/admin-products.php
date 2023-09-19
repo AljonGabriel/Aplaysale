@@ -38,11 +38,11 @@
                         <option value="Jewelry & Watches">Jewelry & Watches</option>
                     </select>
                     <button>Add Categories</button>
-                    <button id="adminProductsAddProduct" data-button-id="addProduct">Add Product</button>
-                    <div class="admin-products-add-item-modal " id="addProduct">
-                        <div class="admin-products-modal-content">
+                    <button class="modal-trigger" id="adminProductsAddProduct" data-modal-id="addProduct">Add Product</button>
+                    <div class="admin-products-add-item-modal modal-container" id="addProduct">
+                        <div class="admin-products-modal-content" id="addProduct">
                             <form class="admin-products-modal-content-form"
-                                action="inc/admin_add_product_handler.inc.php" method="POST">
+                                action="inc/admin_add_product_handler.inc.php" method="post">
 
                                 <!--Fieldset Basic Information-->
 
@@ -52,62 +52,62 @@
                                         <br>
                                     </div>
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdImg"><small class="asterisk">*</small>Product Image
+                                        <label for="admPrdImgInp"><small class="asterisk">*</small>Product Image
                                         </label>
-                                        <input id="admPrdImg" type="file" accept="image/*" name="admPrdImg[]" multiple
+                                        <input id="admPrdImgInp" type="file" accept="image/*" name="admPrdImgInp[]" multiple
                                             enctype="multipart/form-data">
                                         <div class="fieldErrors">
-                                            <p id="admPrdImgError" class="error-message">
+                                            <p id="admPrdImgInpError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdNam"><small class="asterisk">*</small>Product Name
+                                        <label for="admPrdNamInp"><small class="asterisk">*</small>Product Name
                                         </label>
-                                        <input name="admPrdNam" id="admPrdNam" type="text" placeholder="Nike Shoes">
+                                        <input name="admPrdNamInp" id="admPrdNamInp" type="text" placeholder="Nike Shoes">
                                         <div class="fieldErrors">
-                                            <p id="admPrdNamError" class="error-message">
+                                            <p id="admPrdNamInpError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdPrc"><small class="asterisk">*</small>Product Price
+                                        <label for="admPrdPrcInp"><small class="asterisk">*</small>Product Price
                                         </label>
-                                        <input name="admPrdPrc" id="admPrdPrc" type="number" placeholder="599">
+                                        <input name="admPrdPrcInp" id="admPrdPrcInp" type="number" placeholder="599">
                                         <div class="fieldErrors">
-                                            <p id="admPrdPrcError" class="error-message">
+                                            <p id="admPrdPrcInpError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdStk"><small class="asterisk">*</small>Stock
+                                        <label for="admPrdStkSel"><small class="asterisk">*</small>Stock
                                         </label>
-                                        <select name="admPrdStk" id="admPrdStk">
-                                            <option value="Single Item Stock">Single Item Stock</option>
-                                            <option value="multipleItem">Multiple Item Stock</option>
+                                        <select name="admPrdStkSel" id="admPrdStkSel">
+                                            <option value="singleItem">Single Stock Item</option>
+                                            <option value="multipleItem">Multiple Stock Item</option>
                                         </select>
                                         <div class="fieldErrors">
-                                            <p id="admPrdStkError" class="error-message">
+                                            <p id="admPrdStkSelError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
 
                                     <div class="admin-products-input-container" id="admPrdMItmContainer">
-                                        <label for="admPrdMItm"><small class="asterisk">*</small>Quantity
+                                        <label for="admPrdMItmInp"><small class="asterisk">*</small>Quantity
                                         </label>
-                                        <input type="number" name="admPrdMItm" placeholder="1 - 99">
+                                        <input type="number" name="admPrdMItmInp" placeholder="1 - 99">
                                         <div class="fieldErrors">
-                                            <p id="admPrdMItmError" class="error-message">
+                                            <p id="admPrdMItmInpError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
 
                                     <div class="admin-products-input-container">
-                                        <label for="admPrdBrd"><small class="asterisk">*</small>Product Brand
+                                        <label for="admPrdBrdInp"><small class="asterisk">*</small>Product Brand
                                         </label>
-                                        <input id="admPrdBrd" type="text" placeholder="Nike Shoes" name="admPrdBrd">
+                                        <input id="admPrdBrdInp" type="text" placeholder="Sony" name="admPrdBrdInp">
                                         <div class="fieldErrors">
-                                            <p id="admPrdBrdError" class="error-message">
+                                            <p id="admPrdBrdInpError" class="error-message">
                                             </p>
                                         </div>
                                     </div>
@@ -143,14 +143,13 @@
                                 </fieldset>
                                 <div class="admin-products-submit-container">
                                     <button class="admin-products-submit-container-submit" type="submit">Add</button>
-                                    <button class="admin-products-submit-container-cancel">Cancel</button>
+                                    <span class="modal-close" data-modal-id="addProduct">Cancel</span>
+                                    
                                 </div>
                             </form>
                         </div>
 
                     </div>
-
-                    <button>Add Product</button>
                 </div>
                 <table>
                     <thead>

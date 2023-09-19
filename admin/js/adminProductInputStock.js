@@ -1,4 +1,4 @@
-const stockSelect = document.querySelector("#admPrdStk");
+const stockSelect = document.querySelector("#admPrdStkSel");
 const multipleItemContainer = document.querySelector("#admPrdMItmContainer");
 
 stockSelect.addEventListener("change", () => {
