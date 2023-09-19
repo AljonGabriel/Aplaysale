@@ -5,8 +5,6 @@ const modalInputs = document.getElementsByClassName(
   "admin-modal-update-user-input",
 );
 
-console.log(modalInputs);
-
 function openModal(modalId, data, userId) {
   const modalNameInput = document.querySelector(`#admModUpdNamInp_${userId}`),
     modalAddInput = document.querySelector(`#admModUpdAddInp_${userId}`),

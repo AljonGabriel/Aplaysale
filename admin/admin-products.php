@@ -38,8 +38,8 @@
                         <option value="Jewelry & Watches">Jewelry & Watches</option>
                     </select>
                     <button>Add Categories</button>
-                    <button>Add Product</button>
-                    <div class="admin-products-add-item-modal">
+                    <button id="adminProductsAddProduct" data-button-id="addProduct">Add Product</button>
+                    <div class="admin-products-add-item-modal " id="addProduct">
                         <div class="admin-products-modal-content">
                             <form class="admin-products-modal-content-form"
                                 action="inc/admin_add_product_handler.inc.php" method="POST">
@@ -48,7 +48,8 @@
 
                                 <fieldset class="admin-products-fieldset">
                                     <div class="admin-products-modal-content-form-header">
-                                        <h3>Basic Information</h3>
+                                        <h3>Add Product</h3>
+                                        <br>
                                     </div>
                                     <div class="admin-products-input-container">
                                         <label for="admPrdImg"><small class="asterisk">*</small>Product Image
@@ -63,7 +64,7 @@
                                     <div class="admin-products-input-container">
                                         <label for="admPrdNam"><small class="asterisk">*</small>Product Name
                                         </label>
-                                        <input id="admPrdNam" type="text" placeholder="Nike Shoes">
+                                        <input name="admPrdNam" id="admPrdNam" type="text" placeholder="Nike Shoes">
                                         <div class="fieldErrors">
                                             <p id="admPrdNamError" class="error-message">
                                             </p>
@@ -72,7 +73,7 @@
                                     <div class="admin-products-input-container">
                                         <label for="admPrdPrc"><small class="asterisk">*</small>Product Price
                                         </label>
-                                        <input id="admPrdPrc" type="number" placeholder="599">
+                                        <input name="admPrdPrc" id="admPrdPrc" type="number" placeholder="599">
                                         <div class="fieldErrors">
                                             <p id="admPrdPrcError" class="error-message">
                                             </p>
@@ -82,7 +83,7 @@
                                         <label for="admPrdStk"><small class="asterisk">*</small>Stock
                                         </label>
                                         <select name="admPrdStk" id="admPrdStk">
-                                            <option value="singleItem">Single Item Stock</option>
+                                            <option value="Single Item Stock">Single Item Stock</option>
                                             <option value="multipleItem">Multiple Item Stock</option>
                                         </select>
                                         <div class="fieldErrors">
@@ -91,7 +92,25 @@
                                         </div>
                                     </div>
 
-                                    <div class="admin-products-input-container" id="admPrdMItmContainer"></div>
+                                    <div class="admin-products-input-container" id="admPrdMItmContainer">
+                                        <label for="admPrdMItm"><small class="asterisk">*</small>Quantity
+                                        </label>
+                                        <input type="number" name="admPrdMItm" placeholder="1 - 99">
+                                        <div class="fieldErrors">
+                                            <p id="admPrdMItmError" class="error-message">
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="admin-products-input-container">
+                                        <label for="admPrdBrd"><small class="asterisk">*</small>Product Brand
+                                        </label>
+                                        <input id="admPrdBrd" type="text" placeholder="Nike Shoes" name="admPrdBrd">
+                                        <div class="fieldErrors">
+                                            <p id="admPrdBrdError" class="error-message">
+                                            </p>
+                                        </div>
+                                    </div>
 
                                     <div class="admin-products-input-container">
                                         <label for="admPrdCat"><small class="asterisk">*</small>Product Category</label>
@@ -114,7 +133,7 @@
                                     <div class="admin-products-input-container">
                                         <label for="admPrdDesc"><small class="asterisk">*</small>Product Description :
                                         </label>
-                                        <textarea id="admPrdDesc" type="text"
+                                        <textarea name="admPrdDesc" id="admPrdDesc" type="text"
                                             placeholder="Detailed item information"></textarea>
                                         <div class="fieldErrors">
                                             <p id="admPrdDescError" class="error-message">
@@ -126,7 +145,6 @@
                                     <button class="admin-products-submit-container-submit" type="submit">Add</button>
                                     <button class="admin-products-submit-container-cancel">Cancel</button>
                                 </div>
-
                             </form>
                         </div>
 
@@ -174,5 +192,6 @@
     </div>
 </body>
 <script src="js/adminProductInputStock.js"></script>
+<script src="js/generalModal.js"></script>
 
 </html>
