@@ -1,50 +1,48 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
-function add_rating(object $pdo, string $user_id, string $prod_id, string $rating, string $review) {
+function add_rating(object $pdo, string $user_id, string $prod_id, string $rating, string $review)
+{
 
     try {
-       $query = "INSERT INTO ratings(user_id, product_id, rating, review) VALUES (:user_id, :prod_id, :rating, :review);";
-       $stmt = $pdo->prepare($query);
-       $stmt->bindValue(":user_id", $user_id);
-       $stmt->bindValue(":prod_id", $prod_id);
-       $stmt->bindValue(":rating", $rating);
-       $stmt->bindValue(":review", $review);
-       $stmt->execute();
+        $query = "INSERT INTO ratings(user_id, product_id, rating, review) VALUES (:user_id, :prod_id, :rating, :review);";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindValue(":user_id", $user_id);
+        $stmt->bindValue(":prod_id", $prod_id);
+        $stmt->bindValue(":rating", $rating);
+        $stmt->bindValue(":review", $review);
+        $stmt->execute();
 
-       if ($stmt) {
-        echo "User inserted successfully";
-       } else {
-        echo "failed";
-       }
-
+        if ($stmt) {
+            echo "User inserted successfully";
+        } else {
+            echo "failed";
+        }
     } catch (PDOException $e) {
         echo $e;
     }
-
-    
 }
 
-function get_product_user_rating(object $pdo, string $product_id) {
-   try {
+function get_product_user_rating(object $pdo, string $product_id)
+{
+    try {
 
-    $query = "SELECT r.*, u.fullname FROM ratings r
+        $query = "SELECT r.*, u.fullname FROM ratings r
               JOIN users u ON r.user_id = u.id
               WHERE r.product_id = :product_id";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
-    $stmt->execute();
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-
-   } catch (PDOException $e) {
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
         echo $e;
-   }
+    }
 }
 
-function generateStarRating($rating) {
+function generateStarRating($rating)
+{
     $ratingHTML = '';
     for ($i = 1; $i <= 5; $i++) {
         if ($i <= $rating) {

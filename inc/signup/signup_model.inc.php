@@ -1,9 +1,10 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
 
-function get_email(object $pdo, string $email) {
+function get_email(object $pdo, string $email)
+{
 
     $query = "SELECT email FROM users WHERE email = :email";
     $stmt = $pdo->prepare($query);
@@ -11,22 +12,18 @@ function get_email(object $pdo, string $email) {
     $stmt->execute();
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
 
     return $result;
-
-
-    
-
 }
 
 function set_user(object $pdo, string $fullname,  string $completeaddress, string $city, string $country, string $phonenumber, string $email, string $pwd)
 {
-    
+
     $query = "INSERT INTO users (fullname, completeaddress, city, country, phonenumber, email, pwd, role) VALUES (:fullname, :completeaddress, :city, :country, :phonenumber, :email, :pwd, 'user')";
 
     $options = [
-        'cost'=> 12,
+        'cost' => 12,
     ];
 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT, $options);
@@ -42,5 +39,4 @@ function set_user(object $pdo, string $fullname,  string $completeaddress, strin
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":pwd", $hashedPwd);
     $stmt->execute();
-
 }

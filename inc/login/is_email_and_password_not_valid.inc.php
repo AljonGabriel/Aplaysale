@@ -16,7 +16,7 @@ if (!$userinfo['exists']) {
     // User exists, verify password
     if (is_password_mismatch($plainPassword, $userinfo['user']['pwd'])) {
         $response = ['message' => 'Password does not match'];
-    } 
+    }
 }
 
 header('Content-Type: application/json');
