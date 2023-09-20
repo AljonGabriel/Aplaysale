@@ -27,15 +27,19 @@ if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === "POST") {
             $pdo = null;
             $stmt = null;
     
-            header("Location: ../index.php");
+            header("Location: ../admin_products.php?Insert=Success");
             die();
+        } else {
+            header("Location: ../index.php?Image=Error");
+            die();
+
         }
     } catch (PDOException $e) {
     // Handle database-related errors
     $errorMessage = "Database Error: " . $e->getMessage();
-    error_log($errorMessage, 3, "error_log.txt"); // Log to a file
     exit(); // Stop script execution
     }
+
 } else {
     header("Location: ../index.php");
     die();

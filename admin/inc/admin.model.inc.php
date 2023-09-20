@@ -54,7 +54,13 @@ function add_product(object $pdo, array|bool $uploaded_files, string $product_na
             try {
                /*  highlight_string("<?php " . var_export ($multiple_product_stock, true) . ";?>"); */
 
-                $stockValue = isset($multiple_product_stock) ? $multiple_product_stock : $single_product_stock;
+                $stockValue = null;
+
+                if($single_product_stock === "multipleItem") {
+                    $stockValue = $multiple_product_stock;
+                } else {
+                    $stockValue = $single_product_stock;
+                }
 
 
                 // Insert product information into the products table

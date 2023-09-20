@@ -41,7 +41,7 @@
                     <button class="modal-trigger" id="adminProductsAddProduct" data-modal-id="addProduct">Add Product</button>
                     <div class="admin-products-add-item-modal modal-container" id="addProduct">
                         <div class="admin-products-modal-content" id="addProduct">
-                            <form class="admin-products-modal-content-form"
+                            <form class="admin-products-modal-content-form" enctype="multipart/form-data"
                                 action="inc/admin_add_product_handler.inc.php" method="post">
 
                                 <!--Fieldset Basic Information-->
@@ -83,7 +83,7 @@
                                         <label for="admPrdStkSel"><small class="asterisk">*</small>Stock
                                         </label>
                                         <select name="admPrdStkSel" id="admPrdStkSel">
-                                            <option value="singleItem">Single Stock Item</option>
+                                            <option value="Single Stock Item">Single Stock Item</option>
                                             <option value="multipleItem">Multiple Stock Item</option>
                                         </select>
                                         <div class="fieldErrors">

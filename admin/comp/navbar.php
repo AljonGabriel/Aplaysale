@@ -26,10 +26,10 @@ require_once '../inc/config_session.inc.php'; ?>
                             class="<?php echo ($page === 'admin-index') ? 'active' : ''; ?>"
                             href="index.php">Dashboard</a></li>
                     <li class="<?php echo ($page === 'admin-users') ? 'active' : ''; ?>"><i
-                            class="fa-solid fa-user-plus"></i><a href="admin-users.php"
+                            class="fa-solid fa-user-plus"></i><a href="admin_users.php"
                             class="<?php echo ($page === 'admin-users') ? 'active' : ''; ?>">Users</a></li>
                     <li class="<?php echo ($page === 'admin-products') ? 'active' : ''; ?>"><i
-                            class="fa-solid fa-cookie-bite"></i><a href="admin-products.php"
+                            class="fa-solid fa-cookie-bite"></i><a href="admin_products.php"
                             class="<?php echo ($page === 'admin-products') ? 'active' : ''; ?>">Products</a></li>
                     <li><i class="fa-solid fa-border-all"></i><a href="#">Orders</a></li>
                     <li><i class="fa-solid fa-right-from-bracket"></i>

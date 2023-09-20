@@ -1,7 +1,7 @@
 .home {
   padding-top: 15px;
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: var(--secondary-background);
 }
 
@@ -12,9 +12,9 @@
 }
 
 .home-new-items-container {
-  border: 1px solid var(--secondary-background);
   border-radius: 5px;
   padding: 15px;
+  width: 100%;
 }
 
 .home-products-header {
@@ -31,15 +31,16 @@
 
 .home-new-item-list-container {
   display: flex;
-  justify-content: center;
+  padding: 15px;
+
   align-items: center;
   gap: 15px;
+  overflow: auto;
 }
 
 .home-product-container {
   width: 250px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: 1px solid var(--input-border);
   background-color: var(--white);
   border-radius: 5px;
   flex-shrink: 0;
@@ -47,6 +48,7 @@
 }
 
 .home-product-image img {
+  padding: 5px;
   width: 100%;
   height: 200px;
   border-radius: 5px;
