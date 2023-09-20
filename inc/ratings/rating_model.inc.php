@@ -24,7 +24,7 @@ function add_rating(object $pdo, string $user_id, string $prod_id, string $ratin
     }
 }
 
-function get_product_user_rating(object $pdo, string $product_id)
+function get_product_rating_by_id(object $pdo, string $product_id)
 {
     try {
 
@@ -34,6 +34,22 @@ function get_product_user_rating(object $pdo, string $product_id)
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
         $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        echo $e;
+    }
+}
+
+
+function get_all_product_rating(object $pdo)
+{
+    try {
+
+        $query = "SELECT r.*, u.fullname FROM ratings r
+              JOIN users u ON r.user_id = u.id;";
+        $stmt = $pdo->query($query);
+
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {

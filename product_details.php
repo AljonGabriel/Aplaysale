@@ -1,9 +1,10 @@
 <?php
 require 'inc/config_session.inc.php';
+$page = "product_details";
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
- }
- 
+}
+
 require_once __DIR__ . "/admin/inc/admin.view.inc.php";
 require_once "inc/ratings/rating_view.inc.php";
 
@@ -38,21 +39,21 @@ foreach ($productData as $product) {
             <div class="product-details-top-container">
                 <div class="product-details-slide-show">
                     <?php
-                     if ($selectedProduct) { 
-                      // Explode the concatenated image URLs into an array
-                      $imageUrls = explode(',', $selectedProduct['image_urls']);
-                      $images = $imageUrls; // All images, including the first one
+                    if ($selectedProduct) {
+                        // Explode the concatenated image URLs into an array
+                        $imageUrls = explode(',', $selectedProduct['image_urls']);
+                        $images = $imageUrls; // All images, including the first one
                         $slideNumber = 1;
                         foreach ($images as $image) {
                     ?>
-                    <div class="product-details-img-slide-container fade">
-                        <div class="numbertext"><?php echo $slideNumber++; ?> / <?php echo count($images); ?></div>
-                        <img src="<?php echo htmlspecialchars($image) ?>" style="width:100%">
-                    </div>
-                    <?php } ?>
-                    <a class="prev" onclick="plusSlides(-1)">❮</a>
-                    <a class="next" onclick="plusSlides(1)">❯</a>
-                    <script src="js/slideShow.js"></script>
+                            <div class="product-details-img-slide-container fade">
+                                <div class="numbertext"><?php echo $slideNumber++; ?> / <?php echo count($images); ?></div>
+                                <img src="<?php echo htmlspecialchars($image) ?>" style="width:100%">
+                            </div>
+                        <?php } ?>
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+                        <script src="js/slideShow.js"></script>
                 </div>
                 <div class="product-details-info">
                     <h2><?php echo htmlspecialchars($selectedProduct['product_name']); ?></h2>
@@ -63,38 +64,37 @@ foreach ($productData as $product) {
                 </div>
             </div>
 
-            <?php } else { ?>
+        <?php } else { ?>
             <p>Product not found.</p>
-            <?php } ?>
+        <?php } ?>
 
-            <div class="product-details-middle">
-                <div class="product-details-description">
-                    <h2>Product Description</h2>
-                    <pre>Description: <?php echo htmlspecialchars($selectedProduct['product_description']); ?></pre>
-                </div>
+        <div class="product-details-middle">
+            <div class="product-details-description">
+                <h2>Product Description</h2>
+                <pre>Description: <?php echo htmlspecialchars($selectedProduct['product_description']); ?></pre>
             </div>
+        </div>
 
-            <div class="product-details-bottom">
-                <div class="product-details-ratings-container">
+        <div class="product-details-bottom">
+            <div class="product-details-ratings-container">
 
-                    <div class="product-details-provide-rating-container">
-                        <?php
-                               $alreadyRated = false;
-                               foreach ($ratings as $user) {
-                                   if ($_SESSION['user_id'] === $user['user_id'] && intval($_GET['product_id']) === $user['product_id']) {
-                                       $alreadyRated = true;
-                                       break; // Exit the loop once a matching rating is found
-                                   }
-                               }
+                <div class="product-details-provide-rating-container">
+                    <?php
+                    $alreadyRated = false;
+                    foreach ($ratings as $user) {
+                        if ($_SESSION['user_id'] === $user['user_id'] && intval($_GET['product_id']) === $user['product_id']) {
+                            $alreadyRated = true;
+                            break; // Exit the loop once a matching rating is found
+                        }
+                    }
 
-                               if($alreadyRated) {
-                        ?>
+                    if ($alreadyRated) {
+                    ?>
                         <p>Thank you for the feedback</p>
 
 
-                        <?php } else {?>
-                        <form action="inc/ratings/ratings_handler.inc.php?product_id=<?php echo $productId; ?>"
-                            method="POST">
+                    <?php } else { ?>
+                        <form action="inc/ratings/ratings_handler.inc.php?product_id=<?php echo $productId; ?>" method="POST">
                             <div class="product-details-provide-rating-input-container">
                                 <div class="product-details-provide-rating-header">
                                     <h3>Hows the product</h3>
@@ -106,30 +106,27 @@ foreach ($productData as $product) {
                                     <span class="star" data-rating="3">&#9733;</span>
                                     <span class="star" data-rating="4">&#9733;</span>
                                     <span class="star" data-rating="5">&#9733;</span>
-                                    <input name="proDetPrvRatStrHdnInp" id="proDetPrvRatStrHdnInp" type="text"
-                                        class="product-details-provide-rating-input" hidden>
+                                    <input name="proDetPrvRatStrHdnInp" id="proDetPrvRatStrHdnInp" type="text" class="product-details-provide-rating-input" hidden>
                                 </div>
 
-                                <input name="proDetPrvRatStrInp" type="text"
-                                    class="product-details-provide-rating-input"
-                                    placeholder="Tell us about the product..">
+                                <input name="proDetPrvRatStrInp" type="text" class="product-details-provide-rating-input" placeholder="Tell us about the product..">
                                 <div class="product-details-provide-rating-submit">
                                     <button type="submit">Submit feedback</button>
                                 </div>
                             </div>
                         </form>
-                        <?php }?>
-                    </div>
-                    <h2>Product Ratings</h2>
-                    <?php foreach($ratings as $rating) { ?>
+                    <?php } ?>
+                </div>
+                <h2>Product Ratings</h2>
+                <?php foreach ($ratings as $rating) { ?>
                     <div class="product-details-user-rating">
                         <h3><?php echo $rating['fullname'] ?></h3>
                         <p><?php echo generateStarRating($rating['rating']); ?></p>
                         <p><?php echo $rating['review'] ?></p>
                     </div>
-                    <?php } ?>
-                </div>
-                <script>
+                <?php } ?>
+            </div>
+            <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     const stars = document.querySelectorAll('.star');
                     const ratingHiddenInp = document.getElementById(
@@ -164,8 +161,8 @@ foreach ($productData as $product) {
                         });
                     }
                 });
-                </script>
-            </div>
+            </script>
+        </div>
     </div>
 
     </main>

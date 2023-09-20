@@ -1,8 +1,10 @@
 <?php
 
 require 'inc/config_session.inc.php';
-require_once __DIR__ . "/admin/inc/admin.view.inc.php";
 $page = 'index';
+require_once __DIR__ . "/admin/inc/admin.view.inc.php";
+require_once "inc/ratings/rating_view.inc.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +37,7 @@ $page = 'index';
                     <h2>New Arrivals</h2>
                 </div>
                 <br>
-                <div class="home-new-item-list-container">
+                <div class="home-new-arrival-list-container">
                     <?php foreach ($productData as $product) { ?>
                         <?php if (isset($_SESSION["user_id"])) { ?>
                             <a href="product_details.php?product_id=<?php echo $product['product_id']; ?>" class="">
@@ -49,11 +51,19 @@ $page = 'index';
                                         <!-- Display additional images as a gallery or slideshow -->
                                         <!-- Add your gallery or slideshow HTML/JavaScript code here -->
                                     </div>
-                                    <div class="home-product-name">
-                                        <h2><?php echo htmlspecialchars($product['product_name']); ?></h2>
-                                    </div>
-                                    <div class="home-product-price">
+                                    <div class="home-product-details-container">
+                                        <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
                                         <p>₱<?php echo htmlspecialchars($product['product_price']); ?></p>
+                                        <?php
+                                        // Retrieve and display ratings for this product
+
+                                        $productRatings = get_product_rating_by_id($pdo, $product['product_id']);
+                                        foreach ($productRatings as $rating) {
+                                        ?>
+                                            <div class="product-details-user-rating">
+                                                <p class="starred"><?php echo generateStarRating($rating['rating']); ?></p>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </a>
@@ -69,10 +79,8 @@ $page = 'index';
                                         <!-- Display additional images as a gallery or slideshow -->
                                         <!-- Add your gallery or slideshow HTML/JavaScript code here -->
                                     </div>
-                                    <div class="home-product-name">
-                                        <h2><?php echo htmlspecialchars($product['product_name']); ?></h2>
-                                    </div>
-                                    <div class="home-product-price">
+                                    <div class="home-product-details-container">
+                                        <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
                                         <p>₱<?php echo htmlspecialchars($product['product_price']); ?></p>
                                     </div>
                                 </div>
@@ -80,14 +88,7 @@ $page = 'index';
                         <?php } ?>
                     <?php } ?>
                 </div>
-
             </div>
-
-            <!--CATEGORY-->
-
-            <!--SHOE CATEGORY-->
-
-
         </main>
     </div>
 </body>
@@ -113,6 +114,5 @@ $page = 'index';
 
     showSlides(); // Start the slideshow
 </script>
-
 
 </html>

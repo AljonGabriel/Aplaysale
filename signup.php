@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "inc/signup/signup_view.inc.php";
 require_once "inc/config_session.inc.php";
 
@@ -11,9 +11,7 @@ require_once "inc/config_session.inc.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/register.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
-        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <title>Register</title>
 </head>
@@ -35,8 +33,7 @@ require_once "inc/config_session.inc.php";
                         <!--Full Name input -->
                         <div class="signup-full-name-input-container">
                             <label for="sgnNamInp">Complete Name:</label>
-                            <input class="signup-input" type="text" id="sgnNamInp" name="sgnNamInp"
-                                placeholder="John Doe">
+                            <input class="signup-input" type="text" id="sgnNamInp" name="sgnNamInp" placeholder="John Doe">
                             <div class="fieldErrors">
                                 <p class="error-message" id="sgnNamInpError"></p>
                             </div>
@@ -44,8 +41,7 @@ require_once "inc/config_session.inc.php";
                         <!--Address input -->
                         <div class="signup-address-input-container">
                             <label for="sgnAddInp">Complete Address:</label>
-                            <input class="signup-input" type="text" id="sgnAddInp" name="sgnAddInp"
-                                placeholder="123 Main Street, City, Country">
+                            <input class="signup-input" type="text" id="sgnAddInp" name="sgnAddInp" placeholder="123 Main Street, City, Country">
                             <div class="fieldErrors">
                                 <p class="error-message" id="sgnAddInpError"></p>
                             </div>
@@ -66,8 +62,7 @@ require_once "inc/config_session.inc.php";
                             <label for="sgnPhoInp">Phone Number: </label>
                             <small class="signup-small">Valid format: +63 9123456XXX or 09xx xxx xxxx</small>
 
-                            <input class="signup-input" type="tel" id="sgnPhoInp" name="sgnPhoInp"
-                                placeholder="+63 9123456XXX">
+                            <input class="signup-input" type="tel" id="sgnPhoInp" name="sgnPhoInp" placeholder="+63 9123456XXX">
                             <div class="fieldErrors">
                                 <p class="error-message" id="sgnPhoInpError" class="error-message"></p>
                             </div>
@@ -79,8 +74,7 @@ require_once "inc/config_session.inc.php";
                         <!--Email input -->
                         <div class="signup-email-input-container">
                             <label for="sgnEmaInp">Email:</label>
-                            <input class="signup-input" type="email" id="sgnEmaInp" name="sgnEmaInp"
-                                placeholder="johndoe@example.com">
+                            <input class="signup-input" type="email" id="sgnEmaInp" name="sgnEmaInp" placeholder="johndoe@example.com">
                             <div class="fieldErrors">
                                 <p class="error-message" id="sgnEmaInpError"></p>
                             </div>
@@ -92,15 +86,13 @@ require_once "inc/config_session.inc.php";
                                 a mix of uppercase
                                 and lowercase letters, numbers, and special characters (e.g., !, @, #, $). This will
                                 help ensure the security of your account."</small>
-                            <input class="signup-input" type="password" id="sgnPwdInp" name="sgnPwdInp"
-                                placeholder="Your Password">
+                            <input class="signup-input" type="password" id="sgnPwdInp" name="sgnPwdInp" placeholder="Your Password">
                             <div class="fieldErrors">
                                 <p class="error-message" id="sgnPwdInpError"></p>
                             </div>
                             <!--RePassword input -->
                             <label for="sgnRePwdInp">Confirm Password:</label>
-                            <input class="signup-input" type="password" id="sgnRePwdInp" name="sgnRePwdInp"
-                                placeholder="Confirm your password">
+                            <input class="signup-input" type="password" id="sgnRePwdInp" name="sgnRePwdInp" placeholder="Confirm your password">
                             <div class="fieldErrors">
                                 <p class="error-message" id="sgnRePwdInpError" class="error-message"></p>
                             </div>

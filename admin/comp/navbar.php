@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once '../inc/config_session.inc.php'; ?>
 
 <head>
@@ -21,16 +21,9 @@ require_once '../inc/config_session.inc.php'; ?>
                 </div>
                 <a href="javascript:void(0)" id="admNavSidBarX" class="closebtn">×</a>
                 <ul>
-                    <li class="<?php echo ($page === 'admin-index') ? 'active' : ''; ?>"><i
-                            class="fa-solid fa-folder-tree"></i><a
-                            class="<?php echo ($page === 'admin-index') ? 'active' : ''; ?>"
-                            href="index.php">Dashboard</a></li>
-                    <li class="<?php echo ($page === 'admin-users') ? 'active' : ''; ?>"><i
-                            class="fa-solid fa-user-plus"></i><a href="admin_users.php"
-                            class="<?php echo ($page === 'admin-users') ? 'active' : ''; ?>">Users</a></li>
-                    <li class="<?php echo ($page === 'admin-products') ? 'active' : ''; ?>"><i
-                            class="fa-solid fa-cookie-bite"></i><a href="admin_products.php"
-                            class="<?php echo ($page === 'admin-products') ? 'active' : ''; ?>">Products</a></li>
+                    <li class="<?php echo ($page === 'admin-index') ? 'active' : ''; ?>"><i class="fa-solid fa-folder-tree"></i><a class="<?php echo ($page === 'admin-index') ? 'active' : ''; ?>" href="index.php">Dashboard</a></li>
+                    <li class="<?php echo ($page === 'admin-users') ? 'active' : ''; ?>"><i class="fa-solid fa-user-plus"></i><a href="admin_users.php" class="<?php echo ($page === 'admin-users') ? 'active' : ''; ?>">Users</a></li>
+                    <li class="<?php echo ($page === 'admin-products') ? 'active' : ''; ?>"><i class="fa-solid fa-cookie-bite"></i><a href="admin_products.php" class="<?php echo ($page === 'admin-products') ? 'active' : ''; ?>">Products</a></li>
                     <li><i class="fa-solid fa-border-all"></i><a href="#">Orders</a></li>
                     <li><i class="fa-solid fa-right-from-bracket"></i>
                         <form action="../inc/login/logout.inc.php" method="post">
@@ -46,22 +39,22 @@ require_once '../inc/config_session.inc.php'; ?>
     </nav>
 
     <script>
-    const sidebarBtn = document.querySelector("#admNavSidBarBtn")
-    const sidebarX = document.querySelector("#admNavSidBarX")
+        const sidebarBtn = document.querySelector("#admNavSidBarBtn")
+        const sidebarX = document.querySelector("#admNavSidBarX")
 
-    sidebarBtn.addEventListener("click", () => {
-        document.getElementById("admNavSidBar").style.width = "250px";
-        document.querySelector("main").style.marginLeft = "250px";
-        document.querySelector("main").style.width = "auto";
+        sidebarBtn.addEventListener("click", () => {
+            document.getElementById("admNavSidBar").style.width = "250px";
+            document.querySelector("main").style.marginLeft = "250px";
+            document.querySelector("main").style.width = "auto";
 
-    });
+        });
 
-    sidebarX.addEventListener("click", () => {
-        document.getElementById("admNavSidBar").style.width = "0";
-        document.querySelector("main").style.marginLeft = "0";
-        document.querySelector("main").style.width = "auto";
+        sidebarX.addEventListener("click", () => {
+            document.getElementById("admNavSidBar").style.width = "0";
+            document.querySelector("main").style.marginLeft = "0";
+            document.querySelector("main").style.width = "auto";
 
-    })
+        })
     </script>
 
 </body>

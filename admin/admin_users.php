@@ -1,4 +1,6 @@
-<?php require_once '../inc/config_session.inc.php'; require_once 'inc/admin.view.inc.php'; $page = 'admin-users';
+<?php require_once '../inc/config_session.inc.php';
+require_once 'inc/admin.view.inc.php';
+$page = 'admin-users';
 
 ?>
 
@@ -44,118 +46,93 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($usersData as $userData) {?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($userData['id']); ?></td>
-                            <td><?php echo htmlspecialchars($userData['fullname']); ?></td>
-                            <td><?php echo htmlspecialchars($userData['completeaddress']); ?></td>
-                            <td><?php echo htmlspecialchars($userData['city']); ?></td>
-                            <td><?php echo htmlspecialchars($userData['country']); ?></td>
-                            <td><?php echo htmlspecialchars($userData['phonenumber']); ?></td>
-                            <td><?php echo htmlspecialchars($userData['email']); ?></td>
-                            <td data-role="<?php echo htmlspecialchars($userData['role']); ?>">
-                                <?php echo htmlspecialchars($userData['role']); ?></td>
-                            <td><?php echo htmlspecialchars($userData['created_at']); ?></td>
-                            <td> <button data-user-id="<?php echo $userData['id']; ?>" class="admin-update-user-btn"
-                                    data-modal-id="updateUser_<?php echo $userData['id']; ?>"><i
-                                        class="fa-solid fa-pen-to-square"></i></button>
-                                <div class="modal" id="updateUser_<?php echo $userData['id']; ?>">
-                                    <div class="modal-content">
-                                        <span class="close" data-modal-id="updateUser">&times;</span>
-                                        <div class="modal-header">
-                                            <h2>Update this user</h2>
-                                        </div>
-                                        <div class="modal-body">
+                        <?php foreach ($usersData as $userData) { ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($userData['id']); ?></td>
+                                <td><?php echo htmlspecialchars($userData['fullname']); ?></td>
+                                <td><?php echo htmlspecialchars($userData['completeaddress']); ?></td>
+                                <td><?php echo htmlspecialchars($userData['city']); ?></td>
+                                <td><?php echo htmlspecialchars($userData['country']); ?></td>
+                                <td><?php echo htmlspecialchars($userData['phonenumber']); ?></td>
+                                <td><?php echo htmlspecialchars($userData['email']); ?></td>
+                                <td data-role="<?php echo htmlspecialchars($userData['role']); ?>">
+                                    <?php echo htmlspecialchars($userData['role']); ?></td>
+                                <td><?php echo htmlspecialchars($userData['created_at']); ?></td>
+                                <td> <button data-user-id="<?php echo $userData['id']; ?>" class="admin-update-user-btn" data-modal-id="updateUser_<?php echo $userData['id']; ?>"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <div class="modal" id="updateUser_<?php echo $userData['id']; ?>">
+                                        <div class="modal-content">
+                                            <span class="close" data-modal-id="updateUser">&times;</span>
+                                            <div class="modal-header">
+                                                <h2>Update this user</h2>
+                                            </div>
+                                            <div class="modal-body">
 
-                                            <fieldset class="admin-fieldset">
-                                                <form action="inc/admin_update_user.inc.php" method="post"
-                                                    id="admModUpdForm_<?php echo $userData['id']; ?>">
+                                                <fieldset class="admin-fieldset">
+                                                    <form action="inc/admin_update_user.inc.php" method="post" id="admModUpdForm_<?php echo $userData['id']; ?>">
 
-                                                    <div class="admin-modal-update-user-input-container">
-                                                        <label for="admModUpdUIDInp">Id:</label>
-                                                        <input id="admModUpdUIDInp_<?php echo $userData['id'] ?>"
-                                                            type="text" name="admModUpdUIDInp"
-                                                            class="admin-modal-update-user-input" disabled>
-                                                    </div>
-
-                                                    <div class="admin-modal-update-user-input-container">
-                                                        <input id="admModUpdUIDInpHidden_<?php echo $userData['id'] ?>"
-                                                            type="text" name="admModUpdUIDInp"
-                                                            class="admin-modal-update-user-input" hidden>
-                                                    </div>
-
-                                                    <div class="admin-modal-update-user-input-container">
-                                                        <label for="admModUpdNamInp">Name:</label>
-                                                        <input id="admModUpdNamInp_<?php echo $userData['id'] ?>"
-                                                            type="text" name="admModUpdNamInp"
-                                                            class="admin-modal-update-user-input">
-                                                        <div class="fieldErrors">
-                                                            <p class="error-message"
-                                                                id="admModUpdNamInp_<?php echo $userData['id'] ?>Error"
-                                                                class="error-message"></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="admin-modal-update-user-input-container">
-                                                        <label for="admModUpdAddInp">Address:</label>
-                                                        <input id="admModUpdAddInp_<?php echo $userData['id'] ?>"
-                                                            type="text" name="admModUpdAddInp"
-                                                            class="admin-modal-update-user-input">
-                                                        <div class="fieldErrors">
-                                                            <p class="error-message"
-                                                                id="admModUpdAddInp_<?php echo $userData['id'] ?>Error"
-                                                                class="error-message"></p>
+                                                        <div class="admin-modal-update-user-input-container">
+                                                            <label for="admModUpdUIDInp">Id:</label>
+                                                            <input id="admModUpdUIDInp_<?php echo $userData['id'] ?>" type="text" name="admModUpdUIDInp" class="admin-modal-update-user-input" disabled>
                                                         </div>
 
-                                                    </div>
-                                                    <div class="admin-modal-update-user-input-container">
-                                                        <label for="admModCitSel">City:</label>
-                                                        <select class="admin-modal-update-user-city-select"
-                                                            id="admModCitSel_<?php echo $userData['id'] ?>"
-                                                            name="admModCitSel">
-                                                            <option value="" disabled selected>Select a city
-                                                            </option>
-                                                            <option value="Philippines">Philiipines
-                                                            </option>
-                                                        </select>
-                                                        <div class="fieldErrors">
-                                                            <p class="error-message"
-                                                                id="admModCitSel_<?php echo $userData['id'] ?>Error"
-                                                                class="error-message"></p>
+                                                        <div class="admin-modal-update-user-input-container">
+                                                            <input id="admModUpdUIDInpHidden_<?php echo $userData['id'] ?>" type="text" name="admModUpdUIDInp" class="admin-modal-update-user-input" hidden>
                                                         </div>
-                                                    </div>
-                                                    <div class="admin-modal-update-user-input-container">
-                                                        <label for="admModUpdRolSel">Role:</label>
-                                                        <select class="admin-modal-update-user-city-select"
-                                                            id="admModUpdRolSel_<?php echo $userData['id'] ?>"
-                                                            name="admModUpdRolSel">
-                                                            <option value="" disabled selected>Select a role
-                                                            </option>
-                                                            <option value="admin">Admin</option>
-                                                            <option value="user">User</option>
-                                                        </select>
-                                                        <div class="fieldErrors">
-                                                            <p class="error-message"
-                                                                id="admModUpdRolSel_<?php echo $userData['id'] ?>Error"
-                                                                class="error-message"></p>
+
+                                                        <div class="admin-modal-update-user-input-container">
+                                                            <label for="admModUpdNamInp">Name:</label>
+                                                            <input id="admModUpdNamInp_<?php echo $userData['id'] ?>" type="text" name="admModUpdNamInp" class="admin-modal-update-user-input">
+                                                            <div class="fieldErrors">
+                                                                <p class="error-message" id="admModUpdNamInp_<?php echo $userData['id'] ?>Error" class="error-message"></p>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                        <div class="admin-modal-update-user-input-container">
+                                                            <label for="admModUpdAddInp">Address:</label>
+                                                            <input id="admModUpdAddInp_<?php echo $userData['id'] ?>" type="text" name="admModUpdAddInp" class="admin-modal-update-user-input">
+                                                            <div class="fieldErrors">
+                                                                <p class="error-message" id="admModUpdAddInp_<?php echo $userData['id'] ?>Error" class="error-message"></p>
+                                                            </div>
 
-                                                    <div class="admin-updateuser-btn-container">
-                                                        <button type="submit"
-                                                            class="admin-modal-update-user-submit">Update</button>
-                                                    </div>
-                                                </form>
+                                                        </div>
+                                                        <div class="admin-modal-update-user-input-container">
+                                                            <label for="admModCitSel">City:</label>
+                                                            <select class="admin-modal-update-user-city-select" id="admModCitSel_<?php echo $userData['id'] ?>" name="admModCitSel">
+                                                                <option value="" disabled selected>Select a city
+                                                                </option>
+                                                                <option value="Philippines">Philiipines
+                                                                </option>
+                                                            </select>
+                                                            <div class="fieldErrors">
+                                                                <p class="error-message" id="admModCitSel_<?php echo $userData['id'] ?>Error" class="error-message"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="admin-modal-update-user-input-container">
+                                                            <label for="admModUpdRolSel">Role:</label>
+                                                            <select class="admin-modal-update-user-city-select" id="admModUpdRolSel_<?php echo $userData['id'] ?>" name="admModUpdRolSel">
+                                                                <option value="" disabled selected>Select a role
+                                                                </option>
+                                                                <option value="admin">Admin</option>
+                                                                <option value="user">User</option>
+                                                            </select>
+                                                            <div class="fieldErrors">
+                                                                <p class="error-message" id="admModUpdRolSel_<?php echo $userData['id'] ?>Error" class="error-message"></p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="admin-updateuser-btn-container">
+                                                            <button type="submit" class="admin-modal-update-user-submit">Update</button>
+                                                        </div>
+                                                    </form>
 
 
-                                            </fieldset>
+                                                </fieldset>
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <button class="admin-delete-user-btn" id="updateUser"><i
-                                        class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
+                                    <button class="admin-delete-user-btn" id="updateUser"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
                         <?php } ?>
                     </tbody>
                 </table>

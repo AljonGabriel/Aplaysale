@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once '../inc/config_session.inc.php';
 require_once 'inc/admin.view.inc.php';
 $page = 'admin-index';
@@ -81,18 +81,18 @@ $page = 'admin-index';
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($productData as $product) { $imgUrls = explode(",", $product['image_urls']);?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($product['product_id']) ?></td>
-                                <td><img src="<?php echo htmlspecialchars($imgUrls[0]); ?>"
-                                        alt="<?php echo htmlspecialchars($product['product_name']) ?>"></td>
-                                <td><?php echo htmlspecialchars($product['product_name']) ?></td>
-                                <!--  <td>
+                            <?php foreach ($productData as $product) {
+                                $imgUrls = explode(",", $product['image_urls']); ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($product['product_id']) ?></td>
+                                    <td><img src="<?php echo htmlspecialchars($imgUrls[0]); ?>" alt="<?php echo htmlspecialchars($product['product_name']) ?>"></td>
+                                    <td><?php echo htmlspecialchars($product['product_name']) ?></td>
+                                    <!--  <td>
                             <pre><?php echo htmlspecialchars($product['product_description']) ?></pre>
                         </td> -->
-                                <td><?php echo htmlspecialchars($product['category_name']) ?></td>
-                                <td><?php echo htmlspecialchars($product['product_price']) ?></td>
-                            </tr>
+                                    <td><?php echo htmlspecialchars($product['category_name']) ?></td>
+                                    <td><?php echo htmlspecialchars($product['product_price']) ?></td>
+                                </tr>
                             <?php } ?>
                         </tbody>
 
@@ -116,15 +116,15 @@ $page = 'admin-index';
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($usersData as $user) { ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($user['id']) ?></td>
-                                <td><?php echo htmlspecialchars($user['fullname']) ?></td>
-                                <td><?php echo htmlspecialchars($user['completeaddress']) ?></td>
-                                <td><?php echo htmlspecialchars($user['phonenumber']) ?></td>
-                                <td><?php echo htmlspecialchars($user['email']) ?></td>
-                                <td><?php echo htmlspecialchars($user['role']) ?></td>
-                            </tr>
+                            <?php foreach ($usersData as $user) { ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($user['id']) ?></td>
+                                    <td><?php echo htmlspecialchars($user['fullname']) ?></td>
+                                    <td><?php echo htmlspecialchars($user['completeaddress']) ?></td>
+                                    <td><?php echo htmlspecialchars($user['phonenumber']) ?></td>
+                                    <td><?php echo htmlspecialchars($user['email']) ?></td>
+                                    <td><?php echo htmlspecialchars($user['role']) ?></td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -152,16 +152,16 @@ $page = 'admin-index';
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($userFeedback as $feedback) { ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($feedback['user_id']) ?></td>
-                                <td><?php echo htmlspecialchars($feedback['fullname']) ?></td>
-                                <td><?php echo htmlspecialchars($feedback['rating']) ?></td>
-                                <td><?php echo htmlspecialchars($feedback['review']) ?></td>
-                                <td><?php echo htmlspecialchars($feedback['product_id']) ?></td>
-                                <td><?php echo htmlspecialchars($feedback['product_name']) ?></td>
+                            <?php foreach ($userFeedback as $feedback) { ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($feedback['user_id']) ?></td>
+                                    <td><?php echo htmlspecialchars($feedback['fullname']) ?></td>
+                                    <td><?php echo htmlspecialchars($feedback['rating']) ?></td>
+                                    <td><?php echo htmlspecialchars($feedback['review']) ?></td>
+                                    <td><?php echo htmlspecialchars($feedback['product_id']) ?></td>
+                                    <td><?php echo htmlspecialchars($feedback['product_name']) ?></td>
 
-                            </tr>
+                                </tr>
                             <?php } ?>
                         </tbody>
 

@@ -1,4 +1,4 @@
-<?php require_once 'inc/config_session.inc.php';?>
+<?php require_once 'inc/config_session.inc.php'; ?>
 
 <head>
     <meta charset="UTF-8">
@@ -35,8 +35,7 @@
                             <a class="<?php echo ($page === 'index') ? 'active' : ''; ?>" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="<?php echo ($page === 'product') ? 'active' : ''; ?>"
-                                href="index.php">Products</a>
+                            <a class="<?php echo ($page === 'product') ? 'active' : ''; ?>" href="index.php">Products</a>
                         </li>
 
                     </ul>
@@ -49,83 +48,81 @@
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
 
                 </div>
-                <?php  if(!isset($_SESSION['user_id'])) { ?>
-                <div class="nav-middle-modal-login">
-                    <button class="nav-login-register-btn" id="modalBtn">Log-in</button>
+                <?php if (!isset($_SESSION['user_id'])) { ?>
+                    <div class="nav-middle-modal-login">
+                        <button class="nav-login-register-btn" id="modalBtn">Log-in</button>
 
-                    <div class="modal" id="modal">
-                        <div class="modal-content" id="modalContent">
+                        <div class="modal" id="modal">
+                            <div class="modal-content" id="modalContent">
 
-                            <div class="modal-header">
-                                <h2>Log-in</h2>
-                            </div>
-
-
-                            <div class="modal-nav-login">
-                                <span class="close">&times;</span>
-                                <div class="fieldErrors">
-                                    <p style="text-align: center" class="error-message" id="headError"></p>
+                                <div class="modal-header">
+                                    <h2>Log-in</h2>
                                 </div>
 
 
-                                <form action="inc/login/login.inc.php" class="login-form" id="loginForm" method="post">
+                                <div class="modal-nav-login">
+                                    <span class="close">&times;</span>
+                                    <div class="fieldErrors">
+                                        <p style="text-align: center" class="error-message" id="headError"></p>
+                                    </div>
 
-                                    <fieldset class="login-fieldset">
-                                        <div class="nav-login-email-input-container">
-                                            <label for="email">Email:</label>
-                                            <input type="text" class="nav-login-input" id="lgnEmaInp" name="lgnEmaInp"
-                                                type="email" placeholder="Please enter credential">
-                                            <div class="fieldErrors">
-                                                <p class="error-message" id="lgnEmaInpError"></p>
+
+                                    <form action="inc/login/login.inc.php" class="login-form" id="loginForm" method="post">
+
+                                        <fieldset class="login-fieldset">
+                                            <div class="nav-login-email-input-container">
+                                                <label for="email">Email:</label>
+                                                <input type="text" class="nav-login-input" id="lgnEmaInp" name="lgnEmaInp" type="email" placeholder="Please enter credential">
+                                                <div class="fieldErrors">
+                                                    <p class="error-message" id="lgnEmaInpError"></p>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="nav-login-password-input-container">
-                                            <label for="email">Password:</label>
-                                            <input type="password" class="nav-login-input" id="lgnPwdInp"
-                                                placeholder="Please enter credential" name="lgnPwdInp">
-                                            <div class="fieldErrors">
-                                                <p class="error-message" id="lgnPwdInpError"></p>
+                                            <div class="nav-login-password-input-container">
+                                                <label for="email">Password:</label>
+                                                <input type="password" class="nav-login-input" id="lgnPwdInp" placeholder="Please enter credential" name="lgnPwdInp">
+                                                <div class="fieldErrors">
+                                                    <p class="error-message" id="lgnPwdInpError"></p>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                        <div class="login-btn-container">
-                                            <button type="submit" class="nav-login-register-btn">Submit</button>
-                                        </div>
+                                            <div class="login-btn-container">
+                                                <button type="submit" class="nav-login-register-btn">Submit</button>
+                                            </div>
 
-                                    </fieldset>
-                                </form>
-                                <a href="signup.php" class="dhay">don't have account yet ?</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <?php } else {?>
-                <div class="nav-middle-user-icon-cart-container">
-                    <div class="nav-middle-dropdown-settings-container" data-dropdown>
-                        <i class="fa-solid fa-user nav-middle-dropdown-menu-item" data-dropdown-button></i>
-                        <div class="nav-middle-dropdown-menu-container">
-                            <ul>
-                                <li><a class="nav-middle-dropdown-menu-item" href="">Settings</a></li>
-                                <li><a class="nav-middle-dropdown-menu-item" href="">Orders</a></li>
-                                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') { ?>
-                                <li class="nav-middle-dropdown-menu-item"><a href="admin/index.php">Admin</a></li>
-                                <?php } ?>
-                                <div class="nav-middle-logout-container">
-                                    <form action="inc/login/logout.inc.php" method="post">
-                                        <li><button class="nav-middle-dropdown-menu-item">Logout</button></li>
+                                        </fieldset>
                                     </form>
+                                    <a href="signup.php" class="dhay">don't have account yet ?</a>
                                 </div>
-                            </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php } else { ?>
+                    <div class="nav-middle-user-icon-cart-container">
+                        <div class="nav-middle-dropdown-settings-container" data-dropdown>
+                            <i class="fa-solid fa-user nav-middle-dropdown-menu-item" data-dropdown-button></i>
+                            <div class="nav-middle-dropdown-menu-container">
+                                <ul>
+                                    <li><a class="nav-middle-dropdown-menu-item" href="">Settings</a></li>
+                                    <li><a class="nav-middle-dropdown-menu-item" href="">Orders</a></li>
+                                    <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') { ?>
+                                        <li class="nav-middle-dropdown-menu-item"><a href="admin/index.php">Admin</a></li>
+                                    <?php } ?>
+                                    <div class="nav-middle-logout-container">
+                                        <form action="inc/login/logout.inc.php" method="post">
+                                            <li><button class="nav-middle-dropdown-menu-item">Logout</button></li>
+                                        </form>
+                                    </div>
+                                </ul>
+
+                            </div>
 
                         </div>
-
+                        <div class="nav-middle-cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
                     </div>
-                    <div class="nav-middle-cart">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </div>
-                </div>
                 <?php } ?>
 
             </div>
@@ -157,28 +154,28 @@
 <script src="js/modal.js"></script>
 <script src="js/loginErrorHandlers.js"></script>
 <script>
-// Listen for clicks anywhere on the page
-document.addEventListener('mouseover', (e) => {
-    // Check if the clicked element is a dropdown button
-    const isDropdownButton = e.target.matches('[data-dropdown-button]');
+    // Listen for clicks anywhere on the page
+    document.addEventListener('mouseover', (e) => {
+        // Check if the clicked element is a dropdown button
+        const isDropdownButton = e.target.matches('[data-dropdown-button]');
 
-    // If the clicked element is inside a dropdown, do nothing
-    if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
+        // If the clicked element is inside a dropdown, do nothing
+        if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
 
-    let currentDropdown;
+        let currentDropdown;
 
-    // If the clicked element is a dropdown button, toggle the dropdown's active state
-    if (isDropdownButton) {
-        currentDropdown = e.target.closest('[data-dropdown]');
-        currentDropdown.classList.toggle('active');
-    }
+        // If the clicked element is a dropdown button, toggle the dropdown's active state
+        if (isDropdownButton) {
+            currentDropdown = e.target.closest('[data-dropdown]');
+            currentDropdown.classList.toggle('active');
+        }
 
-    // Loop through all active dropdowns and close them, except for the current one
-    document.querySelectorAll('[data-dropdown].active').forEach((dropdown) => {
-        if (dropdown === currentDropdown) return;
-        dropdown.classList.remove('active');
+        // Loop through all active dropdowns and close them, except for the current one
+        document.querySelectorAll('[data-dropdown].active').forEach((dropdown) => {
+            if (dropdown === currentDropdown) return;
+            dropdown.classList.remove('active');
+        });
     });
-});
 </script>
 
 </html>
