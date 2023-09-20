@@ -38,8 +38,16 @@ require_once "inc/ratings/rating_view.inc.php";
                 </div>
                 <br>
                 <div class="home-new-arrival-list-container">
-                    <?php foreach ($productData as $product) { ?>
-                        <?php if (isset($_SESSION["user_id"])) { ?>
+                    <?php
+                    $displayedProducts = 0; // Initialize a counter variable
+
+                    foreach ($productData as $product) {
+                        if (isset($_SESSION["user_id"])) {
+                            if ($displayedProducts >= 8) {
+                                // Break the loop if 3 products have been displayed
+                                break;
+                            }
+                    ?>
                             <a href="product_details.php?product_id=<?php echo $product['product_id']; ?>" class="">
                                 <div class="home-product-container">
                                     <div class="home-product-image">
@@ -67,7 +75,10 @@ require_once "inc/ratings/rating_view.inc.php";
                                     </div>
                                 </div>
                             </a>
-                        <?php } else { ?>
+                        <?php
+                            $displayedProducts++; // Increment the counter after displaying a product
+                        } else {
+                        ?>
                             <a href="signup.php" class="">
                                 <div class="home-product-container">
                                     <div class="home-product-image">
@@ -82,11 +93,27 @@ require_once "inc/ratings/rating_view.inc.php";
                                     <div class="home-product-details-container">
                                         <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
                                         <p>₱<?php echo htmlspecialchars($product['product_price']); ?></p>
+                                        <?php
+                                        // Retrieve and display ratings for this product
+
+                                        $productRatings = get_product_rating_by_id($pdo, $product['product_id']);
+                                        foreach ($productRatings as $rating) {
+                                        ?>
+                                            <div class="product-details-user-rating">
+                                                <p class="starred"><?php echo generateStarRating($rating['rating']); ?></p>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </a>
-                        <?php } ?>
-                    <?php } ?>
+
+                    <?php
+                        }
+                    }
+
+                    ?>
+
+
                 </div>
             </div>
         </main>

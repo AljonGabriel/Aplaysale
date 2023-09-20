@@ -120,6 +120,7 @@ require_once "inc/admin.view.inc.php";
                                             <option value="4">Computer Components</option>
                                             <option value="5">Apparel & Clothing</option>
                                             <option value="6">Footwear & Shoes</option>
+                                            <option value="7">Cameras & Lens</option>
                                         </select>
 
                                         <div class="fieldErrors">

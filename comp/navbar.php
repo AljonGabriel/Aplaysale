@@ -136,15 +136,14 @@
         <div class="nav-bottom-container">
             <div class="nav-bottom-li-container">
                 <ul>
-                    <li class="nav-item"><a href="index.php">Electronics</a></li>
-                    <li class="nav-item"><a href="index.php">Clothing & Fashion</a></li>
-                    <li class="nav-item"><a href="index.php">Books & Stationery</a></li>
-                    <li class="nav-item"><a href="index.php">Beauty & Personal Care
-                        </a></li>
-                    <li class="nav-item"><a href="index.php">Food & Groceries</a></li>
-                    <li class="nav-item"><a href="index.php">Health & Wellness</a></li>
-                    <li class="nav-item"><a href="index.php">Toys & Games</a></li>
-                    <li class="nav-item"><a href="index.php">Jewelry & Watches</a></li>
+                    <li class="nav-item"><a href="index.php">Video Games</a></li>
+                    <li class="nav-item"><a href="index.php">Laptops & Computers</a></li>
+                    <li class="nav-item"><a href="index.php">Consoles & Handheld Devices</a></li>
+                    <li class="nav-item"><a href="index.php">Computer Components</a></li>
+                    <li class="nav-item"><a href="index.php">Apparel & Clothing</a></li>
+                    <li class="nav-item"><a href="index.php">Gaming Gear & Accessories</a></li>
+                    <li class="nav-item"><a href="index.php">Footwear & Shoes</a></li>
+                    <li class="nav-item"><a href="index.php">Cameras & Lens</a></li>
                 </ul>
             </div>
         </div>

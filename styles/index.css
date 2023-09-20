@@ -1,7 +1,7 @@
 .home {
   padding-top: 15px;
   width: 100%;
-  height: auto;
+  height: 2000px;
   background-color: var(--secondary-background);
 }
 
@@ -14,30 +14,35 @@
 .home-new-items-container {
   border-radius: 5px;
   width: 100%;
+  margin: 20px 0;
 }
 
 .home-products-header {
   width: 100%;
-  height: 50px;
+  height: auto;
 }
 
 .home-products-header h2 {
   font-family: var(--primary-font);
-  font-size: 2em;
-  color: var(--accent);
-  text-align: center;
+  font-size: 1.5em;
+  color: rgba(0, 0, 0, 0.54);
+  margin: 0 auto;
 }
 
 .home-new-arrival-list-container {
   width: 100%;
+  padding: 15px;
+  align-items: center;
   height: auto;
   display: flex;
   overflow: auto;
-  gap: 5px;
+  justify-content: center;
+  gap: 20px;
+  background-color: var(--white);
 }
 
 .home-product-container {
-  width: 250px;
+  width: 188px;
   height: 300px;
   overflow: hidden;
   background-color: var(--white);
@@ -45,11 +50,12 @@
 }
 
 .home-product-image img {
-  padding: 5px;
   width: 100%;
   height: 200px;
-  border-radius: 5px;
   object-fit: contain; /* Ensure images maintain aspect ratio */
+  object-position: center;
+  background-color: var(--white);
+  border: 1px solid var(--input-border);
 }
 
 .home-product-details-container {
@@ -60,7 +66,7 @@
 
 .home-product-details-container h3 {
   font-family: var(--primary-font);
-  font-size: 1em;
+  font-size: 0.8em;
   color: var(--text);
   text-align: center;
 }
@@ -111,8 +117,7 @@
   }
 }
 .starred {
-  font-size: 30px;
+  font-size: 1.2em;
   cursor: pointer;
   color: #f2b600;
-  transition: color 0.25s;
 }
