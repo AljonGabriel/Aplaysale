@@ -12,3 +12,4 @@ $usersCount = get_users_count($pdo);
 $productData = get_all_product_data($pdo);
 $productsCount = get_products_count($pdo);
 $userFeedback = get_user_feedback($pdo);
+$new_products = get_new_product($pdo);

@@ -136,16 +136,6 @@ function add_product(object $pdo, array|bool $uploaded_files, string $product_na
     }
 }
 
-function get_products_count(object $pdo)
-{
-
-    $query = "SELECT COUNT(*) as user_count FROM products";
-    $stmt = $pdo->query($query);
-
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result['user_count'];
-}
-
 function get_user_feedback(object $pdo)
 {
     $query = "SELECT r.id, r.user_id, r.product_id, r.rating, r.review, u.fullname, p.product_name
@@ -161,6 +151,16 @@ function get_user_feedback(object $pdo)
     }
 }
 
+function get_products_count(object $pdo)
+{
+
+    $query = "SELECT COUNT(*) as user_count FROM products";
+    $stmt = $pdo->query($query);
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result['user_count'];
+}
+
 // Retrieve product data with concatenated image URLs
 function get_all_product_data(object $pdo)
 {
@@ -170,6 +170,10 @@ function get_all_product_data(object $pdo)
         p.product_name,
         p.product_description,
         p.product_price,
+        p.product_stocks,
+        p.product_brand,
+        p.is_new_item,
+        p.added_date,
         c.name AS category_name,
         GROUP_CONCAT(pi.image_url) AS image_urls
         FROM products p
@@ -185,4 +189,23 @@ function get_all_product_data(object $pdo)
     } else {
         return [];
     }
+}
+
+function get_new_product(object $pdo)
+{
+
+    $query = "SELECT p.id AS product_id, p.product_name, p.product_price, p.is_new_item, MAX(p.added_date) AS added_date, GROUP_CONCAT(pi.image_url) AS image_urls
+    FROM products p
+
+    JOIN product_images pi ON p.id = pi.product_id
+    WHERE is_new_item = true
+    GROUP BY product_id
+    ORDER BY added_date DESC
+   
+    ";
+
+    $stmt = $pdo->query($query);
+
+    $result = $stmt ? ($stmt->fetchAll(PDO::FETCH_ASSOC)) : [];
+    return $result;
 }

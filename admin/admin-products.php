@@ -1,11 +1,11 @@
-<?php
-require_once '../inc/config_session.inc.php';
-$page = "admin-products";
+<?php 
+  require_once '../inc/config_session.inc.php';
+  $page = "admin-products";
 
-if (!isset($_SESSION['user_id'])) {
+  if (!isset($_SESSION['user_id'])) {
     header("Location: ../index.php");
-}
-require_once "inc/admin.view.inc.php";
+ }
+    require_once "inc/admin.view.inc.php";
 
 
 ?>
@@ -25,7 +25,6 @@ require_once "inc/admin.view.inc.php";
         <main>
             <div class="admin-products-table-container">
                 <div class="admin-products-table-header">
-                    <h3>All Products</h3>
                     <input type="text" placeholder="Search..">
                     <select id="roleFilter" class="admin-users-table-filter">
                         <option value="" disabled selected>Select Category</option>
@@ -42,7 +41,8 @@ require_once "inc/admin.view.inc.php";
                     <button class="modal-trigger" id="adminProductsAddProduct" data-modal-id="addProduct">Add Product</button>
                     <div class="admin-products-add-item-modal modal-container" id="addProduct">
                         <div class="admin-products-modal-content" id="addProduct">
-                            <form class="admin-products-modal-content-form" enctype="multipart/form-data" action="inc/admin_add_product_handler.inc.php" method="post">
+                            <form class="admin-products-modal-content-form"
+                                action="inc/admin_add_product_handler.inc.php" method="post">
 
                                 <!--Fieldset Basic Information-->
 
@@ -54,7 +54,8 @@ require_once "inc/admin.view.inc.php";
                                     <div class="admin-products-input-container">
                                         <label for="admPrdImgInp"><small class="asterisk">*</small>Product Image
                                         </label>
-                                        <input id="admPrdImgInp" type="file" accept="image/*" name="admPrdImgInp[]" multiple enctype="multipart/form-data">
+                                        <input id="admPrdImgInp" type="file" accept="image/*" name="admPrdImgInp[]" multiple
+                                            enctype="multipart/form-data">
                                         <div class="fieldErrors">
                                             <p id="admPrdImgInpError" class="error-message">
                                             </p>
@@ -82,7 +83,7 @@ require_once "inc/admin.view.inc.php";
                                         <label for="admPrdStkSel"><small class="asterisk">*</small>Stock
                                         </label>
                                         <select name="admPrdStkSel" id="admPrdStkSel">
-                                            <option value="Single Stock Item">Single Stock Item</option>
+                                            <option value="singleItem">Single Stock Item</option>
                                             <option value="multipleItem">Multiple Stock Item</option>
                                         </select>
                                         <div class="fieldErrors">
@@ -121,7 +122,6 @@ require_once "inc/admin.view.inc.php";
                                             <option value="4">Computer Components</option>
                                             <option value="5">Apparel & Clothing</option>
                                             <option value="6">Footwear & Shoes</option>
-                                            <option value="7">Cameras & Lens</option>
                                         </select>
 
                                         <div class="fieldErrors">
@@ -133,7 +133,8 @@ require_once "inc/admin.view.inc.php";
                                     <div class="admin-products-input-container">
                                         <label for="admPrdDesc"><small class="asterisk">*</small>Product Description :
                                         </label>
-                                        <textarea name="admPrdDesc" id="admPrdDesc" type="text" placeholder="Detailed item information"></textarea>
+                                        <textarea name="admPrdDesc" id="admPrdDesc" type="text"
+                                            placeholder="Detailed item information"></textarea>
                                         <div class="fieldErrors">
                                             <p id="admPrdDescError" class="error-message">
                                             </p>
@@ -143,7 +144,7 @@ require_once "inc/admin.view.inc.php";
                                 <div class="admin-products-submit-container">
                                     <button class="admin-products-submit-container-submit" type="submit">Add</button>
                                     <span class="modal-close" data-modal-id="addProduct">Cancel</span>
-
+                                    
                                 </div>
                             </form>
                         </div>
@@ -158,91 +159,30 @@ require_once "inc/admin.view.inc.php";
                             <th>Name</th>
                             <th>Description</th>
                             <th>Price</th>
-                            <th>Stocks</th>
-                            <th>Brand</th>
                             <th>Category</th>
-                            <th>Is new item</th>
-                            <th>Date Added</th>
                             <th>Action</th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($productData as $product) {
-                            $images = explode(",", $product['image_urls']) ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($product['product_id']) ?></td>
-                                <td><img src="<?php echo htmlspecialchars($images[0]) ?>" alt="<?php echo htmlspecialchars($product['product_name']) ?>">
-                                </td>
-                                <td><?php echo htmlspecialchars($product['product_name']) ?></td>
-                                <td>
-                                    <pre><?php echo htmlspecialchars($product['product_description']) ?></pre>
-                                </td>
-                                <td>
-                                    <?php echo htmlspecialchars($product['product_price']) ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlspecialchars($product['product_stocks']) ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlspecialchars($product['product_brand']) ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlspecialchars($product['category_name']) ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlspecialchars($product['is_new_item']) ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlspecialchars($product['added_date']) ?>
-                                </td>
-                                <td>Live View/Update/Delete</td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-
-                <!--New Product-->
-
-
-            </div>
-
-            <div class="admin-products-table-container">
-                <div class="admin-products-table-header">
-                    <h3>New Items</h3>
-                    <input type="text" placeholder="Search..">
-                    <button>Add Categories</button>
-                </div>
-                <table>
-                    <thead>
+                        <?php foreach($productData as $product) { $images = explode(",", $product['image_urls'])?>
                         <tr>
-                            <th>ID</th>
-                            <th>Product Image</th>
-                            <th>Product Name</th>
-                            <th>Is New</th>
-                            <th>Date Added</th>
-                            <th>Action</th>
-
-
+                            <td><?php echo htmlspecialchars($product['product_id']) ?></td>
+                            <td><img src="<?php echo htmlspecialchars($images[0]) ?>"
+                                    alt="<?php echo htmlspecialchars($product['product_name']) ?>" width="100">
+                            </td>
+                            <td><?php echo htmlspecialchars($product['product_name']) ?></td>
+                            <td>
+                                <pre><?php echo htmlspecialchars($product['product_description']) ?></pre>
+                            </td>
+                            <td>
+                                <?php echo htmlspecialchars($product['product_price']) ?>
+                            </td>
+                            <td>
+                                <?php echo htmlspecialchars($product['category_name']) ?>
+                            </td>
+                            <td>Live View/Update/Delete</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($new_products as $product) {
-                            $images = explode(",", $product['image_urls']) ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($product['product_id']) ?></td>
-                                <td><img src="<?php echo htmlspecialchars($images[0]) ?>" alt="<?php echo htmlspecialchars($product['product_name']) ?>">
-                                </td>
-                                <td><?php echo htmlspecialchars($product['product_name']) ?></td>
-
-                                <td>
-                                    <?php echo htmlspecialchars($product['is_new_item']) ?>
-                                </td>
-                                <td>
-                                    <?php echo htmlspecialchars($product['added_date']) ?>
-                                </td>
-                                <td>Live View/Update/Delete</td>
-                            </tr>
                         <?php } ?>
                     </tbody>
                 </table>
