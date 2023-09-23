@@ -1,9 +1,7 @@
 <?php
-
-require 'inc/config_session.inc.php';
 $page = 'index';
+require 'inc/config_session.inc.php';
 require_once __DIR__ . "/admin/inc/admin.view.inc.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,39 +10,56 @@ require_once __DIR__ . "/admin/inc/admin.view.inc.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/index.css">
+    <script src="js/slideshow.js" defer></script>
     <title>Aplaysale</title>
 </head>
 
 <body>
-    <nav>
-        <?php require_once 'comp/navbar.php'; ?>
-    </nav>
-
-    <div class="home">
-        <main>
-            <div class="home-slideshow-container">
-                <div class="home-slideshow-img-container slide-fade">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="">
-                </div>
-                <div class="home-slideshow-img-container">
-                    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="">
-                </div>
-            </div>
+    <header>
+        <nav>
+            <?php require_once 'comp/navbar.php'; ?>
+        </nav>
+    </header>
+    <main class="index-primary-container">
+        <section class="index-secondary-container">
+            <section class="index-carousel-container">
+                <section class="index-carousel-li-img-container" data-carousel>
+                    <button class="index-carousel-button prev" data-carousel-button="prev">&#8656;</button>
+                    <button class="index-carousel-button next" data-carousel-button="next">&#8658;</button>
+                    <ul data-slides>
+                        <li class="index-slides" data-active>
+                            <figure>
+                                <img src="https://images.unsplash.com/photo-1417733403748-83bbc7c05140?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="">
+                            </figure>
+                        </li>
+                        <li class="index-slides">
+                            <figure>
+                                <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="">
+                            </figure>
+                        </li>
+                        <li class="index-slides">
+                            <figure>
+                                <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="">
+                            </figure>
+                        </li>
+                    </ul>
+                </section>
+            </section>
             <!--New product container-->
-            <div class="home-new-items-container">
-                <div class="home-products-header">
-                    <h2>Newly Available</h2>
-                </div>
-                <br>
-                <div class="home-new-arrival-list-container">
+            <section class="home-new-items-container">
+                <header>
+                    <article class="home-products-header">
+                        <h2>Newly Available</h2>
+                    </article>
+                </header>
+                <section class="home-new-arrival-list-container">
                     <?php
                     foreach ($new_products as $product) {
-                        if (isset($_SESSION["user_id"])) {
-
                     ?>
-                            <a href="product_details.php?product_id=<?php echo $product['product_id']; ?>" class="">
-                                <div class="home-product-container">
-                                    <div class="home-product-image">
+                        <section>
+                            <a href="<?php echo isset($_SESSION['user_id']) ? 'product_details.php?product_id=' . $product['product_id'] : 'signup.php'; ?>" class="">
+                                <section class="home-product-container">
+                                    <figure class="home-product-image">
                                         <?php
                                         // Explode the concatenated image URLs into an array
                                         $imageUrls = explode(',', $product['image_urls']);
@@ -52,65 +67,22 @@ require_once __DIR__ . "/admin/inc/admin.view.inc.php";
                                         <img src="<?php echo htmlspecialchars($imageUrls[0]); ?>" alt="Product Image">
                                         <!-- Display additional images as a gallery or slideshow -->
                                         <!-- Add your gallery or slideshow HTML/JavaScript code here -->
-                                    </div>
-                                    <div class="home-product-details-container">
+                                    </figure>
+                                    <article class="home-product-details-container">
                                         <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
                                         <p>₱<?php echo htmlspecialchars($product['product_price']); ?></p>
-                                    </div>
-                                </div>
+                                    </article>
+                                </section>
                             </a>
-                        <?php
-                        } else {
-                        ?>
-                            <a href="signup.php" class="">
-                                <div class="home-product-container">
-                                    <div class="home-product-image">
-                                        <?php
-                                        // Explode the concatenated image URLs into an array
-                                        $imageUrls = explode(',', $product['image_urls']);
-                                        ?>
-                                        <img src="<?php echo htmlspecialchars($imageUrls[0]); ?>" alt="Product Image">
-                                        <!-- Display additional images as a gallery or slideshow -->
-                                        <!-- Add your gallery or slideshow HTML/JavaScript code here -->
-                                    </div>
-                                    <div class="home-product-details-container">
-                                        <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
-                                        <p>₱<?php echo htmlspecialchars($product['product_price']); ?></p>
-                                    </div>
-                                </div>
-                            </a>
-
+                        </section>
                     <?php
-                        }
+
                     }
-
                     ?>
-                </div>
-            </div>
-        </main>
-    </div>
+                </section>
+            </section>
+        </section>
+    </main>
 </body>
-<script>
-    // JavaScript to handle the automatic slideshow
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".home-slideshow-img-container");
-
-    function showSlides() {
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-
-        slideIndex++;
-
-        if (slideIndex > slides.length) {
-            slideIndex = 1;
-        }
-
-        slides[slideIndex - 1].style.display = "block";
-        setTimeout(showSlides, 5000); // Change image every 5 seconds (adjust as needed)
-    }
-
-    showSlides(); // Start the slideshow
-</script>
 
 </html>

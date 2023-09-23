@@ -1,28 +1,34 @@
-let slideIndex = 1;
-showSlides(slideIndex);
+const btns = document.querySelectorAll("[data-carousel-button]");
 
-function plusSlides(n) {
-  showSlides((slideIndex += n));
+// Function to move to the next slide
+function nextSlide() {
+  const slides = document.querySelector("[data-carousel] [data-slides]");
+  const activeSlide = slides.querySelector("[data-active]");
+  let newIndex = [...slides.children].indexOf(activeSlide) + 1;
+
+  if (newIndex >= slides.children.length) newIndex = 0;
+
+  activeSlide.removeAttribute("data-active");
+  slides.children[newIndex].setAttribute("data-active", "true");
 }
 
-function currentSlide(n) {
-  showSlides((slideIndex = n));
-}
+// Add click event listeners to "previous" and "next" buttons
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const offset = btn.dataset.carouselButton === "next" ? 1 : -1;
+    const slides = btn
+      .closest("[data-carousel]")
+      .querySelector("[data-slides]");
+    const activeSlides = slides.querySelector("[data-active]");
+    let newIndex = [...slides.children].indexOf(activeSlides) + offset;
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName(
-    "product-details-img-slide-container",
-  );
+    if (newIndex < 0) newIndex = slides.children.length - 1;
+    if (newIndex >= slides.children.length) newIndex = 0;
 
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slides[slideIndex - 1].style.display = "block";
-}
+    activeSlides.removeAttribute("data-active");
+    slides.children[newIndex].setAttribute("data-active", "true");
+  });
+});
+
+// Automatically advance the carousel every 5 seconds (adjust as needed)
+setInterval(nextSlide, 5000);

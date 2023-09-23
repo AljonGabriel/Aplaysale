@@ -1,7 +1,6 @@
 .admin-products {
   width: 100%;
   height: 100%;
-  display: flex;
 }
 .admin-products-table-container {
   width: 100%;
@@ -43,7 +42,6 @@
 .admin-products-table-container table tbody td img {
   width: 100%;
   height: 90px;
-  overflow: hidden;
   object-fit: contain;
 }
 
