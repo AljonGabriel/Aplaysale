@@ -184,11 +184,8 @@ function get_all_product_data(object $pdo)
 
     $stmt = $pdo->query($query);
 
-    if ($stmt) {
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } else {
-        return [];
-    }
+    $result = $stmt ? ($stmt->fetchAll(PDO::FETCH_ASSOC)) : [];
+    return $result;
 }
 
 function get_new_product(object $pdo)

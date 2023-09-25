@@ -46,20 +46,20 @@ require_once __DIR__ . "/admin/inc/admin.view.inc.php";
                 </section>
             </section>
             <!--New product container-->
-            <section class="home-new-items-container">
+            <section class="index-new-items-container">
                 <header>
-                    <article class="home-products-header">
+                    <article class="index-products-header">
                         <h2>Newly Available</h2>
                     </article>
                 </header>
-                <section class="home-new-arrival-list-container">
+                <section class="index-new-arrival-list-container">
                     <?php
                     foreach ($new_products as $product) {
                     ?>
                         <section>
                             <a href="<?php echo isset($_SESSION['user_id']) ? 'product_details.php?product_id=' . $product['product_id'] : 'signup.php'; ?>" class="">
-                                <section class="home-product-container">
-                                    <figure class="home-product-image">
+                                <section class="index-product-container">
+                                    <figure class="index-product-image">
                                         <?php
                                         // Explode the concatenated image URLs into an array
                                         $imageUrls = explode(',', $product['image_urls']);
@@ -68,7 +68,7 @@ require_once __DIR__ . "/admin/inc/admin.view.inc.php";
                                         <!-- Display additional images as a gallery or slideshow -->
                                         <!-- Add your gallery or slideshow HTML/JavaScript code here -->
                                     </figure>
-                                    <article class="home-product-details-container">
+                                    <article class="index-product-details-container">
                                         <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
                                         <p>₱<?php echo htmlspecialchars($product['product_price']); ?></p>
                                     </article>
@@ -82,6 +82,7 @@ require_once __DIR__ . "/admin/inc/admin.view.inc.php";
                 </section>
             </section>
         </section>
+
     </main>
 </body>
 

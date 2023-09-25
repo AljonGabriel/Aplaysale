@@ -10,5 +10,5 @@ if ($page === "product_details") {
 }
 
 if ($page === "index") {
-    $ratings = get_all_product_rating($pdo);
+    /*  $ratings = get_all_product_rating($pdo); */
 }

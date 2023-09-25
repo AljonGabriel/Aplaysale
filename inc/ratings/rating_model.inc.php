@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function add_rating(object $pdo, string $user_id, string $prod_id, string $rating, string $review)
+/* function add_rating(object $pdo, string $user_id, string $prod_id, string $rating, string $review)
 {
 
     try {
@@ -22,7 +22,7 @@ function add_rating(object $pdo, string $user_id, string $prod_id, string $ratin
     } catch (PDOException $e) {
         echo $e;
     }
-}
+} */
 
 function get_product_rating_by_id(object $pdo, string $product_id)
 {
@@ -42,7 +42,7 @@ function get_product_rating_by_id(object $pdo, string $product_id)
 }
 
 
-function get_all_product_rating(object $pdo)
+/* function get_all_product_rating(object $pdo)
 {
     try {
 
@@ -55,7 +55,7 @@ function get_all_product_rating(object $pdo)
     } catch (PDOException $e) {
         echo $e;
     }
-}
+} */
 
 function generateStarRating($rating)
 {

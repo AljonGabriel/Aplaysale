@@ -3,7 +3,11 @@ const btns = document.querySelectorAll("[data-carousel-button]");
 // Function to move to the next slide
 function nextSlide() {
   const slides = document.querySelector("[data-carousel] [data-slides]");
+
   const activeSlide = slides.querySelector("[data-active]");
+
+  console.log(activeSlide);
+
   let newIndex = [...slides.children].indexOf(activeSlide) + 1;
 
   if (newIndex >= slides.children.length) newIndex = 0;

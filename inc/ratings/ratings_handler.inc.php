@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+/* if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
     require_once "../dbh.inc.php";
     require_once "rating_model.inc.php";
@@ -35,4 +35,4 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") 
     exit();
 } else {
     header("Location: ../../index.php");
-}
+} */
