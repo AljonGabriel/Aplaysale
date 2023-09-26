@@ -174,12 +174,15 @@ function get_all_product_data(object $pdo)
         p.product_brand,
         p.is_new_item,
         p.added_date,
+        u.fullname AS user_name,
+        u.completeaddress AS address,
         c.name AS category_name,
         GROUP_CONCAT(pi.image_url) AS image_urls
         FROM products p
         JOIN product_images pi ON p.id = pi.product_id
         JOIN categories c ON p.category_id = c.id
-        GROUP BY p.id, p.product_name, p.product_description, p.product_price, c.name
+        JOIN users u ON p.added_by = u.id
+        GROUP BY p.id, p.product_name, p.product_description, p.product_price, c.name;
         ";
 
     $stmt = $pdo->query($query);
@@ -193,16 +196,31 @@ function get_new_product(object $pdo)
 
     $query = "SELECT p.id AS product_id, p.product_name, p.product_price, p.is_new_item, MAX(p.added_date) AS added_date, GROUP_CONCAT(pi.image_url) AS image_urls
     FROM products p
-
     JOIN product_images pi ON p.id = pi.product_id
     WHERE is_new_item = true
     GROUP BY product_id
-    ORDER BY added_date DESC
-   
+    ORDER BY added_date DESC;
     ";
 
     $stmt = $pdo->query($query);
 
     $result = $stmt ? ($stmt->fetchAll(PDO::FETCH_ASSOC)) : [];
     return $result;
+}
+
+function get_stocks_count(object $pdo, int|string $productID)
+{
+
+    $query = "SELECT product_stocks FROM products WHERE id = :productID;";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue("productID", $productID);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        return $row['product_stocks'];
+    } else {
+        return null; // Return null or handle the case where the product is not found.
+    }
 }

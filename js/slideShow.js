@@ -6,8 +6,6 @@ function nextSlide() {
 
   const activeSlide = slides.querySelector("[data-active]");
 
-  console.log(activeSlide);
-
   let newIndex = [...slides.children].indexOf(activeSlide) + 1;
 
   if (newIndex >= slides.children.length) newIndex = 0;

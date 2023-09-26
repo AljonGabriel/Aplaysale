@@ -163,6 +163,7 @@ require_once "inc/admin.view.inc.php";
                             <th>Category</th>
                             <th>Is new item</th>
                             <th>Date Added</th>
+                            <th>Added By</th>
                             <th>Action</th>
 
                         </tr>
@@ -195,6 +196,9 @@ require_once "inc/admin.view.inc.php";
                                 </td>
                                 <td>
                                     <?php echo htmlspecialchars($product['added_date']) ?>
+                                </td>
+                                <td>
+                                    <?php echo htmlspecialchars($product['user_name']) ?>
                                 </td>
                                 <td>Live View/Update/Delete</td>
                             </tr>

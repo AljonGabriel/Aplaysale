@@ -1,7 +1,7 @@
 <?php
 $page = 'index';
 require 'inc/config_session.inc.php';
-require_once __DIR__ . "/admin/inc/admin.view.inc.php";
+require_once __DIR__ . "/admin/inc/admin_view.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
