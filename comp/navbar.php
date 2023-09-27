@@ -120,7 +120,7 @@
 
                         </div>
                         <div class="nav-middle-cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
                         </div>
                     </div>
                 <?php } ?>

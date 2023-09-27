@@ -1,7 +1,7 @@
 <?php
 $productID = json_decode(file_get_contents('php://input'), true)['productID'];
 
-require_once "admin.model.inc.php";
+require_once "admin_model.inc.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Aplaysale/inc/dbh.inc.php';
 /* 
 $productID = 145; */

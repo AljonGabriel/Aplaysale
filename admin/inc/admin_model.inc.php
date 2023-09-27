@@ -51,7 +51,7 @@ function update_user(object $pdo, string $userId, string $name, string $address,
     }
 }
 
-function add_product(object $pdo, array|bool $uploaded_files, string $product_name, string $product_price, string $single_product_stock, string $multiple_product_stock, string $product_brand, string $product_category, string $product_description)
+function add_product(object $pdo, array|bool $uploaded_files, string $product_name, string $product_price, string $single_product_stock, string $multiple_product_stock, string $product_brand, string $product_category, string $product_description, string $user_id)
 {
     try {
         /*  highlight_string("<?php " . var_export ($multiple_product_stock, true) . ";?>"); */
@@ -66,7 +66,7 @@ function add_product(object $pdo, array|bool $uploaded_files, string $product_na
 
 
         // Insert product information into the products table
-        $productQuery = "INSERT INTO products (product_name, product_price, product_stocks, product_brand, category_id, product_description) VALUES (:product_name, :product_price, :product_stocks, :product_brand, :product_category, :product_description);";
+        $productQuery = "INSERT INTO products (product_name, product_price, product_stocks, product_brand, category_id, product_description, added_by) VALUES (:product_name, :product_price, :product_stocks, :product_brand, :product_category, :product_description, :user_id);";
         $productStmt = $pdo->prepare($productQuery);
         $productStmt->bindValue(":product_name", $product_name);
         $productStmt->bindValue(":product_price", $product_price);
@@ -74,6 +74,7 @@ function add_product(object $pdo, array|bool $uploaded_files, string $product_na
         $productStmt->bindValue(":product_brand", $product_brand);
         $productStmt->bindValue(":product_category", $product_category);
         $productStmt->bindValue(":product_description", $product_description);
+        $productStmt->bindValue(":user_id", $user_id);
         $productStmt->execute();
 
         // Get the ID of the last inserted product

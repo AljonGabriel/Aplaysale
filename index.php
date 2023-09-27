@@ -54,7 +54,13 @@ require_once __DIR__ . "/admin/inc/admin_view.inc.php";
                 </header>
                 <section class="index-new-arrival-list-container">
                     <?php
+                    $limit = 7; // Set the limit to 8
+
+                    $counter = 0; // Initialize a counter variable
                     foreach ($new_products as $product) {
+                        if ($counter >= $limit) {
+                            break; // Exit the loop if the limit is reached
+                        }
                     ?>
                         <section>
                             <a href="<?php echo isset($_SESSION['user_id']) ? 'product_details.php?product_id=' . $product['product_id'] : 'signup.php'; ?>" class="">
@@ -76,11 +82,15 @@ require_once __DIR__ . "/admin/inc/admin_view.inc.php";
                             </a>
                         </section>
                     <?php
-
+                        $counter++; // Increment the counter after displaying a product
                     }
                     ?>
                 </section>
             </section>
+        </section>
+
+        <section class="index-secondary-container-one">
+
         </section>
 
     </main>

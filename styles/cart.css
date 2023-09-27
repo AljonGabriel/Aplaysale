@@ -1,0 +1,40 @@
+main.cart-primary-container {
+  width: 100%;
+  height: auto;
+}
+
+section.cart-secondary-container {
+  padding: 25px 200px 0 200px;
+  background-color: var(--secondary-background);
+  height: 2000px;
+}
+
+table.cart-table-container {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--input-border);
+  padding: 10px;
+
+  border-spacing: 0 0.5em;
+}
+
+table.cart-table-container tbody tr {
+  background-color: var(--white);
+  margin-bottom: 100px;
+}
+
+table.cart-table-container tbody td {
+  width: auto;
+  height: 150px;
+  margin: auto;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 10;
+}
+
+table.cart-table-container tbody td figure img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin: auto;
+}

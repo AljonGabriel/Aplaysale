@@ -5,7 +5,7 @@ $page = "admin-products";
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../index.php");
 }
-require_once "inc/admin.view.inc.php";
+require_once "inc/admin_view.inc.php";
 
 
 ?>

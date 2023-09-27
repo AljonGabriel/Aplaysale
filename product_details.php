@@ -28,7 +28,8 @@ foreach ($productData as $product) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/product-details.css">
     <script src="js/slideshow.js" defer></script>
-
+    <script src="js/quantityHandler.js" defer></script>
+    <script src="js/addToCartHandler.js" defer></script>
     <title>Product Details</title>
 </head>
 
@@ -76,26 +77,27 @@ foreach ($productData as $product) {
 
                 <p class="product-details-price">₱ <?php echo htmlspecialchars($selectedProduct['product_price']) ?></p>
 
-                <?php if ($selectedProduct['product_stocks'] !== "Single Stock Item") { ?>
+                <form action="inc/cart/add_to_cart.inc.php" method="GET">
+                    <?php if ($selectedProduct['product_stocks'] !== "Single Stock Item") { ?>
+                        <section class="product-details-quantity-container">
+                            <div class="product-details-quantity-count-container">
+                                <button type="button" id="incrementBtn" class="product-details-quantity-count-btn">+</button>
+                                <input name="prdDetQuaInp" id="prdDetQuaInp" type="number">
+                                <button type="button" id="decrementBtn" class="product-details-quantity-count-btn">-</button>
+                            </div>
+                            <small class="product-details-stocks"><?php echo htmlspecialchars($selectedProduct['product_stocks']) ?> pieces available</small>
+                        </section>
 
-                    <section class="product-details-quantity-container">
-                        <div class="product-details-quantity-count-container">
-                            <button id="incrementBtn" class="product-details-quantity-count-btn">+</button>
-                            <input id="inputQuantity" type="number">
-                            <button id="decrementBtn" class="product-details-quantity-count-btn">-</button>
-                        </div>
-                        <small class="product-details-stocks"><?php echo htmlspecialchars($selectedProduct['product_stocks']) ?> pieces available</small>
+                    <?php } else { ?>
+                        <section class="product-details-quantity-container">
+                            <small id="prdDetStoDis" class="product-details-stocks"><?php echo htmlspecialchars($selectedProduct['product_stocks']) ?> </small>
+                        </section>
+                    <?php } ?>
+                    <section class="product-details-cart-buy">
+                        <button type="submit" class="cart-btn" name="cart">Add to Cart</button>
+                        <!--  <button type="submit" class="buy-btn" name="buy">Buy </button> -->
                     </section>
-
-                <?php } else { ?>
-                    <section class="product-details-quantity-container">
-                        <small class="product-details-stocks"><?php echo htmlspecialchars($selectedProduct['product_stocks']) ?> </small>
-                    </section>
-                <?php } ?>
-                <section class="product-details-cart-buy">
-                    <button class="cart-btn">Add to Cart</button>
-                    <button class="buy-btn">Buy </button>
-                </section>
+                </form>
             </section>
         </section>
 
@@ -123,9 +125,5 @@ foreach ($productData as $product) {
 
     </main>
 </body>
-<script>
-
-</script>
-<script src="js/quantityHandler.js"></script>
 
 </html>

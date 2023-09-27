@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-require_once 'admin.model.inc.php';
+require_once 'admin_model.inc.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/Aplaysale/inc/dbh.inc.php';
 
 

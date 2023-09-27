@@ -1,6 +1,6 @@
 const incrementBtn = document.querySelector("#incrementBtn");
 const decrementBtn = document.querySelector("#decrementBtn");
-const quantityInput = document.querySelector("#inputQuantity"); // Updated variable name
+const quantityInput = document.querySelector("#prdDetQuaInp"); // Updated variable name
 
 // Get the current URL
 const currentURL = window.location.href;
@@ -11,12 +11,14 @@ const productID = parseInt(productIdMatch[1]);
 
 let inputValue = 1;
 
-quantityInput.value = inputValue;
+if (quantityInput) {
+  quantityInput.value = inputValue;
 
-quantityInput.addEventListener("input", (event) => {
-  inputValue = event.target.value; // Update typedValue when the input changes
-  checkQuantity();
-});
+  quantityInput.addEventListener("input", (event) => {
+    inputValue = event.target.value; // Update typedValue when the input changes
+    checkQuantity();
+  });
+}
 
 if (incrementBtn && decrementBtn) {
   incrementBtn.addEventListener("click", () => {
