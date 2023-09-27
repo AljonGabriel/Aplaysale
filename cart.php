@@ -1,8 +1,9 @@
 <?php
 
 require_once "inc/config_session.inc.php";
-require_once "inc/cart/cart_view.inc.php";
 $user_id = $_SESSION["user_id"];
+require_once "inc/cart/cart_view.inc.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

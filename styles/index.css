@@ -26,8 +26,8 @@ main.index-primary-container {
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.5)
+    rgba(255, 255, 255, 0.849),
+    rgba(255, 255, 255, 0.667)
   );
   z-index: 1; /* Adjust this value to control the overlay's stacking order */
 }

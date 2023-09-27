@@ -77,6 +77,7 @@ foreach ($productData as $product) {
 
                 <p class="product-details-price">₱ <?php echo htmlspecialchars($selectedProduct['product_price']) ?></p>
 
+
                 <form action="inc/cart/add_to_cart.inc.php" method="GET">
                     <?php if ($selectedProduct['product_stocks'] !== "Single Stock Item") { ?>
                         <section class="product-details-quantity-container">
