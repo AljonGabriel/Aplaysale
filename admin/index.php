@@ -71,12 +71,12 @@ $page = 'admin-index';
 
 
 
-        <section class="container my-4 p-3 bg-white shadow-sm rounded-2">
-            <div class="container ">
+        <section class="container my-3 p-3 bg-white rounded-2">
+            <div class="d-flex align-items-center justify-content-between">
                 <h4 class="display-5">Products</h3>
-                    <input class="form-control my-3" type="text" placeholder="Search..">
-                    <p>Edit Products</p>
+                    <a class="btn btn-outline-primary" href="admin_products.php">Edit Products</a>
             </div>
+            <input class="form-control my-3" type="text" placeholder="Search Products">
             <div class="overflow-scroll max-height-300">
                 <table class="table table-striped table-hover text-center">
                     <thead>
@@ -105,70 +105,69 @@ $page = 'admin-index';
                             </tr>
                         <?php } ?>
                     </tbody>
-
                 </table>
-
             </div>
-
         </section>
 
 
-        <section class="container my-4 bg-white shadow-sm">
-            <div class="admin-index-users-table-header">
-                <h3>Users</h3>
-                <input type="text" placeholder="Search..">
-                <p>Edit Users</p>
+        <section class="container my-3 p-3 bg-white rounded-2 ">
+            <div class="d-flex align-items-center justify-content-between">
+                <h4 class="display-5">Users</h3>
+                    <a class="btn btn-outline-primary" href="Users.php">Edit Users</a>
             </div>
-            <table class="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Complete Name</th>
-                        <th>Address</th>
-                        <th>Phone no.</th>
-                        <th>E-mail</th>
-                        <th>role</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($usersData as $user) { ?>
+            <input class="form-control my-3" type="text" placeholder="Search Users">
+            <div class="table-responsive overflow-scroll max-height-300 ">
+                <table class="table table-striped table-hover text-center">
+                    <thead>
                         <tr>
-                            <td><?php echo htmlspecialchars($user['id']) ?></td>
-                            <td><?php echo htmlspecialchars($user['fullname']) ?></td>
-                            <td><?php echo htmlspecialchars($user['completeaddress']) ?></td>
-                            <td><?php echo htmlspecialchars($user['phonenumber']) ?></td>
-                            <td><?php echo htmlspecialchars($user['email']) ?></td>
-                            <td><?php echo htmlspecialchars($user['role']) ?></td>
+                            <th class="col">ID</th>
+                            <th class="col">Complete Name</th>
+                            <th class="col">Address</th>
+                            <th class="col">Phone no.</th>
+                            <th class="col">E-mail</th>
+                            <th>role</th>
                         </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <?php foreach ($usersData as $user) { ?>
+                            <tr>
+                                <th scope="row"><?php echo htmlspecialchars($user['id']) ?></th>
+                                <td><?php echo htmlspecialchars($user['fullname']) ?></td>
+                                <td><?php echo htmlspecialchars($user['completeaddress']) ?></td>
+                                <td><?php echo htmlspecialchars($user['phonenumber']) ?></td>
+                                <td><?php echo htmlspecialchars($user['email']) ?></td>
+                                <td><?php echo htmlspecialchars($user['role']) ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
 
-        <div class="container my-4 bg-white shadow-sm">
-            <div class="admin-index-products-table-container">
-                <div class="admin-index-products-table-header">
-                    <h3>User Feedback</h3>
-                    <input type="text" placeholder="Search..">
-                    <p>Edit Ratings</p>
-                </div>
+        <section class="container my-3 p-3 bg-white rounded-2 ">
+            <div class="d-flex align-items-center justify-content-between">
+                <h4 class="display-5">Ratings</h3>
+                    <a class="btn btn-outline-primary" href="Users.php">Edit Ratings</a>
+            </div>
+            <input class="form-control my-3" type="text" placeholder="Search Ratings">
+            <div class="table-responsive overflow-scroll max-height-300">
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th>Buyer ID</th>
-                            <th>Buyer Name</th>
-                            <th>Ratings</th>
-                            <th>Reviews</th>
-                            <th>Product ID</th>
-                            <th>Product Name</th>
+                            <th class="col">Buyer ID</th>
+                            <th class="col">Buyer Name</th>
+                            <th class="col">Ratings</th>
+                            <th class="col">Reviews</th>
+                            <th class="col">Product ID</th>
+                            <th class="col">Product Name</th>
 
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-group-divider">
                         <?php foreach ($userFeedback as $feedback) { ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($feedback['user_id']) ?></td>
+                                <th class="col"><?php echo htmlspecialchars($feedback['user_id']) ?></th>
                                 <td><?php echo htmlspecialchars($feedback['fullname']) ?></td>
                                 <td><?php echo htmlspecialchars($feedback['rating']) ?></td>
                                 <td><?php echo htmlspecialchars($feedback['review']) ?></td>
@@ -178,11 +177,9 @@ $page = 'admin-index';
                             </tr>
                         <?php } ?>
                     </tbody>
-
                 </table>
             </div>
-        </div>
-
+        </section>
     </main>
 
 
