@@ -30,28 +30,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (sanEmailInpVal === "") {
           displayError(emalInput.id, "Please enter your email address");
-          emalInput.classList.add("failed-input");
+          emalInput.classList.add("is-invalid");
           errors++;
         } else if (isEmailAndPwdValid.message === "E-mail can't be found") {
           displayError(emalInput.id, "The e-mail dont match our records");
-          emalInput.classList.add("failed-input");
+          emalInput.classList.add("is-invalid");
           errors++;
         } else {
-          emalInput.classList.remove("failed-input");
-          emalInput.classList.add("success-input");
+          emalInput.classList.remove("is-invalid");
+          emalInput.classList.add("is-valid");
         }
 
         if (sanPwdInpVal === "") {
           displayError(pwdInput.id, "Please confirm your password");
-          pwdInput.classList.add("failed-input");
+          pwdInput.classList.add("is-invalid");
           errors++;
         } else if (isEmailAndPwdValid.message === "Password does not match") {
           displayError(pwdInput.id, isEmailAndPwdValid.message);
-          pwdInput.classList.add("failed-input");
+          pwdInput.classList.add("is-invalid");
           errors++;
         } else {
-          pwdInput.classList.remove("failed-input");
-          pwdInput.classList.add("success-input");
+          pwdInput.classList.remove("is-invalid");
+          pwdInput.classList.add("is-valid");
         }
 
         errors > 0

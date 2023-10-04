@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   //add event listener to signup form to prevent the submit default behaviour (Reload the page)
   document
-    .getElementById("signupForm")
+    .getElementById("sgnForm")
     .addEventListener("submit", async function (event) {
       event.preventDefault();
 
@@ -39,27 +39,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
       sanitizedCompleteName === ""
         ? (displayError(nameInput.id, "Please provide your complete name"),
-          nameInput.classList.add("failed-input"),
+          nameInput.classList.add("is-invalid"),
           errors++)
-        : (nameInput.classList.remove("failed-input"),
-          nameInput.classList.add("success-input"));
+        : (nameInput.classList.remove("is-invalid"),
+          nameInput.classList.add("is-valid"));
 
       //Address
       sanitizedAddress === ""
         ? (displayError(addressInput.id, "Please enter your complete address"),
-          addressInput.classList.add("failed-input"))
-        : (addressInput.classList.remove("failed-input"),
-          addressInput.classList.add("success-input"));
+          addressInput.classList.add("is-invalid"))
+        : (addressInput.classList.remove("is-invalid"),
+          addressInput.classList.add("is-valid"));
 
       //Country
       countrySelect.value === ""
-        ? (countrySelect.classList.add("failed-input"),
-          citySelect.classList.add("failed-input"),
+        ? (countrySelect.classList.add("is-invalid"),
+          citySelect.classList.add("is-invalid"),
           errors++)
-        : (countrySelect.classList.remove("failed-input"),
-          citySelect.classList.remove("failed-input"),
-          countrySelect.classList.add("success-input"),
-          citySelect.classList.add("success-input"));
+        : (countrySelect.classList.remove("is-invalid"),
+          citySelect.classList.remove("is-invalid"),
+          countrySelect.classList.add("is-valid"),
+          citySelect.classList.add("is-valid"));
 
       //Phone
       if (sanitizedPhoneNumber === "") {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
           phoneNumberInput.id,
           "Please choose Country for the Country code",
         );
-        phoneNumberInput.classList.add("failed-input");
+        phoneNumberInput.classList.add("is-invalid");
         errors++;
       } else {
         const validatedPhoneNumber = validatePhoneNumber(sanitizedPhoneNumber);
@@ -76,35 +76,35 @@ document.addEventListener("DOMContentLoaded", function () {
             phoneNumberInput.id,
             "Please provide a valid phone number",
           );
-          phoneNumberInput.classList.add("failed-input");
+          phoneNumberInput.classList.add("is-invalid");
           errors++;
         } else {
           clearErrors(phoneNumberInput);
-          phoneNumberInput.classList.remove("failed-input");
-          phoneNumberInput.classList.add("success-input");
+          phoneNumberInput.classList.remove("is-invalid");
+          phoneNumberInput.classList.add("is-valid");
         }
       }
 
       //Email
       if (sanitizedEmail === "") {
         displayError(emailInput.id, "Please enter your email address");
-        emailInput.classList.add("failed-input");
+        emailInput.classList.add("is-invalid");
         errors++;
       } else {
         const emailExists = await checkEmailExists(sanitizedEmail);
         if (emailExists) {
           displayError(emailInput.id, "The email is already used");
-          emailInput.classList.add("failed-input");
+          emailInput.classList.add("is-invalid");
           errors++;
         } else {
           const validatedEmail = validateEmail(sanitizedEmail);
           if (validatedEmail) {
             displayError(emailInput.id, "Please enter a valid email address.");
-            emailInput.classList.add("failed-input");
+            emailInput.classList.add("is-invalid");
             errors++;
           } else {
-            emailInput.classList.remove("failed-input");
-            emailInput.classList.add("success-input");
+            emailInput.classList.remove("is-invalid");
+            emailInput.classList.add("is-valid");
           }
         }
       }
@@ -112,34 +112,34 @@ document.addEventListener("DOMContentLoaded", function () {
       //Password
       if (pwdInput.value === "") {
         displayError(pwdInput.id, "Please enter a password");
-        pwdInput.classList.add("failed-input");
+        pwdInput.classList.add("is-invalid");
         errors++;
       } else {
         const errorMessage = validatePassword(pwdInput.value);
         if (errorMessage) {
           displayError(pwdInput.id, errorMessage);
-          pwdInput.classList.add("failed-input");
+          pwdInput.classList.add("is-invalid");
           errors++;
         } else {
-          pwdInput.classList.remove("failed-input");
-          pwdInput.classList.add("success-input");
+          pwdInput.classList.remove("is-invalid");
+          pwdInput.classList.add("is-valid");
         }
       }
 
       //RePassword
       if (rePwdInput.value === "") {
         displayError(rePwdInput.id, "Please confirm your password");
-        rePwdInput.classList.add("failed-input");
+        rePwdInput.classList.add("is-invalid");
         errors++;
       } else {
         const checkedPwdMatch = checkPaswordMatch(pwdInput, rePwdInput);
         if (!checkedPwdMatch) {
           displayError(rePwdInput.id, "Password didn't match");
-          rePwdInput.classList.add("failed-input");
+          rePwdInput.classList.add("is-invalid");
           errors++;
         } else {
-          rePwdInput.classList.remove("failed-input");
-          rePwdInput.classList.add("success-input");
+          rePwdInput.classList.remove("is-invalid");
+          rePwdInput.classList.add("is-valid");
         }
       }
 
@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
       : (errorElement.textContent = " ");
   }
 
-  // Clear all error messages and remove failed-input class
+  // Clear all error messages and remove is-invalid class
   function clearErrors(inputs) {
     const errorElements = document.querySelectorAll(".error-message");
     errorElements.forEach((errorElement) => {
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Inputs type:", typeof inputs);
       console.log(inputs);
       inputs.forEach((input) => {
-        input.classList.remove("failed-input");
+        input.classList.remove("is-invalid");
       });
     }
   }

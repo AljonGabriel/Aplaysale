@@ -9,104 +9,130 @@ require_once "inc/config_session.inc.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/register.css">
+    <!-- <link rel="stylesheet" href="styles/index.css"> -->
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
-    <title>Register</title>
+    <script src="bootstrap-5.3.2-dist/js/bootstrap.min.js" defer></script>
+    <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js" defer></script>
+
+
+
+    <title>Sign-up</title>
 </head>
 
 <body>
-    <nav>
-        <?php require_once 'comp/navbar.php' ?>
-    </nav>
-    <main>
-        <div class="signup">
-            <div class="signup-container">
-                <form class="signup-form" id="sgnForm" action="inc/signup/signup.inc.php" method="POST">
-                    <fieldset class="signup-fieldset">
-                        <legend class="fieldset-legend">User Information</legend>
-                        <div class="fieldErrors">
-                            <p class="error-message" id="sgnHeadError"></p>
+    <header>
+        <nav>
+            <?php require_once 'comp/navbar.php' ?>
+        </nav>
+    </header>
+    <main class="container-fluid py-3 secondary-bg">
+        <section class="container">
+
+            <form class="signup-form" id="sgnForm" action="inc/signup/signup.inc.php" method="POST">
+                <section class="row row-cols-1 row-cols-md-2 row-cols-sm-1">
+                    <fieldset class="col">
+                        <legend class="display-6 text-center mb-3">User Information</legend>
+                        <div class="fieldErrors my-3">
+                            <p class="error-message text-danger" id="sgnHeadError"></p>
                         </div>
 
                         <!--Full Name input -->
-                        <div class="signup-full-name-input-container">
-                            <label for="sgnNamInp">Complete Name:</label>
-                            <input class="signup-input" type="text" id="sgnNamInp" name="sgnNamInp" placeholder="John Doe">
-                            <div class="fieldErrors">
-                                <p class="error-message" id="sgnNamInpError"></p>
+                        <div class="form-floating">
+                            <input class="form-control" type="text" id="sgnNamInp" name="sgnNamInp" placeholder="John Doe">
+                            <label for="sgnNamInp">Full Name</label>
+                            <div class="fieldErrors mb-2">
+                                <p class="error-message text-danger" id="sgnNamInpError"></p>
                             </div>
                         </div>
                         <!--Address input -->
-                        <div class="signup-address-input-container">
+                        <div class="form-floating">
+                            <input class="form-control" type="text" id="sgnAddInp" name="sgnAddInp" placeholder="123 Main Street, City, Country">
                             <label for="sgnAddInp">Complete Address:</label>
-                            <input class="signup-input" type="text" id="sgnAddInp" name="sgnAddInp" placeholder="123 Main Street, City, Country">
-                            <div class="fieldErrors">
-                                <p class="error-message" id="sgnAddInpError"></p>
-                            </div>
-                            <div>
-                                <select class="signup-select" id="sgnCouSel" name="sgnCouSel">
-                                    <option value="" disabled selected>Select a country</option>
-                                    <option value="Philippines">Philippines</option>
-                                </select>
-                            </div>
-                            <div>
-                                <select class="signup-select" id="sgnCitSel" name="sgnCitSel">
-                                    <option value="" disabled selected>Select a city</option>
-                                </select>
+                            <div class="fieldErrors mb-2">
+                                <p class="error-message text-danger" id="sgnAddInpError"></p>
                             </div>
                         </div>
+
+                        <div class="form-floating">
+                            <select class="form-select mb-3" id="sgnCouSel" name="sgnCouSel" aria-label="Select Country First">
+                                <option value="" disabled selected>Select a country</option>
+                                <option value="Philippines">Philippines</option>
+                            </select>
+                            <label for="sgnCouSel">Country</label>
+
+                        </div>
+
+                        <div class="form-floating mb-3">
+
+                            <select class="form-select" id="sgnCitSel" name="sgnCitSel">
+                                <option value="" disabled selected>Select a city</option>
+                            </select>
+                            <label for="sgnCitSel">City</label>
+                        </div>
+
                         <!--Phone input -->
-                        <div class="signup-phone-number-input-container">
+                        <small class="fs-6 fw-italic text-secondary">Valid format: +63 9123456XXX or 09xx xxx xxxx</small>
+                        <div class="form-floating">
+                            <input class="form-control" type="tel" id="sgnPhoInp" name="sgnPhoInp" placeholder="+63 9123456XXX">
                             <label for="sgnPhoInp">Phone Number: </label>
-                            <small class="signup-small">Valid format: +63 9123456XXX or 09xx xxx xxxx</small>
-
-                            <input class="signup-input" type="tel" id="sgnPhoInp" name="sgnPhoInp" placeholder="+63 9123456XXX">
-                            <div class="fieldErrors">
-                                <p class="error-message" id="sgnPhoInpError" class="error-message"></p>
+                            <div class="fieldErrors mb-2">
+                                <p class="error-message text-danger" id="sgnPhoInpError" class="error-message"></p>
                             </div>
                         </div>
 
                     </fieldset>
-                    <fieldset class="signup-fieldset">
-                        <legend class="fieldset-legend">Login Informaiton</legend>
+                    <fieldset class="col">
+                        <legend class="display-6 text-center mb-3">Login Informaiton</legend>
                         <!--Email input -->
-                        <div class="signup-email-input-container">
+                        <div class="form-floating mb-3">
+
+                            <input class="form-control" type="email" id="sgnEmaInp" name="sgnEmaInp" placeholder="johndoe@example.com">
                             <label for="sgnEmaInp">Email:</label>
-                            <input class="signup-input" type="email" id="sgnEmaInp" name="sgnEmaInp" placeholder="johndoe@example.com">
-                            <div class="fieldErrors">
-                                <p class="error-message" id="sgnEmaInpError"></p>
+                            <div class="fieldErrors mb-2">
+                                <p class="error-message text-danger" id="sgnEmaInpError"></p>
                             </div>
                         </div>
+                        <small class="signup-small">"Your password should be at least 8 characters long and include
+                            a mix of uppercase
+                            and lowercase letters, numbers, and special characters (e.g., !, @, #, $). This will
+                            help ensure the security of your account."</small>
                         <!--Password input -->
-                        <div class="signup-password-input-container">
+                        <div class="form-floating">
+
+
+                            <input class="form-control" type="password" id="sgnPwdInp" name="sgnPwdInp" placeholder="Your Password">
                             <label for="sgnPwdInp">Password:</label>
-                            <small class="signup-small">"Your password should be at least 8 characters long and include
-                                a mix of uppercase
-                                and lowercase letters, numbers, and special characters (e.g., !, @, #, $). This will
-                                help ensure the security of your account."</small>
-                            <input class="signup-input" type="password" id="sgnPwdInp" name="sgnPwdInp" placeholder="Your Password">
-                            <div class="fieldErrors">
-                                <p class="error-message" id="sgnPwdInpError"></p>
+                            <div class="fieldErrors mb-2">
+                                <p class="error-message text-danger" id="sgnPwdInpError"></p>
                             </div>
+
+                        </div>
+
+                        <div class="form-floating">
                             <!--RePassword input -->
+
+                            <input class="form-control" type="password" id="sgnRePwdInp" name="sgnRePwdInp" placeholder="Confirm your password">
                             <label for="sgnRePwdInp">Confirm Password:</label>
-                            <input class="signup-input" type="password" id="sgnRePwdInp" name="sgnRePwdInp" placeholder="Confirm your password">
-                            <div class="fieldErrors">
-                                <p class="error-message" id="sgnRePwdInpError" class="error-message"></p>
+                            <div class="fieldErrors mb-2">
+                                <p class="error-message text-danger" id="sgnRePwdInpError" class="error-message"></p>
                             </div>
                         </div>
-                        <button type="submit" class="signup-btn">Submit</button>
+                        <button type="submit" class="btn btn-primary">Create Account</button>
 
                     </fieldset>
-                </form>
-            </div>
-        </div>
+                </section>
+
+            </form>
+        </section>
     </main>
-    <script src="js/modal.js"></script>
+
     <script src="js/signupErrorHandlers.js"></script>
-    <script src="js/dropdownAddressHandler.js"></script>
+
 </body>
 
 </html>
