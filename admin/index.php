@@ -1,7 +1,8 @@
 <?php
+$page = 'admin-index';
 require_once '../inc/config_session.inc.php';
 require_once 'inc/admin_view.inc.php';
-$page = 'admin-index';
+
 
 ?>
 

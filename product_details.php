@@ -4,21 +4,11 @@ $page = "product_details";
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
-
+$productId = $_GET["product_id"];
 require_once __DIR__ . "/admin/inc/admin_view.inc.php";
 require_once "inc/ratings/rating_view.inc.php";
 
-$productId = $_GET["product_id"];
 
-
-// Find the product in $productData with the matching product_id
-$selectedProduct = null;
-foreach ($productData as $product) {
-    if ($product['product_id'] == $productId) { // Using 'product_id' key
-        $selectedProduct = $product;
-        break;
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +16,13 @@ foreach ($productData as $product) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/product-details.css">
-    <script src="js/slideshow.js" defer></script>
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+    <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js" defer></script>
+    <!-- <script src="js/slideshow.js" defer></script> -->
     <script src="js/quantityHandler.js" defer></script>
     <script src="js/addToCartHandler.js" defer></script>
     <title>Product Details</title>
@@ -35,96 +30,72 @@ foreach ($productData as $product) {
 
 <body>
     <header>
-        <nav>
-            <?php require_once "comp/navbar.php"; ?>
-        </nav>
+        <?php require_once "comp/navbar.php"; ?>
     </header>
-    <main class="product-details-primary-container">
-        <section class="product-details-secondary-container">
-            <section class="product-details-carousel-container">
-                <section class="product-details-carousel-img-container" data-carousel>
+    <main class="container-lg-fluid mt-5">
+        <section class="container">
+
+            <div id="carouselExample" class="carousel slide carousel-fade">
+                <div class="carousel-inner">
                     <?php
-                    // Explode the concatenated image URLs into an array
-                    $image_urls = explode(',', $product['image_urls']);
-
-                    if (count($image_urls) > 1) {
-
+                    $isFirstImage = true; // Variable to track the first image
+                    foreach ($product_by_id as $product) {
+                        $img_urls = explode(",", $product['image_urls']);
+                        foreach ($img_urls as $imgs) {
+                            // Check if it's the first image, add "active" class if true
+                            $activeClass = $isFirstImage ? "active" : "";
                     ?>
-                        <button class="product-details-carousel-button prev" data-carousel-button="prev">&#8656;</button>
-                        <button class="product-details-carousel-button next" data-carousel-button="next">&#8658;</button>
-
-                    <?php } ?>
-                    <ul data-slides>
-                        <?php
-
-                        $firstImage = true; // Set this to true for the first image
-                        foreach ($image_urls as $image) {
-                        ?>
-                            <li class="product-details-slide" <?php if ($firstImage) {
-                                                                    echo 'data-active';
-                                                                    $firstImage = false;
-                                                                } ?>>
-                                <figure>
-                                    <img src="<?php echo htmlspecialchars($image); ?>" alt="">
-                                </figure>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </section>
-            </section>
-            <section class="product-details-item-title">
-                <h3><?php echo htmlspecialchars($selectedProduct['product_name']) ?></h3>
-
-                <p class="product-details-price">₱ <?php echo htmlspecialchars($selectedProduct['product_price']) ?></p>
-
-
-                <form action="inc/cart/add_to_cart.inc.php" method="GET">
-                    <?php if ($selectedProduct['product_stocks'] !== "Single Stock Item") { ?>
-                        <section class="product-details-quantity-container">
-                            <div class="product-details-quantity-count-container">
-                                <button type="button" id="incrementBtn" class="product-details-quantity-count-btn">+</button>
-                                <input name="prdDetQuaInp" id="prdDetQuaInp" type="number">
-                                <button type="button" id="decrementBtn" class="product-details-quantity-count-btn">-</button>
+                            <div class="carousel-item <?php echo $activeClass; ?>">
+                                <img src="<?php echo htmlspecialchars($imgs); ?>" class="d-block w-100" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                             </div>
-                            <small class="product-details-stocks"><?php echo htmlspecialchars($selectedProduct['product_stocks']) ?> pieces available</small>
-                        </section>
+                    <?php
+                            $isFirstImage = false; // Set to false after the first image
+                        }
+                    } ?>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <article class="text-center my-3">
+                <h6 class="display-4 "><?php echo htmlspecialchars($product['product_name']) ?></h6>
+            </article>
 
-                    <?php } else { ?>
-                        <section class="product-details-quantity-container">
-                            <small id="prdDetStoDis" class="product-details-stocks"><?php echo htmlspecialchars($selectedProduct['product_stocks']) ?> </small>
-                        </section>
-                    <?php } ?>
-                    <section class="product-details-cart-buy">
-                        <button type="submit" class="cart-btn" name="cart">Add to Cart</button>
-                        <!--  <button type="submit" class="buy-btn" name="buy">Buy </button> -->
-                    </section>
-                </form>
+        </section>
+        <section class="container-lg-fluid bg-body-tertiary p-3">
+            <section class="container">
+
+                <div class="d-flex justify-content-center align-items-center gap-3">
+                    <form action="" class="d-flex align-items-center">
+                        <div class="input-group flex-nowrap">
+                            <button class="btn btn-outline-primary">Add to Cart</button>
+                            <a href="#" class="btn btn-primary">Check Out</a>
+                        </div>
+                        <label for="prdDetQuaInp">Quantity</label>
+                        <div class="input-group">
+                            <button id="incrementBtn" type="button" class="btn">+</button>
+                            <input id="prdDetQuaInp" type="number" class="form-control">
+                            <button id="decrementBtn" type="button" class="btn">-</button>
+                        </div>
+
+                    </form>
+                    <small class="product-details-stocks">Remaining Stocks <?php echo htmlspecialchars($product['product_stocks']) ?></small>
+                </div>
             </section>
         </section>
 
-
-        <section class="product-details-secondary-container-one">
-            <section class="product-details-specification-container">
-                <header class="product-details-header-container">
-                    <h3>Specifications</h3>
-                </header>
-                <hr class="product-details-hr">
-                <br>
-                <p>Brand: <?php echo htmlspecialchars($selectedProduct["product_brand"]); ?></p>
-                <p>Shipping: <?php echo htmlspecialchars($selectedProduct["address"]); ?></p>
-            </section>
-            <section class="product-details-description-container">
-                <header class="product-details-header-container">
-                    <h3>Description</h3>
-                </header>
-                <hr class="product-details-hr">
-                <br>
-                <pre><?php echo htmlspecialchars($selectedProduct["product_description"]) ?></pre>
+        <section class="container-lg-fluid bg-body-tertiary p-3">
+            <section class="container">
+                <pre style=" white-space: pre-wrap;"><?php echo htmlspecialchars($product['product_description']) ?></pre>
             </section>
         </section>
-
-
     </main>
+
 </body>
 
 </html>

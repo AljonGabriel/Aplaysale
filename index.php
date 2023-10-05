@@ -12,15 +12,10 @@ require_once __DIR__ . "/admin/inc/admin_view.inc.php";
     <!-- <link rel="stylesheet" href="styles/index.css"> -->
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="bootstrap-5.3.2-dist/css/bootstrap.min.css">
-
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
-    <script src="bootstrap-5.3.2-dist/js/bootstrap.min.js" defer></script>
     <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js" defer></script>
-
-
-
     <!-- <script src="js/slideshow.js" defer></script> -->
     <title>Aplaysale</title>
 </head>
@@ -38,6 +33,7 @@ require_once __DIR__ . "/admin/inc/admin_view.inc.php";
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="10000">
                         <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="d-block w-100" alt="...">
+
                     </div>
                     <div class="carousel-item" data-bs-interval="2000">
                         <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" class="d-block w-100" alt="...">
@@ -79,7 +75,7 @@ require_once __DIR__ . "/admin/inc/admin_view.inc.php";
                             break; // Exit the loop if the limit is reached
                         }
                     ?>
-                        <a href="<?php echo isset($_SESSION['user_id']) ? 'product_details.php?product_id=' . $product['product_id'] : 'signup.php'; ?>" class="">
+                        <a href="<?php echo isset($_SESSION['user_id']) ? 'product_details.php?product_id=' . $product['product_id'] : 'signup.php'; ?>">
 
                             <div class="col">
                                 <div class="card border-0 overflow-hidden p-1 card-h">
@@ -127,7 +123,7 @@ require_once __DIR__ . "/admin/inc/admin_view.inc.php";
                                 <img src="<?php echo htmlspecialchars($images[0]) ?>" class="card-img-top card-img-size" alt="<?php echo htmlspecialchars($prodct['product_name']) ?>">
                                 <div class="card-body">
                                     <h6 class="card-title card-text"><?php echo htmlspecialchars($product['product_name']) ?></h6>
-                                    <a href="" class="btn btn-outline-primary w-100">Details</a>
+                                    <a href="<?php echo isset($_SESSION['user_id']) ? 'product_details.php?product_id=' . $product['product_id'] : 'signup.php'; ?>" class="btn btn-outline-primary w-100">Details</a>
                                 </div>
                             </div>
                         </div>

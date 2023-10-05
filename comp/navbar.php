@@ -5,7 +5,7 @@
 
 <!-- Top Navbar Layer -->
 <section class="container-fluid m-0 p-0 ">
-    <section class="navbar align-items-center justify-content-between gap-3 primary-bg px-5">
+    <section class="navbar align-items-center justify-content-end gap-3 primary-bg px-5">
 
         <div class="d-flex gap-3">
             <p class="fs-6 text-white fw-lighter m-0 p-0"><i class="bi bi-envelope-fill"></i> Aljongabrielambasvaldez@gmail.com</p>
@@ -15,9 +15,9 @@
     </section>
 </section>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg py-3">
     <div class="container">
-        <a class="navbar-brand text-primary" href="#">Aplaysale</a>
+        <a class="navbar-brand text-primary fw-bold" href="#">Aplaysale</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -122,7 +122,7 @@
     </div>
 </nav>
 
-<section class="container-fluid">
+<section class="container-fluid bg-body-tertiary">
     <!-- NAV BOTTOM -->
     <ul class="nav align-items-center justify-content-center flex-wrap">
         <li class="nav-item">

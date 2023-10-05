@@ -225,3 +225,20 @@ function get_stocks_count(object $pdo, int|string $productID)
         return null; // Return null or handle the case where the product is not found.
     }
 }
+
+
+function get_product_by_ID(object $pdo, int|string $PID)
+{
+    $query = "SELECT p.id AS product_id, p.product_name, p.product_price, p.product_stocks, p.product_brand, p.product_description,  GROUP_CONCAT(pi.image_url) AS image_urls
+    FROM products p 
+    JOIN product_images pi ON p.id = pi.product_id
+    WHERE p.id = :product_ID;
+    ";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(":product_ID", $PID);
+    $stmt->execute();
+
+    $result = $stmt ? ($stmt->fetchAll(PDO::FETCH_ASSOC)) : [];
+    return $result;
+}

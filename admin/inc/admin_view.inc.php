@@ -13,3 +13,4 @@ $productData = get_all_product_data($pdo);
 $productsCount = get_products_count($pdo);
 $userFeedback = get_user_feedback($pdo);
 $new_products = get_new_product($pdo);
+$page === "product_details" ? ($product_by_id = get_product_by_ID($pdo, $productId)) : ([]);
