@@ -1,13 +1,13 @@
 <?php
 require_once "../config_session.inc.php";
 
-if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "GET") {
+if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     $user_id = $_SESSION["user_id"];
 
-    $product_id = $_GET["product_id"];
-    $quantity = $_GET["quantity"];
+    $product_id = $_POST["product_id"];
+    $quantity = $_POST["quantity"];
 
     require_once "../dbh.inc.php";
 
@@ -17,5 +17,5 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "GET") {
 
     header("Location: ../../cart.php");
 } else {
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
 }

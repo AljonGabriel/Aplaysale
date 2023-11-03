@@ -1,6 +1,6 @@
 <?php
-require 'inc/config_session.inc.php';
 $page = "product_details";
+require 'inc/config_session.inc.php';
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
 }
@@ -71,18 +71,18 @@ require_once "inc/ratings/rating_view.inc.php";
             <section class="container">
 
                 <div class="d-flex justify-content-center align-items-center gap-3">
-                    <form action="" class="d-flex align-items-center">
+                    <form action="inc/cart/add_to_cart.inc.php" class="d-flex align-items-center" method="POST">
+                        <input type="hidden" name="product_id" value="<?php echo $productId; ?>">
                         <div class="input-group flex-nowrap">
-                            <button class="btn btn-outline-primary">Add to Cart</button>
+                            <button type="submit" class="btn btn-outline-primary">Add to Cart</button>
                             <a href="#" class="btn btn-primary">Check Out</a>
                         </div>
                         <label for="prdDetQuaInp">Quantity</label>
                         <div class="input-group">
                             <button id="incrementBtn" type="button" class="btn">+</button>
-                            <input id="prdDetQuaInp" type="number" class="form-control">
+                            <input id="prdDetQuaInp" type="number" name="quantity" class="form-control">
                             <button id="decrementBtn" type="button" class="btn">-</button>
                         </div>
-
                     </form>
                     <small class="product-details-stocks">Remaining Stocks <?php echo htmlspecialchars($product['product_stocks']) ?></small>
                 </div>
